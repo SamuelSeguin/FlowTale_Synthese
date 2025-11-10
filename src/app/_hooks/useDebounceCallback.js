@@ -1,6 +1,6 @@
 'use client'
 
-const { useRef, useEffect } = require("react");
+import { useRef, useEffect } from "react";
 
 const useDebouncedCallback = (callback, delay) => {
   const timeoutRef = useRef(null);

@@ -27,7 +27,6 @@ const HomePage = async () => {
       deletable: false,
       draggable: false,
 
-      //
       //titre
       //texte
       //type animation: text
