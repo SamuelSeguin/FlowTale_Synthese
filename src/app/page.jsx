@@ -44,6 +44,7 @@ const HomePage = async () => {
   // Consulter la composante GridProvider
 
   return (
+    
     <GridProvider initialNodes={initialNodes} initialEdges={initialEdges}>
       <main className="flex flex-col items-center justify-center gap-2 py-5">
         <h1>Gabarit de départ</h1>
