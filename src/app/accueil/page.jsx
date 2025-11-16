@@ -1,7 +1,12 @@
 "use client";
-import Accueil from '../_components/Accueil';
+import Accueil from "../_components/Accueil";
+import NavBar from "../_components/NavBar";
 
-// This is the correct default export: a function returning JSX
 export default function AccueilPage() {
-  return <Accueil />;
+  return (
+    <>
+      <NavBar />
+      <Accueil />
+    </>
+  );
 }
