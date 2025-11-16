@@ -1,5 +1,6 @@
 "use client";
 import "./Accueil.css";
+import RecentsUiCard from "../_components/RecentsUiCard";
 
 const Accueil = () => {
   return (
@@ -24,19 +25,16 @@ const Accueil = () => {
       </div>
 
       <section className="info">
-        <div className="infoLeft">
-          <div>
-            <em>Créez</em> des récits interactifs,
-            <br />
-            <em>explorez</em> ceux des autres et
-            <br />
-            <em>partagez</em> vos créations en
-            <br />
-            quelques clics.
-          </div>
+        <div>
+          <em>Créez </em>
+          des récits interactifs,
+          <em> explorez </em>
+          ceux des autres et
+          <em> partagez </em>
+          vos créations en quelques clics.
         </div>
-        <div className="infoRight">{/* <img src="" alt="" /> */}</div>
       </section>
+      <RecentsUiCard />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
 import AuthForm from "@/app/_components/AuthForm";
 import { authClient } from "@/lib/auth-client";
+import "./SignInClient.css";
 
 const SignInClient = () => {
   const ConnexionAction = async (formData) => {

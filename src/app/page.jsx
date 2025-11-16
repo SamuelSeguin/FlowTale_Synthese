@@ -1,5 +1,5 @@
 import MainPageClient from "./_components/MainPageClient";
-import { GridProvider } from "./_context/gridContext";
+import { GridProvider } from "./_contexts/gridContext";
 
 export const metadata = {
   title: "Web 5",

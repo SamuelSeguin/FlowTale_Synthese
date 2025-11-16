@@ -1,6 +1,7 @@
 "use client";
 import AuthForm from "@/app/_components/AuthForm";
 import { authClient } from "@/lib/auth-client";
+import "./SignUpClient.css";
 
 const SignUpClient = () => {
   const InscriptionAction = async (formData) => {

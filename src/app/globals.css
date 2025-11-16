@@ -4,6 +4,18 @@
   font-family: "Creato";
   src: url("/fonts/CreatoDisplay-Regular.otf") format("opentype");
 }
+@font-face {
+  font-family: "Creato-Medium";
+  src: url("/fonts/CreatoDisplay-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "Creato-Bold";
+  src: url("/fonts/CreatoDisplay-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Creato-ExtraBold";
+  src: url("/fonts/CreatoDisplay-ExtraBold.otf") format("opentype");
+}
 
 :root {
   --color-cookie-bg: #ebd1da;

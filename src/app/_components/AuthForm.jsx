@@ -1,27 +1,39 @@
-const AuthForm = ({titre, callActionTitre, showName, formAction, children}) => {
+import "./AuthForm.css";
+
+const AuthForm = ({
+  titre,
+  callActionTitre,
+  showName,
+  formAction,
+  children,
+}) => {
   console.log(formAction);
   return (
-    <form action={formAction} className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md space-y-6 text-red-50">
-      <h2 className="text-2xl font-bold text-center text-gray-800">
-        {titre}
-      </h2>
-      {!showName ? "" : 
-      <div>
-        <label
-          className="block text-sm font-medium text-gray-700"
-          htmlFor="fld_name"
-        >
-          Nom complet
-        </label>
-        <input
-          type="text"
-          id="fld_name"
-          name="name"
-          required
-          placeholder="Entrez votre nom"
-          className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 text-gray-600 focus:outline-none"
-        />
-      </div>}
+    <form
+      action={formAction}
+      className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md space-y-6 text-red-50"
+    >
+      <h2 className="text-2xl font-bold text-center text-gray-800">{titre}</h2>
+      {!showName ? (
+        ""
+      ) : (
+        <div>
+          <label
+            className="block text-sm font-medium text-gray-700"
+            htmlFor="fld_name"
+          >
+            Nom complet
+          </label>
+          <input
+            type="text"
+            id="fld_name"
+            name="name"
+            required
+            placeholder="Entrez votre nom"
+            className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 text-gray-600 focus:outline-none"
+          />
+        </div>
+      )}
 
       <div>
         <label
