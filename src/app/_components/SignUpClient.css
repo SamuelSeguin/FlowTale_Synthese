@@ -1,0 +1,29 @@
+.signup-left-message {
+  position: absolute;
+  max-width: 420px;
+  color: #444;
+  z-index: 999;
+  left: 20%;
+  top: 40%;
+}
+
+.signup-left-message {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-family: "Creato-ExtraBold";
+  color: rgb(54, 54, 54);
+}
+
+.signup-left-message p span {
+  color: #ec6e9e;
+}
+
+.text-signin {
+  font-size: 0.9rem;
+  padding-top: 30px;
+  margin: 0;
+}
+
+.text-signin a {
+  color: #ec6e9e;
+}

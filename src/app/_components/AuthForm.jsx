@@ -16,7 +16,6 @@ const AuthForm = ({
           ""
         ) : (
           <div>
-            <label htmlFor="fld_name">Nom complet</label>
             <input
               type="text"
               id="fld_name"

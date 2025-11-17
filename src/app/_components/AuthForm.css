@@ -11,11 +11,35 @@
   top: 50%;
   left: 55%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.356);
-  padding: 130px 70px;
+  background-color: rgba(255, 255, 255, 0.616);
+  padding: 100px 70px;
   border-radius: 5%;
   font-family: "Creato";
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  width: 300px;
+}
+
+.auth-form input:focus {
+  border: 2px solid #ec6e9e;
+  outline: none;
+}
+
+.auth-form input {
+  height: 25px;
+  width: 80%;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+}
+
+#fld_email {
+  margin-left: 0;
+}
+#fld_password {
+  margin-left: 0;
+}
+#fld_name {
+  margin-left: 0;
 }
 
 .form-cta-btn {

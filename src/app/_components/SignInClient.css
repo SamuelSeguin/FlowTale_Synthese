@@ -17,3 +17,13 @@
 .signin-left-message p span {
   color: #ec6e9e;
 }
+
+.text-signup {
+  font-size: 0.9rem;
+  padding-top: 30px;
+  margin: 0;
+}
+
+.text-signup a {
+  color: #ec6e9e;
+}

@@ -23,19 +23,25 @@ const SignUpClient = () => {
   };
 
   return (
-    <AuthForm
-      titre={"Inscription"}
-      callActionTitre={"S'inscrire"}
-      showName={true}
-      formAction={InscriptionAction}
-    >
-      <p className="text-center text-sm text-gray-600">
-        Vous avez un compte ?{" "}
-        <a href="/auth/signin" className="text-blue-600 hover:underline">
-          Connectez-vous
-        </a>
-      </p>
-    </AuthForm>
+    <div>
+      <div className="signup-left-message">
+        <p>
+          Créez un compte et <span>donnez vie</span> à vos{" "}
+          <span>histoires</span>.
+        </p>
+      </div>
+
+      <AuthForm
+        titre={"Créez votre compte"}
+        callActionTitre={"S'inscrire"}
+        showName={true}
+        formAction={InscriptionAction}
+      >
+        <p className="text-signin">
+          Vous avez un compte ? <a href="/auth/signin">Connectez-vous</a>
+        </p>
+      </AuthForm>
+    </div>
   );
 };
 

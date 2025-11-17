@@ -32,7 +32,7 @@ const SignInClient = () => {
         showName={false}
         formAction={ConnexionAction}
       >
-        <p>
+        <p className="text-signup" >
           Vous n'avez pas de compte ? <a href="/auth/signup">Inscrivez-vous</a>
         </p>
       </AuthForm>
