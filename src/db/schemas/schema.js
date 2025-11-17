@@ -15,7 +15,7 @@ import { sql } from "drizzle-orm";
 // });
 
 export const commentsTables = sqliteTable("comments", {
-    id: text("id"),
+    id: text("id").primaryKey(),
     text: text("description").notNull(),
     auteur: text("auteur")
     .references(() => user.id, { onDelete: "cascade" })
@@ -27,7 +27,7 @@ export const commentsTables = sqliteTable("comments", {
 });
 
 export const storyTables = sqliteTable("story", {
-    id: text("id"),
+    id: text("id").primaryKey(),
     titre: text("titre").notNull(),
     auteur: text("auteur")
     .references(() => user.id, { onDelete: "cascade" })
@@ -40,36 +40,34 @@ export const storyTables = sqliteTable("story", {
 });
 
 export const nodesTables = sqliteTable("nodes", {
-  id: text("id"),
+  id: text("id").primaryKey(),
   positionX: integer('position_x').notNull(),
   positionY: integer('position_y').notNull(),
-  data: text({mode: 'json'}), // titre, texte, les choses
-  storyId: text("storyId")
-    .references(() => storyTables.id, { onDelete: "cascade" })
-    .notNull(),
+  //type: text("type").notNull(), // Start, Story, End, Conditionnel
+  data: text({mode: 'json'}), // Titre, Text, Image, Musique, Ambiance, Animation
+  //storyId: text("storyId")
+  //  .references(() => storyTables.id, { onDelete: "cascade" })
+  //  .notNull(),
   createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
 });
 
 export const edgesTables = sqliteTable("edges", {
-    id: text("id"),
-    storyId: text("storyId")
-    .references(() => storyTables.id, {onDelete: "cascade"})
-    .notNull(),
+    id: text("id").primaryKey(),
     source: text("source")
     .references(() => nodesTables.id, { onDelete: "cascade" })
     .notNull(),
     target: text("target")
     .references(() => nodesTables.id, { onDelete: "cascade" })
     .notNull(),
-    data: text({mode: 'json'}),
-    storyId: text("storyId")
-    .references(() => storyTables.id, { onDelete: "cascade" })
-    .notNull(),
+    data: text({mode: 'json'}), // Choix Texte, Conditionnel ou Non,
+    // storyId: text("storyId")
+    // .references(() => storyTables.id, {onDelete: "cascade"})
+    // .notNull(),
     createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
 });
 
 export const imageTables = sqliteTable("image", {
-    id: text("id"), 
+    id: text("id").primaryKey(), 
     url: text("url"),
     auteur: text("auteur")
     .references(() => user.id, { onDelete: "cascade" })
@@ -78,7 +76,7 @@ export const imageTables = sqliteTable("image", {
 })
 
 export const musiqueTables = sqliteTable("musique", {
-    id: text("id"),
+    id: text("id").primaryKey(),
     url: text("url"),
     auteur: text("auteur")
     .references(() => user.id, { onDelete: "cascade" })

@@ -1,7 +1,10 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, startTransition, useContext, useState } from "react";
 import useGridInternals, { SelectionType } from "../_hooks/useGridInternals";
 import { addEdge, ReactFlowProvider } from "@xyflow/react";
+import { AddNodesAction, UpdateNodesAction } from "../_actions/nodesAction";
+import { v4 as uuidv4 } from 'uuid';
+import { AddEdgesAction } from "../_actions/edgesAction";
 
 const gridContext = createContext({
   nodes: [],
@@ -43,6 +46,8 @@ const GridProvider = ({ children, initialNodes = [], initialEdges = [] }) => {
     console.log("[NODE POSITION UPDATE]", id, position);
     // ex:
     // await updateNodePositionAction(node.storyId, node.id, node.position);
+    await UpdateNodesAction(id, position);
+    console.log("[NODE POSITION UPDATED IN DB]");
   };
 
   // Fonction appelée quand une branche est ajoutée entre deux noeuds.
@@ -51,13 +56,16 @@ const GridProvider = ({ children, initialNodes = [], initialEdges = [] }) => {
   const onEdgeCreatedHandler = async ({ source, target }) => {
     console.log("[NEW EDGE CREATED]: Entre:", source, target);
     const newEdgeData = {
-      id: "un-nouvel-id",
-      source: source, // le id du noeud de départ
-      target: target, // le id du noeud de fin
+      id: uuidv4(),
+      source, // le id du noeud de départ
+      target, // le id du noeud de fin
+      data: { texte: '.', animation: '.' },
     };
 
     // ajoute la branche dans le state (addEdge s'occupe de faire une validation)
-    setEdges(addEdge(newEdgeData, edges));
+    setEdges((currentEdges) => addEdge(newEdgeData, currentEdges));
+
+    AddEdgesAction(newEdgeData);
   };
 
   // useGridInternal gère la mécanique interne déjà préparée
@@ -77,10 +85,41 @@ const GridProvider = ({ children, initialNodes = [], initialEdges = [] }) => {
 
   // implémenter/déclarer les manipulations du state à partir d'ici... ou ailleurs
   // ex:
-  const addLocalNode = (newNode) => {
+  const addLocalNode = async (newNode) => {
     // ajouter le noeud au state puis ensuite à bd via une action serveur
-    console.log("Bien essayé 🤣", newNode);
+    try {
+      const MaNewNode = {
+        id: newNode.id,
+        positionX: newNode.position.x,
+        positionY: newNode.position.y,
+        data: JSON.stringify(newNode.data),
+      }
+  
+      //LOCAL
+      setNodes([...nodes, newNode]);
+  
+      //SERVEUR
+      AddNodesAction(MaNewNode);
+      // startTransition(async () => {
+      //   const { success } = await AddNodesAction(MaNewNode);
+      //   if (!success) {
+      //     toast.error("Une erreur est survenue.");
+      //     return;
+      //   }
+      // });
+    }
+    catch (err) {
+      console.log("[ERREUR AJOUT NOEUD]", err);
+    }
   };
+
+  const deleteLocalNode = async (nodeId) => {
+
+  }
+
+  const deleteLocalBranche = async (edgeId) => {
+    
+  }
 
   return (
     <ReactFlowProvider>
