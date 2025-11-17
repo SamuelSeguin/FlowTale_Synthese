@@ -1,11 +1,13 @@
 import NavBar from "../_components/NavBar";
+import ImportationImage from "../_components/ImportationImage";
 
-const ComptePage = () => {
+const ImportationImagePage = () => {
   return (
     <div>
       <NavBar />
+      <ImportationImage />
     </div>
   );
 };
 
-export default ComptePage;
+export default ImportationImagePage;
