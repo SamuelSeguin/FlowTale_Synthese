@@ -1,11 +1,13 @@
 import NavBar from "../../_components/NavBar";
+import Utilisateur from "../../_components/Utilisateur";
 
-const CréateurPage = () => {
+const UtilisateurPage = () => {
   return (
     <div>
       <NavBar />
+      <Utilisateur />
     </div>
   );
 };
 
-export default CréateurPage;
+export default UtilisateurPage;

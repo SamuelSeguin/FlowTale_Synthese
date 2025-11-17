@@ -2,11 +2,13 @@
 import Accueil from "../_components/Accueil";
 import NavBar from "../_components/NavBar";
 
-export default function AccueilPage() {
+const AccueilPage = () => {
   return (
     <>
       <NavBar />
       <Accueil />
     </>
   );
-}
+};
+
+export default AccueilPage;

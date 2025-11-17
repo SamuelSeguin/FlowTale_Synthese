@@ -47,9 +47,7 @@ const CreationForm = () => {
         <div className="form-flex">
           <label>
             <select className="select" name="ambiance" required>
-              <option value="" disabled>
-                Ambiance
-              </option>
+              <option value="">Ambiance</option>
               <option value="mystérieuse">Horreur</option>
               <option value="énergique">Fantastique</option>
               <option value="calme">Romance</option>
@@ -59,7 +57,7 @@ const CreationForm = () => {
 
           <label>
             <select className="select" name="animation" required>
-              <option value="" disabled>
+              <option value="">
                 Animation
               </option>
               <option value="fade">Fade</option>
@@ -72,13 +70,11 @@ const CreationForm = () => {
 
           <label>
             <select className="select" name="musique" required>
-              <option value="" disabled>
+              <option value="">
                 Musique
               </option>
               <option value="classique">Classique</option>
               <option value="electro">Electro</option>
-              <option value="fantasy">Fantasy</option>
-              <option value="epique">Épique</option>
             </select>
           </label>
         </div>
