@@ -1,0 +1,154 @@
+.form-background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url(/png/header_bg.png);
+  background-repeat: no-repeat;
+}
+
+.creation-left-message {
+  position: absolute;
+  max-width: 420px;
+  color: #444;
+  z-index: 999;
+  left: 25%;
+  top: 40%;
+}
+
+.creation-left-message {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-family: "Creato-ExtraBold";
+  color: rgb(54, 54, 54);
+}
+
+.creation-left-message p span {
+  color: #ec6e9e;
+}
+
+.form-flex {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  /* gap: 10px; */
+}
+
+.creation-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.616);
+  padding: 100px 70px;
+  border-radius: 5%;
+  font-family: "Creato";
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  width: 450px;
+}
+
+#fld_title {
+  margin-left: 0;
+}
+
+#fld_synopsis {
+  margin-left: 0;
+}
+
+.textarea-synopsis {
+  width: 100%;
+  height: 150px;
+  max-width: 100%;
+  max-height: 200px;
+  resize: vertical;
+}
+
+.creation-form input {
+  font-family: "Creato";
+  height: 25px;
+  width: 100%;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+}
+.creation-form textarea {
+  font-family: "Creato";
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+}
+
+.creation-form textarea:focus {
+  border: 2px solid #ec6e9e;
+  outline: none;
+}
+.creation-form input:focus {
+  border: 2px solid #ec6e9e;
+  outline: none;
+}
+
+.select {
+  padding: 5px;
+  font-family: "Creato";
+  height: 30px;
+  width: 146px;
+  margin: 10px;
+  margin-left: 0;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+}
+
+.select:focus {
+  border: 2px solid #ec6e9e;
+  outline: none;
+}
+
+.form-cta-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border-radius: 100px;
+  padding: 8px 18px;
+  padding-left: 0;
+  overflow: hidden;
+  font-family: "Creato";
+  margin-top: 30px;
+}
+
+.form-cta-text {
+  font-size: 1rem;
+  padding: 0 16px;
+  transition: transform 0.45s;
+}
+
+.form-cta-arrow {
+  font-size: 1.6rem;
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.2s;
+}
+
+.form-cta-arrow.left {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.form-cta-btn:hover {
+  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+}
+
+.form-cta-btn:hover .form-cta-text {
+  transform: translateX(36px);
+}
+
+.form-cta-btn:hover .form-cta-arrow.left {
+  opacity: 1;
+  transform: translateX(30px);
+}
+
+.form-cta-btn:hover .form-cta-arrow.right {
+  opacity: 0;
+  transform: translateX(32px);
+}

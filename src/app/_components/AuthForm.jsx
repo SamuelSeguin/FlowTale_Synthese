@@ -10,7 +10,7 @@ const AuthForm = ({
   console.log(formAction);
   return (
     <div className="form-background">
-      <form cl action={formAction} className="auth-form">
+      <form action={formAction} className="auth-form">
         <h2>{titre}</h2>
         {!showName ? (
           ""
