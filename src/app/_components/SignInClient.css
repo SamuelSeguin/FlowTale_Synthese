@@ -1,0 +1,19 @@
+.signin-left-message {
+  position: absolute;
+  max-width: 420px;
+  color: #444;
+  z-index: 999;
+  left: 20%;
+  top: 40%;
+}
+
+.signin-left-message {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-family: "Creato-ExtraBold";
+  color: rgb(54, 54, 54);
+}
+
+.signin-left-message p span {
+  color: #ec6e9e;
+}

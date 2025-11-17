@@ -1,12 +1,13 @@
 import SignUpClient from "@/app/_components/SignUpClient";
-
+import NavBar from "../../_components/NavBar";
 
 const SignUpPage = () => {
-    return (
-        <div className="flex flex-col items-center justify-center gap-2 py-5">
-            <SignUpClient/>
-        </div>
-    );
-}
+  return (
+    <div>
+      <NavBar />
+      <SignUpClient />
+    </div>
+  );
+};
 
 export default SignUpPage;

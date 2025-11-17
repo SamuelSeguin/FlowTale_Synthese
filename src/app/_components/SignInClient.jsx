@@ -18,19 +18,25 @@ const SignInClient = () => {
   };
 
   return (
-    <AuthForm
-      titre={"Connexion"}
-      callActionTitre={"Se connecter"}
-      showName={false}
-      formAction={ConnexionAction}
-    >
-      <p className="text-center text-sm text-gray-600">
-        Vous n'avez pas de compte ?{" "}
-        <a href="/auth/signup" className="text-blue-600 hover:underline">
-          Inscrivez-vous
-        </a>
-      </p>
-    </AuthForm>
+    <div>
+      <div className="signin-left-message">
+        <p>
+          Connectez-vous et <span>donnez vie</span> à vos <span>histoires</span>
+          .
+        </p>
+      </div>
+
+      <AuthForm
+        titre={"Bienvenue à nouveau !"}
+        callActionTitre={"Se connecter"}
+        showName={false}
+        formAction={ConnexionAction}
+      >
+        <p>
+          Vous n'avez pas de compte ? <a href="/auth/signup">Inscrivez-vous</a>
+        </p>
+      </AuthForm>
+    </div>
   );
 };
 
