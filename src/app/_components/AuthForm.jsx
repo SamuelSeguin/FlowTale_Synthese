@@ -21,7 +21,7 @@ const AuthForm = ({
               id="fld_name"
               name="name"
               required
-              placeholder="Entrez votre nom"
+              placeholder="Nom complet"
             />
           </div>
         )}

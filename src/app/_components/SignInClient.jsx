@@ -33,7 +33,7 @@ const SignInClient = () => {
         formAction={ConnexionAction}
       >
         <p className="text-signup" >
-          Vous n'avez pas de compte ? <a href="/auth/signup">Inscrivez-vous</a>
+          Vous n'avez pas de compte ? <a href="/auth/signup">S'inscrire</a>
         </p>
       </AuthForm>
     </div>
