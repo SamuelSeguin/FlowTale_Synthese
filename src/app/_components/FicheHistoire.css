@@ -1,0 +1,104 @@
+.fiche-container {
+  height: 65vh;
+  width: 73%;
+  transform: translateX(10%);
+  background-color: #e0e0e05b;
+  margin-top: 100px;
+  padding: 100px;
+  font-family: Creato;
+  border-radius: 90px;
+}
+
+.fiche-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+}
+
+.fiche-image {
+  background-color: #e0e0e05b;
+  width: 500px;
+  height: 500px;
+  border-radius: 5%;
+}
+
+.fiche-content {
+  width: 500px;
+  height: 500px;
+  text-align: left;
+}
+
+.fiche-titre {
+  font-family: "Creato-ExtraBold";
+  font-size: 2.2rem;
+  margin: 0;
+  color: rgb(54, 54, 54);
+}
+
+.fiche-auteur {
+  font-family: "Creato-Medium";
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: #ec6e9e;
+}
+
+.fiche-synopsis {
+  font-family: "Creato";
+  font-size: 1rem;
+  margin-top: 6rem;
+  line-height: 1.3;
+  color: rgb(54, 54, 54);
+}
+
+.fiche-cta-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border-radius: 100px;
+  padding: 8px 18px;
+  padding-left: 0;
+  overflow: hidden;
+  font-family: "Creato";
+  margin-top: 30px;
+}
+
+.fiche-cta-text {
+  font-size: 0.9rem;
+  padding: 0 5px;
+  transition: transform 0.45s;
+}
+
+.fiche-cta-arrow {
+  font-size: 1.2rem;
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.2s;
+}
+
+.fiche-cta-arrow.left {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.fiche-cta-btn:hover {
+  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+}
+
+.fiche-cta-btn:hover .fiche-cta-text {
+  transform: translateX(26px);
+}
+
+.fiche-cta-btn:hover .fiche-cta-arrow.left {
+  opacity: 1;
+  transform: translateX(20px);
+}
+
+.fiche-cta-btn:hover .fiche-cta-arrow.right {
+  opacity: 0;
+  transform: translateX(32px);
+}
