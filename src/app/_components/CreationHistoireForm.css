@@ -165,10 +165,10 @@
 }
 
 .modal-contenu {
-  background: hsl(0, 0%, 93%);
+  background: rgb(235, 235, 235);
   border-radius: 12px;
   padding: 54px;
-  min-width: 530px;
+  max-width: 90vh;
   min-height: 410px;
   position: relative;
   font-family: "Creato";

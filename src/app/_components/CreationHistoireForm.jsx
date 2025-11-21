@@ -100,6 +100,8 @@ const CreationForm = () => {
             <h2>Banque publique</h2>
             <div className="grille-images">
               <div className="image-placeholder"></div>
+              <div className="image-placeholder"></div>
+              <div className="image-placeholder"></div>
             </div>
             <h3>Mes images</h3>
             <button className="btn-import">
