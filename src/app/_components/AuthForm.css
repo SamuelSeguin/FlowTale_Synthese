@@ -1,0 +1,94 @@
+.form-background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url(/png/header_bg.png);
+  background-repeat: no-repeat;
+}
+
+.auth-form {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.616);
+  padding: 100px 70px;
+  border-radius: 5%;
+  font-family: "Creato";
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  width: 300px;
+}
+
+.auth-form input:focus {
+  border: 2px solid #ec6e9e;
+  outline: none;
+}
+
+.auth-form input {
+  height: 25px;
+  width: 80%;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+}
+
+#fld_email {
+  margin-left: 0;
+}
+#fld_password {
+  margin-left: 0;
+}
+#fld_name {
+  margin-left: 0;
+}
+
+.form-cta-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border-radius: 100px;
+  padding: 8px 18px;
+  padding-left: 0;
+  overflow: hidden;
+  font-family: "Creato";
+  margin-top: 30px;
+}
+
+.form-cta-text {
+  font-size: 1rem;
+  padding: 0 16px;
+  transition: transform 0.45s;
+}
+
+.form-cta-arrow {
+  font-size: 1.6rem;
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.2s;
+}
+
+.form-cta-arrow.left {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.form-cta-btn:hover {
+  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+}
+
+.form-cta-btn:hover .form-cta-text {
+  transform: translateX(36px);
+}
+
+.form-cta-btn:hover .form-cta-arrow.left {
+  opacity: 1;
+  transform: translateX(30px);
+}
+
+.form-cta-btn:hover .form-cta-arrow.right {
+  opacity: 0;
+  transform: translateX(32px);
+}

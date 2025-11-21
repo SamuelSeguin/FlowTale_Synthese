@@ -1,12 +1,13 @@
 import SignInClient from "@/app/_components/SignInClient";
-
+import NavBar from "../../_components/NavBar";
 
 const SignInPage = () => {
-    return (
-        <div className="flex flex-col items-center justify-center gap-2 py-5">
-            <SignInClient/>
-        </div>
-    );
-}
+  return (
+    <div>
+      <NavBar />
+      <SignInClient />
+    </div>
+  );
+};
 
 export default SignInPage;

@@ -1,0 +1,88 @@
+.header-background {
+  background-image: url("/png/header_bg.png");
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+  font-family: "Creato-ExtraBold";
+}
+
+.heroTitle {
+  font-size: 2.3rem;
+  font-weight: 100;
+}
+
+.heroCta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border-radius: 100px;
+  padding: 10px 20px;
+  padding-left: 0;
+  overflow: hidden;
+  font-family: "Creato";
+  margin: 0 auto;
+}
+
+.cta-text {
+  font-size: 1.2rem;
+  padding: 0 16px;
+  transition: transform 0.45s;
+}
+
+.cta-arrow {
+  font-size: 1.6rem;
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.2s;
+}
+
+.cta-arrow.left {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.heroCta:hover {
+  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+}
+
+.heroCta:hover .cta-text {
+  transform: translateX(36px);
+}
+
+.heroCta:hover .cta-arrow.left {
+  opacity: 1;
+  transform: translateX(30px);
+}
+
+.heroCta:hover .cta-arrow.right {
+  opacity: 0;
+  transform: translateX(32px);
+}
+
+.info {
+  width: 40%;
+  height: 50vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Creato-Medium";
+  text-align: center;
+  font-size: 2.5rem;
+  color: rgb(54, 54, 54);
+}
+
+em {
+  color: #ec6e9e;
+}

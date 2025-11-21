@@ -1,5 +1,5 @@
 import MainPageClient from "./_components/MainPageClient";
-import { GridProvider } from "./_context/gridContext";
+import { GridProvider } from "./_contexts/gridContext";
 
 export const metadata = {
   title: "Web 5",
@@ -44,6 +44,7 @@ const HomePage = async () => {
   // Consulter la composante GridProvider
 
   return (
+    
     <GridProvider initialNodes={initialNodes} initialEdges={initialEdges}>
       <main className="flex flex-col items-center justify-center gap-2 py-5">
         <h1>Gabarit de départ</h1>

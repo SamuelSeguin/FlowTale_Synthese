@@ -1,0 +1,56 @@
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 15px;
+  font-family: "Creato";
+}
+
+.comment-content {
+  position: relative;
+  padding: 20px;
+  padding-right: 80px;
+  margin-bottom: 1.5rem;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.histoire-titre-comment {
+  padding: 0;
+  margin-bottom: 10;
+  margin-top: 20;
+  color: #ec6e9e;
+}
+
+.titre-page-comment {
+  position: absolute;
+  left: 32.8rem;
+  top: 25rem;
+  font-family: "Creato-Medium";
+  color: rgb(54, 54, 54);
+  text-transform: uppercase;
+}
+
+.comments-container-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15rem;
+  border-radius: 80px;
+  padding-top: 15rem;
+  min-height: 70vh;
+  color: rgb(54, 54, 54);
+  background-color: #e0e0e05b;
+  margin-left: 100px;
+  margin-right: 100px;
+  border-radius: 5%;
+  padding-bottom: 80px;
+}
+
+.comment-icon {
+  width: 26px;
+  position: absolute;
+  right: 10;
+  bottom: 10;
+}

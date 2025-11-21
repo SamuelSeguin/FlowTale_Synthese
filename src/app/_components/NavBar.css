@@ -1,0 +1,100 @@
+.nav {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background-color: rgba(238, 238, 238, 0.534);
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+  height: 20px;
+}
+
+.logo {
+  padding: 5px 18px;
+  width: 100px;
+}
+
+.createBtn {
+  background: black;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  padding: 15px 25px;
+  font-family: "Creato";
+}
+.nav {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background-color: rgba(238, 238, 238, 0.534);
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+  height: 20px;
+}
+
+.logo {
+  padding: 5px 18px;
+  width: 100px;
+}
+
+.nav-btn {
+  display: flex;
+  background: black;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  padding: 13px 15px;
+  padding-left: 0;
+  font-family: "Creato";
+  overflow: hidden;
+}
+
+.nav-cta-text {
+  font-size: 0.9rem;
+  padding: 0 16px;
+  transition: transform 0.45s;
+}
+
+.nav-cta-arrow {
+  font-size: 1rem;
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.4s;
+}
+
+.nav-cta-arrow.left {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.nav-btn:hover {
+  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+}
+
+.nav-btn:hover .nav-cta-text {
+  transform: translateX(20px);
+}
+
+.nav-btn:hover .nav-cta-arrow.left {
+  opacity: 1;
+  transform: translateX(20px);
+}
+
+.nav-btn:hover .nav-cta-arrow.right {
+  opacity: 0;
+  transform: translateX(20px);
+}
