@@ -1,4 +1,5 @@
 "use client";
+import React, { useState } from "react";
 import "./CreationHistoireForm.css";
 
 const CreationForm = () => {
@@ -12,6 +13,11 @@ const CreationForm = () => {
 
     console.log(titre, synopsis, ambiance, animation, musique);
   };
+
+  const [modalOuvert, setModalOuvert] = useState(false);
+
+  const ouvrirModal = () => setModalOuvert(true);
+  const fermerModal = () => setModalOuvert(false);
 
   return (
     <div className="form-background">
@@ -57,9 +63,7 @@ const CreationForm = () => {
 
           <label>
             <select className="select" name="animation" required>
-              <option value="">
-                Animation
-              </option>
+              <option value="">Animation</option>
               <option value="fade">Fade</option>
               <option value="slide">Slide</option>
               <option value="bounce">Bounce</option>
@@ -70,21 +74,40 @@ const CreationForm = () => {
 
           <label>
             <select className="select" name="musique" required>
-              <option value="">
-                Musique
-              </option>
+              <option value="">Musique</option>
               <option value="classique">Classique</option>
               <option value="electro">Electro</option>
             </select>
           </label>
         </div>
         <br />
+        <button className="btn-import" type="button" onClick={ouvrirModal}>
+          Choisir une image
+        </button>
         <button type="submit" className="form-cta-btn">
           <span className="form-cta-arrow left">→</span>
           <span className="form-cta-text">Confirmer</span>
           <span className="form-cta-arrow right">→</span>
         </button>
       </form>
+
+      {modalOuvert && (
+        <div className="modal-fond">
+          <div className="modal-contenu">
+            <button className="modal-fermer" onClick={fermerModal}>
+              &times;
+            </button>
+            <h2>Banque publique</h2>
+            <div className="grille-images">
+              <div className="image-placeholder"></div>
+            </div>
+            <h3>Mes images</h3>
+            <button className="btn-import">
+              Importer une image personnalisée
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
