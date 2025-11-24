@@ -19,7 +19,10 @@ const InspecteurNode = ({ selection, setHandler }) => {
   const updateLocalNode = async (formData) => {
     console.log("FORM DATA NODE", formData);
     const title = formData.get("title");
-    const updatedNodes = {...selection.node, data: { ...selection.node.data, label: title } };
+    // const image = formData.get("image");
+    const description = formData.get("description");
+    // const animations = formData.get("animations");
+    const updatedNodes = {...selection.node, data: { ...selection.node.data, label: title, description } };
 
     console.log("NODE MISE A JOUR", updatedNodes);
     setHandler(nodes.map((n) => (n.id === updatedNodes.id ? updatedNodes : n)));
@@ -47,6 +50,20 @@ const InspecteurNode = ({ selection, setHandler }) => {
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               defaultValue={selection.node.data.label || ''} 
             />
+          </div>
+          {/* <div>
+            <label>Image: </label>
+            <select name="image" id="image">
+              <option value="">Aucune</option>
+            </select>
+          </div> */}
+          <div>
+            <label>Description: </label>
+            <textarea 
+              name="description"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              defaultValue={selection.node.data.description || ''} 
+              />
           </div>
           <button
             type="submit"
