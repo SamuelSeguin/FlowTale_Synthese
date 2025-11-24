@@ -1,6 +1,6 @@
 import { startTransition } from "react";
 import { RemoveNodesAction, UpdateNodesInfoAction } from "../_actions/nodesAction";
-import { useGrid } from "../_context/gridContext";
+import { useGrid } from "../_contexts/gridContext";
 
 const InspecteurNode = ({ selection, setHandler }) => {
 

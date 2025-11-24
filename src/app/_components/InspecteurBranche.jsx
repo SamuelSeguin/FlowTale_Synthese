@@ -1,6 +1,6 @@
 import { startTransition } from "react";
 import { RemoveEdgesAction } from "../_actions/edgesAction";
-import { useGrid } from "../_context/gridContext";
+import { useGrid } from "../_contexts/gridContext";
 
 
 const InspecteurBranche = ({ selection, setHandler }) => {

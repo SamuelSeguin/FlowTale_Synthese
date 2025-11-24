@@ -40,8 +40,6 @@ const HomePage = async () => {
     data: edge.data,
   }));
 
-  // Consulter la composante GridProvider
-
   return (
     
     <GridProvider initialNodes={initialNodes} initialEdges={initialEdges}>
