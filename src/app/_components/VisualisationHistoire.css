@@ -8,10 +8,21 @@
   );
 }
 
-.wrapper {
+.wrapper--fantastique {
   height: 100vh;
   background: linear-gradient(135deg, #bddd7e, #618872, #bddd7e);
   background-size: 200% 200%;
+}
+
+.wrapper--futuriste {
+  height: 100vh;
+  background: linear-gradient(
+    115deg,
+    #0456cf 0%,
+    #3682ac 35%,
+    #0599cf 80%,
+    #1e90ff 100%
+  );
 }
 
 .histoire-container {

@@ -17,7 +17,7 @@
 .recents-grid {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  margin-left: 140px;
   padding-top: 30px;
   gap: 60px;
   flex-wrap: wrap;
