@@ -2,7 +2,7 @@
 import "./Accueil.css";
 import RecentsUiCard from "../_components/RecentsUiCard";
 
-const Accueil = () => {
+const Accueil = ({ story }) => {
   return (
     <div className="container">
       <div className="header-background">
@@ -34,7 +34,7 @@ const Accueil = () => {
           vos créations en quelques clics.
         </div>
       </section>
-      <RecentsUiCard />
+      <RecentsUiCard story={story} />
     </div>
   );
 };

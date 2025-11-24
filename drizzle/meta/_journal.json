@@ -29,6 +29,13 @@
       "when": 1763399675103,
       "tag": "0003_tearful_metal_master",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1763998509660,
+      "tag": "0004_elite_ego",
+      "breakpoints": true
     }
   ]
 }

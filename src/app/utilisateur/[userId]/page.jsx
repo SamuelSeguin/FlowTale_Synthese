@@ -1,11 +1,14 @@
+import { GetStoryByUserIdAction } from "@/app/_actions/storyAction";
 import NavBar from "../../_components/NavBar";
 import Utilisateur from "../../_components/Utilisateur";
 
-const UtilisateurPage = () => {
+const UtilisateurPage = async ({ params }) => {
+  const { userId } = params;
+  const histoire = await GetStoryByUserIdAction(userId);
   return (
     <div>
       <NavBar />
-      <Utilisateur />
+      <Utilisateur histoire={histoire} />
     </div>
   );
 };

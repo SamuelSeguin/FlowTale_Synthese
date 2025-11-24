@@ -1,10 +1,13 @@
 "use client";
+import Link from "next/link";
 import "./NavBar.css";
 
 const NavBar = () => {
   return (
     <div className="nav">
-      <img className="logo" src="/svg/logo.png" alt="" />
+      <Link href="/accueil">
+        <img className="logo" src="/svg/logo.png" alt="" />
+      </Link>
       <button className="nav-btn">
         <span className="nav-cta-arrow left">→</span>
         <span className="nav-cta-text">Créer</span>

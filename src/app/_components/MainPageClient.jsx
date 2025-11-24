@@ -19,6 +19,15 @@ const MainPageClient = () => {
     internals: { onNodesChange, onEdgesChange, onConnect, onSelectionChange },
   } = useGrid();
 
+  const showInspecteur = () => {
+    if (selection.type === 'node') {
+      return <InspecteurNode selection={selection} setHandler={setNodes}/>;
+    } else if (selection.type === 'edge') {
+
+    } else <></>
+
+  };
+
 
   useEffect(() => {
     console.log("MA SELECTION", selection);
@@ -28,11 +37,7 @@ const MainPageClient = () => {
     <div>
       <InspecteurBase addNode={addLocalNode} />
 
-      { selection.type === 'node' ? (
-        <InspecteurNode selection={selection} setHandler={setNodes}/>
-      ) : (
-        <InspecteurBranche selection={selection} setHandler={setEdges}/>
-      ) }
+      {showInspecteur()}
       
       <div style={{ width: 1000, height: 1000 }}>
         <ReactFlow

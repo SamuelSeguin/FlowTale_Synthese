@@ -32,6 +32,7 @@ export const storyTables = sqliteTable("story", {
     auteur: text("auteur")
     .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
+    auteurName: text("auteurName").notNull(),
     synopsis: text("synopsis").notNull(),
     ambiance: text("ambiance").notNull(),
     animation: text("animation").notNull(),
@@ -43,8 +44,7 @@ export const nodesTables = sqliteTable("nodes", {
   id: text("id").primaryKey(),
   positionX: integer('position_x').notNull(),
   positionY: integer('position_y').notNull(),
-  //type: text("type").notNull(), // Start, Story, End, Conditionnel
-  data: text({mode: 'json'}), // Titre, Text, Image, Musique, Ambiance, Animation
+  data: text({mode: 'json'}), // Titre, Text, Image, Musique, Ambiance, Animation, Type (Start, Story, End, Conditionnel)
   //storyId: text("storyId")
   //  .references(() => storyTables.id, { onDelete: "cascade" })
   //  .notNull(),

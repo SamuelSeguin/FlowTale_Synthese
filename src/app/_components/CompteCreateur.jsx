@@ -1,40 +1,49 @@
 "use client";
+import Link from "next/link";
 import "./CompteCreateur.css";
 
-const CompteCreateur = () => {
+const CompteCreateur = ({ user, story=[] }) => {
+  console.log("USER COMPTE CREATEUR PARAMS :", user);
+  console.log("STORY COMPTE CREATEUR PARAMS :", story);
+
   return (
     <div>
       <div className="pfp-name-flex">
-        <img className="pfp-createur" src="/png/pfp_placeholder.png" alt="" />
-        <h2>Émilie Paquin</h2>
+        {user?.image === null ? (
+          <img className="pfp-createur" src="/png/pfp_placeholder.png" alt="" />
+        ) : (
+          <img className="pfp-createur" src={user?.image} alt="" />
+        )}
+        <h2>{user?.name}</h2>
       </div>
       <h1 className="titre-page">Vos créations</h1>
       <div className="histoires-container-flex">
-        <article className="histoire-container">
+        {story.length === 0 ? (
+          <p>Vous n'avez pas encore créé d'histoires. Commencez dès maintenant !</p>
+        ) : (
+        story.map((histoire) => (
+          <article className="histoire-container" key={histoire.id}>
           <div className="histoire-image"></div>
 
           <div className="text-content">
             <h2 className="histoire-titre">
-              Les Brumes d’Éloria (exemple pour mise en page)
+              {histoire.titre}
             </h2>
-            <h2 className="histoire-auteur">Camille Lenoir</h2>
+            <h2 className="histoire-auteur">{histoire.auteurName}</h2>
             <p className="histoire-synopsis">
-              Dans le royaume caché d’Éloria, la brume ne se dissipe jamais
-              entièrement. Lorsque Lira, une jeune cartographe intrépide,
-              découvre une carte ancienne révélant l’existence des Portes des
-              Mondes, elle se lance dans une quête périlleuse. Entre magie
-              ancestrale, créatures énigmatiques et alliances inattendues, Lira
-              doit percer le secret des brumes pour sauver Éloria du danger qui
-              grandit dans l’ombre.
+              {histoire.synopsis}
+            </p>
+            <p className="histoire-synopsis">
+              Thème: {histoire.ambiance}
             </p>
             <div className="icons">
               <div className="icons-top">
-                <a href="">
+                <Link href={`/histoires/${histoire.id}/stats`}>
                   <img src="/png/pencil-square-o.png" alt="modifier" />
-                </a>
-                <a href="">
+                </Link>
+                <Link href={`/histoires/${histoire.id}`}>
                   <img src="/png/magnifier.png" alt="visualisation" />
-                </a>
+                </Link>
               </div>
 
               <div className="icons-bottom">
@@ -45,7 +54,9 @@ const CompteCreateur = () => {
               </div>
             </div>
           </div>
-        </article>
+          </article>
+          ))
+        )} 
       </div>
     </div>
   );
