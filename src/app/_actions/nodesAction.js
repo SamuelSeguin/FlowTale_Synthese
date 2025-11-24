@@ -1,7 +1,7 @@
 "use server"
 
 import { revalidatePath } from "next/cache";
-import { AddNodes, GetAllNodes, RemoveNodes, UpdateNodes } from "../_data/nodes";
+import { AddNodes, GetAllNodes, RemoveNodes, UpdateNodes, UpdateNodesInfo } from "../_data/nodes";
 
 export const GetAllNodesAction = async () => {
     const result = await GetAllNodes();
@@ -26,5 +26,10 @@ export const RemoveNodesAction = async (NodeId) => {
 
 export const UpdateNodesAction = async (NodeId, Pos) => {
     await UpdateNodes(NodeId, Pos);
+    revalidatePath('/');
+}
+
+export const UpdateNodesInfoAction = async (UpdatedNodes) => {
+    await UpdateNodesInfo(UpdatedNodes);
     revalidatePath('/');
 }

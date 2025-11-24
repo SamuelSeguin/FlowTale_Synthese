@@ -58,3 +58,15 @@ export const UpdateNodes = async (NodeId, Pos) => {
         throw err;
     }
 }
+
+export const UpdateNodesInfo = async (UpdatedNodes) => {
+    try {
+        const result = await db.update(nodesTables).set({
+            data: JSON.stringify(UpdatedNodes.data),
+        }).where(eq(nodesTables.id, UpdatedNodes.id));
+        return result;
+    } catch (err) {
+        console.log("[UPDATE NODES INFO ERROR]", err);
+        throw err;
+    }
+}

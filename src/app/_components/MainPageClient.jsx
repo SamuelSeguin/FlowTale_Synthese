@@ -4,7 +4,6 @@ import "@xyflow/react/dist/style.css";
 import { Background, BackgroundVariant, ReactFlow } from "@xyflow/react";
 import { useGrid } from "../_context/gridContext";
 import { useEffect } from "react";
-import { Inspect } from "lucide-react";
 import InspecteurNode from "./InspecteurNode";
 import InspecteurBranche from "./InspecteurBranche";
 import InspecteurBase from "./InspecteurBase";
@@ -15,6 +14,8 @@ const MainPageClient = () => {
     edges,
     selection,
     addLocalNode,
+    setNodes,
+    setEdges,
     internals: { onNodesChange, onEdgesChange, onConnect, onSelectionChange },
   } = useGrid();
 
@@ -28,9 +29,9 @@ const MainPageClient = () => {
       <InspecteurBase addNode={addLocalNode} />
 
       { selection.type === 'node' ? (
-        <InspecteurNode selection={selection} />
+        <InspecteurNode selection={selection} setHandler={setNodes}/>
       ) : (
-        <InspecteurBranche selection={selection} />
+        <InspecteurBranche selection={selection} setHandler={setEdges}/>
       ) }
       
       <div style={{ width: 1000, height: 1000 }}>

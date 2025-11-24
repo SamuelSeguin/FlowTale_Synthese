@@ -113,14 +113,6 @@ const GridProvider = ({ children, initialNodes = [], initialEdges = [] }) => {
     }
   };
 
-  const deleteLocalNode = async (nodeId) => {
-
-  }
-
-  const deleteLocalBranche = async (edgeId) => {
-    
-  }
-
   return (
     <ReactFlowProvider>
       <gridContext.Provider
@@ -128,6 +120,8 @@ const GridProvider = ({ children, initialNodes = [], initialEdges = [] }) => {
           nodes,
           edges,
           selection,
+          setEdges,
+          setNodes,
           deselect,
           updateSelectionData,
           internals,

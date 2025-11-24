@@ -10,7 +10,12 @@ const InspecteurBase = ({ addNode }) => {
               x: Math.floor(Math.random() * (100 - 0 + 1)) + 0, 
               y: Math.floor(Math.random() * (100 - 0 + 1)) + 0 
             },
-            data: { label: "New Node"},
+            data: { 
+              label: "New Node",
+              image: null,
+              description: null,
+              animations: null,
+            },
           })
         }
       >
