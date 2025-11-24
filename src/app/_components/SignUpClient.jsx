@@ -1,42 +1,48 @@
-"use client"
+"use client";
 import AuthForm from "@/app/_components/AuthForm";
 import { authClient } from "@/lib/auth-client";
+import "./SignUpClient.css";
 
 const SignUpClient = () => {
+  const InscriptionAction = async (formData) => {
+    // Récupérer les trois valeurs, username / email / password
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const password = formData.get("password");
+    // Validation Client
 
-    const InscriptionAction = async (formData) => {
-        // Récupérer les trois valeurs, username / email / password
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const password = formData.get('password');
-        // Validation Client
+    // AuthClient SignUp
+    const result = await authClient.signUp.email({
+      email,
+      name,
+      password,
+      callbackURL: "/",
+    });
 
-        // AuthClient SignUp
-        const result = await authClient.signUp.email({
-            email,
-            name,
-            password,
-            callbackURL: '/'
-        });
+    console.log(result);
+  };
 
-        console.log(result);
-    }
+  return (
+    <div>
+      <div className="signup-left-message">
+        <p>
+          Créez un compte et <span>donnez vie</span> à vos{" "}
+          <span>histoires</span>.
+        </p>
+      </div>
 
-    return (
-            <AuthForm
-                titre={"Inscription"}
-                callActionTitre={"S'inscrire"}
-                showName={true}
-                formAction={InscriptionAction}
-            >
-                <p className="text-center text-sm text-gray-600">
-                    Vous avez un compte ?{" "}
-                    <a href="/auth/signin" className="text-blue-600 hover:underline">
-                        Connectez-vous
-                    </a>
-                </p>
-            </AuthForm>
-    );
-}
+      <AuthForm
+        titre={"Créez votre compte"}
+        callActionTitre={"S'inscrire"}
+        showName={true}
+        formAction={InscriptionAction}
+      >
+        <p className="text-signin">
+          Vous avez déjà un compte ? <a href="/auth/signin">Se connecter</a>
+        </p>
+      </AuthForm>
+    </div>
+  );
+};
 
 export default SignUpClient;

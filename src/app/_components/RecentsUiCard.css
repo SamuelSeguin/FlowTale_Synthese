@@ -1,0 +1,46 @@
+.recents-section {
+  background-color: #e0e0e05b;
+  margin: 100px;
+  border-radius: 5%;
+  padding-bottom: 80px;
+}
+
+.recents-section-title {
+  padding-left: 150px;
+  padding-top: 60px;
+  font-size: 2.5rem;
+  font-family: Creato;
+  text-transform: uppercase;
+  color: rgb(54, 54, 54);
+}
+
+.recents-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 30px;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  background-color: #ffffff;
+  width: 400px;
+  height: 500px;
+  border-radius: 5%;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.recents-img {
+  background-color: #e0e0e05b;
+  height: 70%;
+  border-radius: 5%;
+}
+
+.recents-title {
+  text-align: center;
+  font-family: Creato;
+  max-width: 400px;
+  color: rgb(54, 54, 54);
+}

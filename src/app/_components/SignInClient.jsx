@@ -1,37 +1,43 @@
-"use client"
+"use client";
 import AuthForm from "@/app/_components/AuthForm";
 import { authClient } from "@/lib/auth-client";
+import "./SignInClient.css";
 
 const SignInClient = () => {
+  const ConnexionAction = async (formData) => {
+    const email = formData.get("email");
+    const password = formData.get("password");
 
-    const ConnexionAction = async (formData) => {
-        const email = formData.get('email');
-        const password = formData.get('password');
+    const result = await authClient.signIn.email({
+      email,
+      password,
+      callbackURL: "/",
+    });
 
-        const result = await authClient.signIn.email({
-            email,
-            password,
-            callbackURL: '/'
-        });
+    console.log(result);
+  };
 
-        console.log(result);
-    }
+  return (
+    <div>
+      <div className="signin-left-message">
+        <p>
+          Connectez-vous et <span>donnez vie</span> à vos <span>histoires</span>
+          .
+        </p>
+      </div>
 
-    return (
-            <AuthForm
-                titre={"Connexion"}
-                callActionTitre={"Se connecter"}
-                showName={false}
-                formAction={ConnexionAction}
-            >
-                <p className="text-center text-sm text-gray-600">
-                    Vous n'avez pas de compte ?{" "}
-                    <a href="/auth/signup" className="text-blue-600 hover:underline">
-                        Inscrivez-vous
-                    </a>
-                </p>
-            </AuthForm>
-    );
-}
+      <AuthForm
+        titre={"Bienvenue à nouveau !"}
+        callActionTitre={"Se connecter"}
+        showName={false}
+        formAction={ConnexionAction}
+      >
+        <p className="text-signup" >
+          Vous n'avez pas de compte ? <a href="/auth/signup">S'inscrire</a>
+        </p>
+      </AuthForm>
+    </div>
+  );
+};
 
 export default SignInClient;

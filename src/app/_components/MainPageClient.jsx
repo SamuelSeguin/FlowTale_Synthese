@@ -2,7 +2,7 @@
 import "@xyflow/react/dist/style.css";
 
 import { Background, BackgroundVariant, ReactFlow } from "@xyflow/react";
-import { useGrid } from "../_context/gridContext";
+import { useGrid } from "../_contexts/gridContext";
 import { useEffect } from "react";
 import InspecteurNode from "./InspecteurNode";
 import InspecteurBranche from "./InspecteurBranche";
