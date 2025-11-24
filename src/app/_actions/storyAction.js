@@ -22,3 +22,7 @@ export const GetStoryByIdAction = async (storyId) => {
     const result = console.log(`Récupération de l'histoire avec l'ID ${storyId}`);
     return result;
 }
+
+export const GetNodeInfoByStoryAction = async (nodeId) => {
+  
+}

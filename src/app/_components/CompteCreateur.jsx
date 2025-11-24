@@ -33,9 +33,6 @@ const CompteCreateur = ({ user, story=[] }) => {
             <p className="histoire-synopsis">
               {histoire.synopsis}
             </p>
-            <p className="histoire-synopsis">
-              Thème: {histoire.ambiance}
-            </p>
             <div className="icons">
               <div className="icons-top">
                 <Link href={`/histoires/${histoire.id}/stats`}>

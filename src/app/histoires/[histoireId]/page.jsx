@@ -18,6 +18,10 @@ const FicheHistoirePage = async ({ params }) => {
     redirect("/auth/signin");
   }
 
+  if (!histoire) {
+    redirect("/404");
+  }
+
   return (
     <div>
       <NavBar />

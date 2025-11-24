@@ -26,6 +26,21 @@ export const GetAllStories = async () => {
 export const GetStoryByUserId = async (userId) => {
     try {
         const result = await db.select().from(storyTables).where(eq(storyTables.auteur, userId));
+
+        // const result2 = await db.query.storyTables.findFirst({
+        //     where: eq(storyTables.auteur, userId),
+        //     with: {
+        //         comments: {
+        //             with: {
+        //                 node: true
+        //             }
+        //         }
+        //     }
+        // });
+
+        
+
+
         return result;
     } catch (err) {
         console.log("[GET STORY BY ID ERROR]", err);

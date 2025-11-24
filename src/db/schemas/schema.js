@@ -1,6 +1,6 @@
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { user } from "./auth-schema";
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 
 // export const user = sqliteTable("post", {
 //   id: text("id").primaryKey(),
@@ -25,6 +25,21 @@ export const commentsTables = sqliteTable("comments", {
     .notNull(),
     createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
 });
+
+// export const commentsRelations = relations(commentsTables, ({ one, many }) => ({
+//     story: one(storyTables, {
+//         fields: [commentsTables.storyId],
+//         references: [storyTables.id],
+//     })
+// }));
+
+// export const storyRelations = relations(storyTables, ({ many }) => ({
+//     comments: many(commentsTables),
+// }));
+// export const nodesRelations = relations(nodesTables, ({ many }) => ({
+//     edges: many(edgesTables),
+// }));
+
 
 export const storyTables = sqliteTable("story", {
     id: text("id").primaryKey(),
