@@ -4,6 +4,9 @@ import "@xyflow/react/dist/style.css";
 import { Background, BackgroundVariant, ReactFlow } from "@xyflow/react";
 import { useGrid } from "../_context/gridContext";
 import { useEffect } from "react";
+import InspecteurNode from "./InspecteurNode";
+import InspecteurBranche from "./InspecteurBranche";
+import InspecteurBase from "./InspecteurBase";
 
 const MainPageClient = () => {
   const {
@@ -11,24 +14,26 @@ const MainPageClient = () => {
     edges,
     selection,
     addLocalNode,
+    setNodes,
+    setEdges,
     internals: { onNodesChange, onEdgesChange, onConnect, onSelectionChange },
   } = useGrid();
 
+
   useEffect(() => {
-    console.log(selection);
+    console.log("MA SELECTION", selection);
   }, [selection]);
 
   return (
     <div>
-      <h1>Main Page Client</h1>
-      <button
-        className="mt-2 bg-amber-500 px-2 rounded"
-        onClick={() =>
-          addLocalNode({ id: "id-quatre", position: { x: 0, y: -30 } })
-        }
-      >
-        Ajouter un noeud
-      </button>
+      <InspecteurBase addNode={addLocalNode} />
+
+      { selection.type === 'node' ? (
+        <InspecteurNode selection={selection} setHandler={setNodes}/>
+      ) : (
+        <InspecteurBranche selection={selection} setHandler={setEdges}/>
+      ) }
+      
       <div style={{ width: 1000, height: 1000 }}>
         <ReactFlow
           nodes={nodes}

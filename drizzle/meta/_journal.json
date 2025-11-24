@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1763385498369,
+      "tag": "0000_careless_sphinx",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1763391766690,
+      "tag": "0001_zippy_vision",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1763393079415,
+      "tag": "0002_stale_lyja",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1763399675103,
+      "tag": "0003_tearful_metal_master",
+      "breakpoints": true
+    }
+  ]
+}
