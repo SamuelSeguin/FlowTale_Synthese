@@ -14,7 +14,8 @@ const InspecteurBase = ({ addNode }) => {
               label: "New Node", // TITRE
               image: "",
               description: "",
-              animations: "",
+              animations: "horreur",
+              type: "",
             },
           })
         }

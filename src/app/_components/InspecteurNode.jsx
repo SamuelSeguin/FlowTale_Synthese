@@ -18,11 +18,12 @@ const InspecteurNode = ({ selection, setHandler }) => {
 
   const updateLocalNode = async (formData) => {
     console.log("FORM DATA NODE", formData);
+    const type = formData.get("type");
     const title = formData.get("title");
     // const image = formData.get("image");
     const description = formData.get("description");
     // const animations = formData.get("animations");
-    const updatedNodes = {...selection.node, data: { ...selection.node.data, label: title, description } };
+    const updatedNodes = {...selection.node, data: { ...selection.node.data, label: title, description: description, type: type } };
 
     console.log("NODE MISE A JOUR", updatedNodes);
     setHandler(nodes.map((n) => (n.id === updatedNodes.id ? updatedNodes : n)));
@@ -43,6 +44,15 @@ const InspecteurNode = ({ selection, setHandler }) => {
         <form action={updateLocalNode}>
           <h1>Inspecteur Node</h1>
           <div>
+            <label>Type: </label>
+            <select name="image" id="image">
+              <option value="" className="text-gray-300">Aucune</option>
+              <option value="Start" className="text-gray-700">Début</option>
+              <option value="Histoire" className="text-gray-700">Histoire</option>
+              <option value="End" className="text-gray-700">Fin</option>
+            </select>
+          </div>
+          <div>
             <label>Titre: </label>
             <input 
               type="text" 
@@ -51,12 +61,6 @@ const InspecteurNode = ({ selection, setHandler }) => {
               defaultValue={selection.node.data.label || ''} 
             />
           </div>
-          {/* <div>
-            <label>Image: </label>
-            <select name="image" id="image">
-              <option value="">Aucune</option>
-            </select>
-          </div> */}
           <div>
             <label>Description: </label>
             <textarea 
