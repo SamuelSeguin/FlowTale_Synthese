@@ -29,8 +29,6 @@
 .form-flex {
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
-  /* gap: 10px; */
 }
 
 .creation-form {
@@ -151,4 +149,67 @@
 .form-cta-btn:hover .form-cta-arrow.right {
   opacity: 0;
   transform: translateX(32px);
+}
+
+.modal-fond {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.644);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-contenu {
+  background: hsl(0, 0%, 93%);
+  border-radius: 12px;
+  padding: 54px;
+  min-width: 530px;
+  min-height: 410px;
+  position: relative;
+  font-family: "Creato";
+}
+
+.modal-fermer {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.grille-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 34px;
+}
+
+.image-placeholder {
+  width: 140px;
+  height: 120px;
+  background: #fff;
+  border-radius: 7px;
+  border: 1px solid #e0e0e0;
+}
+
+.btn-import {
+  background: #888;
+  border-radius: 18px;
+  color: white;
+  padding: 7px 22px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-import:hover {
+  background: rgb(31, 31, 31) 000;
+  scale: 1.1;
 }
