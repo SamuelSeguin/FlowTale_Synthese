@@ -1,0 +1,1 @@
+ALTER TABLE `story` ADD `auteurName` text NOT NULL;

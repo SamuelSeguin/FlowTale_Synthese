@@ -14,7 +14,7 @@ export const GetAllEdges = async () => {
     }
 }
 
-export const GetEdgesByStoryId = async () => {
+export const GetEdgesByStoryId = async (storyId) => {
     return;
 }
 

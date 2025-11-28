@@ -1,17 +1,34 @@
 "use client";
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import "./CreationHistoireForm.css";
+import { CreationHistoireAction } from "../_actions/storyAction";
 
-const CreationForm = () => {
+const CreationForm = ({ user }) => {
+  
   const CreationAction = async (formData) => {
     // Récupérer les trois valeurs, titre / synopsis / ambiance / animation / musique
     const titre = formData.get("titre");
+    const auteur = user.id;
     const synopsis = formData.get("synopsis");
     const ambiance = formData.get("ambiance");
     const animation = formData.get("animation");
     const musique = formData.get("musique");
 
-    console.log(titre, synopsis, ambiance, animation, musique);
+    const newHistoireData = {
+      id: uuidv4(),
+      titre, 
+      auteur,
+      auteurName: user.name,
+      synopsis, 
+      ambiance,
+      animation,
+      musique,
+    };
+
+    console.log(newHistoireData);
+
+    await CreationHistoireAction(newHistoireData);
   };
 
   const [modalOuvert, setModalOuvert] = useState(false);
@@ -27,7 +44,7 @@ const CreationForm = () => {
         </p>
       </div>
 
-      <form className="creation-form">
+      <form className="creation-form" action={CreationAction}>
         <h2 className="titre-form-creation">Nouvelle histoire</h2>
 
         <label>

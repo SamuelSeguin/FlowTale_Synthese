@@ -1,8 +1,9 @@
 "use client";
 import "./Accueil.css";
 import RecentsUiCard from "../_components/RecentsUiCard";
+import Link from "next/link";
 
-const Accueil = () => {
+const Accueil = ({ story }) => {
   return (
     <div className="container">
       <div className="header-background">
@@ -15,11 +16,13 @@ const Accueil = () => {
             TOUTES LES FORMES.
           </h1>
           <div className="btn-hero">
+            <Link href="/creationHistoire">
             <button className="heroCta">
               <span className="cta-arrow left">→</span>
               <span className="cta-text">Créer</span>
               <span className="cta-arrow right">→</span>
             </button>
+            </Link>
           </div>
         </section>
       </div>
@@ -34,7 +37,7 @@ const Accueil = () => {
           vos créations en quelques clics.
         </div>
       </section>
-      <RecentsUiCard />
+      <RecentsUiCard story={story} />
     </div>
   );
 };

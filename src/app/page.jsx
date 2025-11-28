@@ -1,10 +1,9 @@
-import { GetAllEdgesAction } from "./_actions/edgesAction";
-import { GetAllNodesAction } from "./_actions/nodesAction";
-import MainPageClient from "./_components/MainPageClient";
-import { GridProvider } from "./_contexts/gridContext";
+import { GetAllStoriesAction } from "./_actions/storyAction";
+import Accueil from "./_components/Accueil";
+import NavBar from "./_components/NavBar";
 
 export const metadata = {
-  title: "Web 5",
+  title: "FlowTale",
   description: "Gabarit de départ - Web 5",
 };
 
@@ -21,33 +20,13 @@ const HomePage = async () => {
     // .ENV.PROD
   }
 
-  const nodeData = await GetAllNodesAction();
-  console.log("[NODES RECUPERES]", nodeData);
-
-  const initialNodes = nodeData.map(node => ({
-    id: node.id,
-    position: { x: node.positionX, y: node.positionY },
-    data: JSON.parse(node.data),
-  }));
-
-  const edgeData = await GetAllEdgesAction();
-  console.log("[EDGES RECUPERES]", edgeData);
-
-  const initialEdges = edgeData.map(edge => ({
-    id: edge.id,
-    source: edge.source,
-    target: edge.target,
-    data: edge.data,
-  }));
+  const story = await GetAllStoriesAction();
 
   return (
-    
-    <GridProvider initialNodes={initialNodes} initialEdges={initialEdges}>
-      <main className="flex flex-col items-center justify-center gap-2 py-5">
-        <h1>Gabarit de départ</h1>
-        <MainPageClient />
-      </main>
-    </GridProvider>
+    <>
+      <NavBar />
+      <Accueil story={story} />
+    </>
   );
 };
 export default HomePage;
