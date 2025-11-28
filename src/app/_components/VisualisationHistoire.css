@@ -1,3 +1,30 @@
+.wrapper--horreur {
+  height: 100vh;
+  --bg-color: #000;
+  background: radial-gradient(
+    circle at center,
+    var(--bg-color) 0%,
+    #050000 70%
+  );
+}
+
+.wrapper--fantastique {
+  height: 100vh;
+  background: linear-gradient(135deg, #bddd7e, #618872, #bddd7e);
+  background-size: 200% 200%;
+}
+
+.wrapper--futuriste {
+  height: 100vh;
+  background: linear-gradient(
+    115deg,
+    #0456cf 0%,
+    #3682ac 35%,
+    #0599cf 80%,
+    #1e90ff 100%
+  );
+}
+
 .histoire-container {
   position: absolute;
   top: 50%;
@@ -6,6 +33,20 @@
   font-family: "Creato";
   font-size: 2rem;
   line-height: 1.5;
+  color: #fff;
+}
+
+.histoire-container p {
+  opacity: 1;
+}
+
+.histoire-container p span {
+  display: inline-block;
+}
+
+.line {
+  display: block;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 .visualisation-cta-btn {
@@ -59,4 +100,26 @@
 .visualisation-cta-btn:hover .visualisation-cta-arrow.right {
   opacity: 0;
   transform: translateX(32px);
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffffe6;
+  box-shadow: 0 0 12px #ffffffe6;
+}
+
+.sparkle-1 {
+  top: 30%;
+  left: 15%;
+}
+.sparkle-2 {
+  top: 50%;
+  right: 10%;
+}
+.sparkle-3 {
+  bottom: 20%;
+  left: 40%;
 }
