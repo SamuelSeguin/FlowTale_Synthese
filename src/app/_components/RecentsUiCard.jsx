@@ -7,7 +7,6 @@ const RecentsUiCard = ({ story }) => {
   return (
     <section className="recents-section">
       <h1 className="recents-section-title">Créations du moment</h1>
-      {/* <hr /> */}
       <div className="recents-grid">
         {story.map((histoire) => (
           console.log("HISTOIRE DANS RECENTSUICARD :", histoire),
