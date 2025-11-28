@@ -167,60 +167,74 @@ const VisualisationHistoire = ({ story }) => {
   };
 
   return (
-  <div className="wrapper" ref={backgroundRef}>
-    <div className="histoire-container">
+    <div className="wrapper" ref={backgroundRef}>
+      <div className="histoire-container">
 
-      {/* FIN DE L'HISTOIRE */}
-      {outgoing.length === 0 && (
-        <>
-          <div className="fin-histoire" ref={textRef}>{currentNode.data?.description}</div>
-          <Link href={"/"}>
-            Retourner à l'accueil
-          </Link>
-        </>
-      )}
+        {/* FIN DE L'HISTOIRE */}
+        {outgoing.length === 0 && (
+          <>
+            <div className="fin-histoire">
+              <p>
+                {currentNode.data?.description}
+              </p>
+            </div>
+            <Link href={"/"}>
+              Retourner à l'accueil
+            </Link>
+          </>
+        )}
 
-      {/* NODE AVEC UN SEUL CHEMIN → AFFICHER "CONTINUER" */}
-      {outgoing.length === 1 && (
-        <div>
-          <div className="node-content" ref={textRef}>{currentNode.data?.description}</div>
+        {/* NODE AVEC UN SEUL CHEMIN → AFFICHER "CONTINUER" */}
+        {outgoing.length === 1 && (
+          <div>
+            <div className="node-content">
+              <p ref={textRef}>
+                {currentNode.data?.description}
+              </p>
+            </div>
 
-          <button
-            className="choix-btn continuer-btn"
-            onClick={() => goToNode(outgoing[0].target)}
-          >
-            Continuer →
-          </button>
-        </div>
-      )}
-
-      {/* NODE AVEC PLUSIEURS CHOIX */}
-      {outgoing.length > 1 && (
-        <div>
-          <div className="node-content" ref={textRef}>{currentNode.data?.description}</div>
-
-          <div className="choix-container">
-            {outgoing.map((edge) => (
-              <button
-                key={edge.id}
-                className="choix-btn"
-                onClick={() => goToNode(edge.target)}
-              >
-                {edge.data?.texte || "Choisir"}
-              </button>
-            ))}
+            <button
+              className="choix-btn continuer-btn"
+              onClick={() => goToNode(outgoing[0].target)}
+            >
+              Continuer →
+            </button>
           </div>
-        </div>
-      )}
+        )}
+
+        {/* NODE AVEC PLUSIEURS CHOIX */}
+        {outgoing.length > 1 && (
+          <div>
+            <div className="node-content">
+              <p>
+                {currentNode.data?.description}
+              </p>
+            </div>
+
+            <div className="choix-container">
+              {outgoing.map((edge) => (
+                <button
+                  key={edge.id}
+                  className="choix-btn"
+                  onClick={() => goToNode(edge.target)}
+                >
+                  {edge.data?.texte || "Choisir"}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+      {/* BOUTON RETOUR */}
+      <Link href={`/histoires/${story.id}`}>
+        <button className="visualisation-cta-btn">
+          <span className="visualisation-cta-arrow left">→</span>
+          <span className="visualisation-cta-text">Retour</span>
+          <span className="visualisation-cta-arrow right">→</span>
+        </button>
+      </Link>
     </div>
-    {/* BOUTON RETOUR */}
-    <Link href={`/histoires/${story.id}`}>
-    <button className="visualisation-cta-btn">
-      <span className="visualisation-cta-arrow left">→</span>
-      <span className="visualisation-cta-text">Retour</span>
-      <span className="visualisation-cta-arrow right">→</span>
-    </button>
-    </Link>
-  </div>
-);
+  );
 };
+
+export default VisualisationHistoire;
