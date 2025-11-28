@@ -57,3 +57,25 @@ export const GetStoryById = async (storyId) => {
         throw err;
     }
 }
+
+export const GetFullStoryById = async (storyId) => {
+  try {
+    const result = await db.query.storyTables.findFirst({
+      where: eq(storyTables.id, storyId),
+      with: {
+        nodes: {
+          with: {
+            outgoingEdges: true,
+            incomingEdges: true
+          }
+        },
+        edges: true
+      }
+    });
+
+    return result;
+  } catch (err) {
+    console.log("[GET FULL STORY ERROR]", err);
+    throw err;
+  }
+};

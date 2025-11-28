@@ -1,6 +1,6 @@
 "use server"
 
-import { CreationHistoire, GetAllStories, GetStoryByUserId } from "../_data/story"
+import { CreationHistoire, GetAllStories, GetFullStoryById, GetStoryByUserId } from "../_data/story"
 import { revalidatePath } from "next/cache";
 
 export const CreationHistoireAction = async (histoireData) => {
@@ -23,6 +23,7 @@ export const GetStoryByIdAction = async (storyId) => {
     return result;
 }
 
-export const GetNodeInfoByStoryAction = async (nodeId) => {
-  
+export const GetFullStoryByIdAction = async (storyId) => {
+    const result = await GetFullStoryById(storyId) ;
+    return result;
 }

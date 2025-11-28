@@ -34,7 +34,7 @@ const gridContext = createContext({
 // initialEdges: pour les brancges, un tableau d'objets contenant ces propriétés au minimum (peut en contenir d'autres également):
 //  {id: '', source: '', target: ''} // https://reactflow.dev/api-reference/types/edge
 
-const GridProvider = ({ children, initialNodes = [], initialEdges = [] }) => {
+const GridProvider = ({ children, initialNodes = [], initialEdges = [], storyId }) => {
   // States à modifier pour ajouter/supprimer/mettre à jour les noeuds/branches
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
@@ -60,6 +60,7 @@ const GridProvider = ({ children, initialNodes = [], initialEdges = [] }) => {
       source, // le id du noeud de départ
       target, // le id du noeud de fin
       data: { texte: '.', animation: '.' },
+      storyId: storyId,
     };
 
     // ajoute la branche dans le state (addEdge s'occupe de faire une validation)
@@ -93,6 +94,7 @@ const GridProvider = ({ children, initialNodes = [], initialEdges = [] }) => {
         positionX: newNode.position.x,
         positionY: newNode.position.y,
         data: JSON.stringify(newNode.data),
+        storyId: storyId,
       }
   
       //LOCAL

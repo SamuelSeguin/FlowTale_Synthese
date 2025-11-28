@@ -5,6 +5,7 @@ import "./CreationHistoireForm.css";
 import { CreationHistoireAction } from "../_actions/storyAction";
 
 const CreationForm = ({ user }) => {
+  
   const CreationAction = async (formData) => {
     // Récupérer les trois valeurs, titre / synopsis / ambiance / animation / musique
     const titre = formData.get("titre");

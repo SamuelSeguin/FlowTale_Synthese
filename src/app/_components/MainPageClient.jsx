@@ -8,7 +8,7 @@ import InspecteurNode from "./InspecteurNode";
 import InspecteurBranche from "./InspecteurBranche";
 import InspecteurBase from "./InspecteurBase";
 
-const MainPageClient = () => {
+const MainPageClient = ({ nodeData }) => {
   const {
     nodes,
     edges,
@@ -19,7 +19,7 @@ const MainPageClient = () => {
     internals: { onNodesChange, onEdgesChange, onConnect, onSelectionChange },
   } = useGrid();
 
-  const showInspecteur = () => {
+  const showInspecteur = () => { 
     if (selection.type === 'node') {
       return <InspecteurNode selection={selection} setHandler={setNodes}/>;
     } else if (selection.type === 'edge') {
@@ -28,14 +28,13 @@ const MainPageClient = () => {
 
   };
 
-
   useEffect(() => {
     console.log("MA SELECTION", selection);
   }, [selection]);
 
   return (
     <div>
-      <InspecteurBase addNode={addLocalNode} />
+      <InspecteurBase addNode={addLocalNode} nodeData={nodeData}/>
 
       {showInspecteur()}
       

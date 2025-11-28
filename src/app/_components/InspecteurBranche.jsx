@@ -8,6 +8,7 @@ const InspecteurBranche = ({ selection, setHandler }) => {
 
   const {
     edges,
+    nodes,
   } = useGrid();
 
   const deleteLocalBranch = async (edgeId) => {
@@ -29,6 +30,21 @@ const InspecteurBranche = ({ selection, setHandler }) => {
     });
   }
 
+  const getNodeLabelById = (nodeId) => {
+    const node = nodes.find((n) => n.id === nodeId);
+    if (!node) return "Inconnu";
+
+    try {
+      const parsed = typeof node.data === "string" ? JSON.parse(node.data) : node.data;
+      return parsed?.label ?? "Sans titre";
+    } catch {
+      return "Erreur parsing";
+    }
+  };
+
+  const sourceLabel = getNodeLabelById(selection.edge.source);
+  const targetLabel = getNodeLabelById(selection.edge.target);
+
     return (
         <>
         <button
@@ -38,22 +54,30 @@ const InspecteurBranche = ({ selection, setHandler }) => {
           Supprimer une branche
         </button>
         <form action={updateLocalBranch}>
-          <h1>Inspecteur Branche</h1>
-          <div>
-            <label>Description: </label>
-            <textarea 
-              name="texte"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              defaultValue={selection.edge.data.texte || ''} 
-              />
-          </div>
-          <button
-            type="submit"
-            className="w-full p-2 text-white transition-colors duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
-          >
-            Mettre à jour la branche
-          </button>
-        </form>
+        <h1>Inspecteur Branche</h1>
+
+        {/* INFO SOURCE / TARGET */}
+        <div className="p-2 bg-zinc-900 rounded mt-3 mb-3">
+          <p><strong>Source :</strong> {sourceLabel}</p>
+          <p><strong>Target :</strong> {targetLabel}</p>
+        </div>
+
+        <div>
+          <label>Description: </label>
+          <textarea
+            name="texte"
+            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            defaultValue={selection.edge.data.texte || ""}
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full p-2 text-white transition-colors duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
+        >
+          Mettre à jour la branche
+        </button>
+      </form>
         </>
     );
 }
