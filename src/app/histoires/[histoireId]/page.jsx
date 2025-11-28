@@ -7,26 +7,26 @@ import { redirect } from "next/navigation";
 const FicheHistoirePage = async ({ params }) => {
   const { histoireId } = await params;
   const histoire = await GetStoryById(histoireId);
-  let user;
+  // let user;
 
-  try {
-    const session = await getSession();
-    user = session?.user;
-    if (!user) {
-      redirect("/auth/signin");
-    }
-  } catch (err) {
-    redirect("/auth/signin");
-  }
+  // try {
+  //   const session = await getSession();
+  //   user = session?.user;
+  //   if (!user) {
+  //     redirect("/auth/signin");
+  //   }
+  // } catch (err) {
+  //   redirect("/auth/signin");
+  // }
 
-  if (!histoire) {
-    redirect("/404");
-  }
+  // if (!histoire) {
+  //   redirect("/404");
+  // }
 
   return (
     <div>
       <NavBar />
-      <FicheHistoire histoire={histoire[0]} user={user} />
+      <FicheHistoire histoire={histoire[0]}  />
     </div>
   );
 };

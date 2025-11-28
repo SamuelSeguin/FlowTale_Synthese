@@ -1,12 +1,13 @@
 import { startTransition } from "react";
-import { RemoveNodesAction, UpdateNodesInfoAction } from "../_actions/nodesAction";
+import {
+  RemoveNodesAction,
+  UpdateNodesInfoAction,
+} from "../_actions/nodesAction";
 import { useGrid } from "../_contexts/gridContext";
+import "./ConstructionHistoire.css";
 
 const InspecteurNode = ({ selection, setHandler }) => {
-
-  const {
-    nodes,
-  } = useGrid();
+  const { nodes } = useGrid();
 
   const deleteLocalNode = async (nodeId) => {
     setHandler(nodes.filter((node) => node.id !== nodeId));
@@ -14,13 +15,16 @@ const InspecteurNode = ({ selection, setHandler }) => {
     startTransition(async () => {
       await RemoveNodesAction(nodeId);
     });
-  }
+  };
 
   const updateLocalNode = async (formData) => {
     console.log("FORM DATA NODE", formData);
     const title = formData.get("title");
     const description = formData.get("description");
-    const updatedNodes = {...selection.node, data: { ...selection.node.data, label: title, description: description } };
+    const updatedNodes = {
+      ...selection.node,
+      data: { ...selection.node.data, label: title, description: description },
+    };
 
     console.log("NODE MISE A JOUR", updatedNodes);
     setHandler(nodes.map((n) => (n.id === updatedNodes.id ? updatedNodes : n)));
@@ -28,44 +32,43 @@ const InspecteurNode = ({ selection, setHandler }) => {
     startTransition(async () => {
       await UpdateNodesInfoAction(updatedNodes);
     });
-  }
+  };
 
-    return (
-        <>
-         <button
-          className="mt-2 bg-red-500 px-2 rounded"
-          onClick={() => deleteLocalNode(selection.node.id)}
-          >
-          Supprimer un noeud
-        </button>
-        <form action={updateLocalNode}>
-          <h1>Inspecteur Noeud</h1>
-          <div>
-            <label>Titre: </label>
-            <input 
-              type="text" 
-              name="title" 
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              defaultValue={selection.node.data.label || ''} 
+  return (
+    <>
+      <div className="inspecteur-node">
+        <form className="inspecteurs-forms" action={updateLocalNode}>
+          <h1>Modifier un noeud</h1>
+          <div className="floating-label">
+            <input
+              type="text"
+              name="title"
+              className=""
+              defaultValue={selection.node.data.label || ""}
             />
+            <label>Titre </label>
           </div>
-          <div>
-            <label>Description: </label>
-            <textarea 
+          <div className="floating-label">
+            <textarea
               name="description"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              defaultValue={selection.node.data.description || ''} 
-              />
+              defaultValue={selection.node.data.description || ""}
+              required
+            />
+            <label>Description</label>
           </div>
-          <button
-            type="submit"
-            className="w-full p-2 text-white transition-colors duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
-          >
+          <button type="submit" className="btn-inspecteur">
             Mettre à jour le noeud
           </button>
         </form>
-        </>
-    );
-}
+        <button
+          className="btn-supprimer-node"
+          onClick={() => deleteLocalNode(selection.node.id)}
+        >
+          Supprimer un noeud
+        </button>
+      </div>
+    </>
+  );
+};
 
 export default InspecteurNode;

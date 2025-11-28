@@ -1,11 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import "./CreationHistoireForm.css";
 import { CreationHistoireAction } from "../_actions/storyAction";
 
 const CreationForm = ({ user }) => {
-  
   const CreationAction = async (formData) => {
     // Récupérer les trois valeurs, titre / synopsis / ambiance / animation / musique
     const titre = formData.get("titre");
@@ -17,10 +16,10 @@ const CreationForm = ({ user }) => {
 
     const newHistoireData = {
       id: uuidv4(),
-      titre, 
+      titre,
       auteur,
       auteurName: user.name,
-      synopsis, 
+      synopsis,
       ambiance,
       animation,
       musique,
@@ -69,31 +68,27 @@ const CreationForm = ({ user }) => {
         <br />
         <div className="form-flex">
           <label>
-            <select className="select" name="ambiance" required>
-              <option value="">Ambiance</option>
-              <option value="mystérieuse">Horreur</option>
-              <option value="énergique">Fantastique</option>
-              <option value="calme">Romance</option>
+            <select className="select" name="ambiance" required defaultValue="">
+              <option value="" disabled>
+                Ambiance
+              </option>
+              <option value="horreur">Horreur</option>
+              <option value="fantastique">Fantastique</option>
+              <option value="futuriste">Futuriste</option>
             </select>
           </label>
           <br />
 
           <label>
-            <select className="select" name="animation" required>
-              <option value="">Animation</option>
-              <option value="fade">Fade</option>
-              <option value="slide">Slide</option>
-              <option value="bounce">Bounce</option>
-              <option value="zoom">Zoom</option>
-            </select>
-          </label>
-          <br />
-
-          <label>
-            <select className="select" name="musique" required>
-              <option value="">Musique</option>
+            <select className="select" name="musique" required defaultValue="">
+              <option value="" disabled>
+                Musique
+              </option>
               <option value="classique">Classique</option>
-              <option value="electro">Electro</option>
+              <option value="magique">Magique</option>
+              <option value="suspense">Suspense</option>
+              <option value="cyberpunk">Cyberpunk</option>
+              <option value="calme">Calme</option>
             </select>
           </label>
         </div>

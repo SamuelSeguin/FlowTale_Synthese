@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import InspecteurNode from "./InspecteurNode";
 import InspecteurBranche from "./InspecteurBranche";
 import InspecteurBase from "./InspecteurBase";
+import "./ConstructionHistoire.css";
 
 const MainPageClient = ({ nodeData }) => {
   const {
@@ -19,13 +20,12 @@ const MainPageClient = ({ nodeData }) => {
     internals: { onNodesChange, onEdgesChange, onConnect, onSelectionChange },
   } = useGrid();
 
-  const showInspecteur = () => { 
-    if (selection.type === 'node') {
-      return <InspecteurNode selection={selection} setHandler={setNodes}/>;
-    } else if (selection.type === 'edge') {
-      return <InspecteurBranche selection={selection} setHandler={setEdges}/>;
-    } else <></>
-
+  const showInspecteur = () => {
+    if (selection.type === "node") {
+      return <InspecteurNode selection={selection} setHandler={setNodes} />;
+    } else if (selection.type === "edge") {
+      return <InspecteurBranche selection={selection} setHandler={setEdges} />;
+    } else <></>;
   };
 
   useEffect(() => {
@@ -33,12 +33,14 @@ const MainPageClient = ({ nodeData }) => {
   }, [selection]);
 
   return (
-    <div>
-      <InspecteurBase addNode={addLocalNode} nodeData={nodeData}/>
+    <div className="container-flex">
+      <div className="inspecteurs-flex">
+        <InspecteurBase addNode={addLocalNode} nodeData={nodeData} />
 
-      {showInspecteur()}
-      
-      <div style={{ width: 1000, height: 1000 }}>
+        {showInspecteur()}
+      </div>
+
+      <div className="reactFlow-container">
         <ReactFlow
           nodes={nodes}
           edges={edges}

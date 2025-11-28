@@ -3,7 +3,7 @@ import { createContext, startTransition, useContext, useState } from "react";
 import useGridInternals, { SelectionType } from "../_hooks/useGridInternals";
 import { addEdge, ReactFlowProvider } from "@xyflow/react";
 import { AddNodesAction, UpdateNodesAction } from "../_actions/nodesAction";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { AddEdgesAction } from "../_actions/edgesAction";
 
 const gridContext = createContext({
@@ -34,7 +34,12 @@ const gridContext = createContext({
 // initialEdges: pour les brancges, un tableau d'objets contenant ces propriétés au minimum (peut en contenir d'autres également):
 //  {id: '', source: '', target: ''} // https://reactflow.dev/api-reference/types/edge
 
-const GridProvider = ({ children, initialNodes = [], initialEdges = [], storyId }) => {
+const GridProvider = ({
+  children,
+  initialNodes = [],
+  initialEdges = [],
+  storyId,
+}) => {
   // States à modifier pour ajouter/supprimer/mettre à jour les noeuds/branches
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
@@ -59,7 +64,7 @@ const GridProvider = ({ children, initialNodes = [], initialEdges = [], storyId 
       id: uuidv4(),
       source, // le id du noeud de départ
       target, // le id du noeud de fin
-      data: { texte: '.', animation: '.' },
+      data: { texte: ".", animation: "." },
       storyId: storyId,
     };
 
@@ -95,11 +100,11 @@ const GridProvider = ({ children, initialNodes = [], initialEdges = [], storyId 
         positionY: newNode.position.y,
         data: JSON.stringify(newNode.data),
         storyId: storyId,
-      }
-  
+      };
+
       //LOCAL
       setNodes([...nodes, newNode]);
-  
+
       //SERVEUR
       AddNodesAction(MaNewNode);
       // startTransition(async () => {
@@ -109,31 +114,32 @@ const GridProvider = ({ children, initialNodes = [], initialEdges = [], storyId 
       //     return;
       //   }
       // });
-    }
-    catch (err) {
+    } catch (err) {
       console.log("[ERREUR AJOUT NOEUD]", err);
     }
   };
 
   return (
-    <ReactFlowProvider>
-      <gridContext.Provider
-        value={{
-          nodes,
-          edges,
-          selection,
-          setEdges,
-          setNodes,
-          deselect,
-          updateSelectionData,
-          internals,
-          addLocalNode,
-          _v: 1,
-        }}
-      >
-        {children}
-      </gridContext.Provider>
-    </ReactFlowProvider>
+    <div className="">
+      <ReactFlowProvider>
+        <gridContext.Provider
+          value={{
+            nodes,
+            edges,
+            selection,
+            setEdges,
+            setNodes,
+            deselect,
+            updateSelectionData,
+            internals,
+            addLocalNode,
+            _v: 1,
+          }}
+        >
+          {children}
+        </gridContext.Provider>
+      </ReactFlowProvider>
+    </div>
   );
 };
 

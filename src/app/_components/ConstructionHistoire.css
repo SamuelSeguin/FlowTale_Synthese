@@ -1,0 +1,199 @@
+.construction-page-container {
+  margin-top: 120px;
+  margin-bottom: 50px;
+}
+
+.container-flex {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "Creato";
+  gap: 20px;
+}
+
+.construction-page-titre {
+  text-align: center;
+  font-family: "Creato-Bold";
+  font-size: 3rem;
+  margin: 0;
+}
+
+/* -- INSPECTEURS -- */
+.inspecteurs-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* -- INSPECTEUR DE BASE -- */
+.inspecteur-base {
+  background-color: #bdbdbda4;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 400px;
+  border-radius: 10px;
+  gap: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn-ajouter-debut {
+  background-color: #ec6e9e;
+  color: white;
+  border-radius: 50px;
+  width: 100%;
+  padding: 10px 10px;
+  border: none;
+
+  font-family: "Creato";
+}
+
+.btn-ajouter-debut--disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.btn-ajouter {
+  background-color: #ec6e9e;
+  color: white;
+  border-radius: 50px;
+  width: 100%;
+  padding: 10px 10px;
+  cursor: pointer;
+  border: none;
+  font-family: "Creato";
+}
+
+.btn-ajouter-fin {
+  background-color: #ec6e9e;
+  color: white;
+  border-radius: 50px;
+  width: 100%;
+  padding: 10px 10px;
+  cursor: pointer;
+  border: none;
+  font-family: "Creato";
+}
+
+/* -- INSPECTEUR DE NODE -- */
+.inspecteur-node {
+  background-color: #bdbdbda4;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 400px;
+  border-radius: 10px;
+  gap: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn-inspecteur {
+  background-color: #ec6e9e;
+  color: white;
+  border-radius: 50px;
+  width: 100%;
+  padding: 10px 10px;
+  cursor: pointer;
+  border: none;
+  font-family: "Creato";
+}
+
+.btn-supprimer-node {
+  background-color: #ec6e9e;
+  color: white;
+  border-radius: 50px;
+  width: 100%;
+  padding: 10px 10px;
+  cursor: pointer;
+  border: none;
+  font-family: "Creato";
+}
+
+/* -- INSPECTEUR DE BRANCHE -- */
+.inspecteur-branche {
+  background-color: #bdbdbda4;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 400px;
+  border-radius: 10px;
+  gap: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn-supprimer-branche {
+  background-color: #ec6e9e;
+  color: white;
+  border-radius: 50px;
+  width: 100%;
+  padding: 10px 10px;
+  cursor: pointer;
+  border: none;
+  font-family: "Creato";
+}
+
+/* -- REACTFLOW -- */
+.reactFlow-container {
+  background-color: #bdbdbda4;
+  width: 1100px;
+  height: 700px;
+  border-radius: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* -- FORMS -- */
+
+/* .inspecteurs-forms {
+  font-family: "Creato";
+} */
+
+.floating-label {
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+  color: #ec6e9e;
+  font-family: "Creato";
+  margin-bottom: 10px;
+}
+
+.floating-label textarea {
+  width: 95%;
+  min-height: 150px;
+  padding: 20px 0 0 12px;
+  font-size: 1rem;
+  border: 1px solid #9e9e9e;
+  border-radius: 6px;
+  resize: vertical;
+  background: none;
+  outline: none;
+  font-family: "Creato";
+}
+.floating-label input {
+  width: 95%;
+  padding: 20px 0 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #9e9e9e;
+  border-radius: 6px;
+  background: none;
+  outline: none;
+  font-family: "Creato";
+}
+
+.floating-label label {
+  position: absolute;
+  left: 12px;
+  top: -8px;
+  pointer-events: none;
+  transition: all 0.2s ease-out;
+  background-color: #d5d5d5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.floating-label textarea:focus {
+  border: 2px solid #ec6e9e;
+}
+.floating-label input:focus {
+  border: 2px solid #ec6e9e;
+}
