@@ -1,4 +1,6 @@
 .recents-section {
+  display: flex;
+  flex-direction: column;
   background-color: #e0e0e05b;
   margin: 100px;
   border-radius: 50px;
@@ -6,7 +8,7 @@
 }
 
 .recents-section-title {
-  padding-left: 150px;
+  padding-left: 161px;
   padding-top: 60px;
   font-size: 2.5rem;
   font-family: Creato;
@@ -17,7 +19,7 @@
 .recents-grid {
   display: flex;
   flex-direction: row;
-  margin-left: 140px;
+  justify-content: center;
   padding-top: 30px;
   gap: 60px;
   flex-wrap: wrap;
