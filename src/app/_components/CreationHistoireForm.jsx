@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./CreationHistoireForm.css";
 import { CreationHistoireAction } from "../_actions/storyAction";
+import Link from "next/link";
 
 const CreationForm = ({ user }) => {
   const CreationAction = async (formData) => {
@@ -111,14 +112,38 @@ const CreationForm = ({ user }) => {
             </button>
             <h2>Banque publique</h2>
             <div className="grille-images">
-              <div className="image-placeholder"></div>
-              <div className="image-placeholder"></div>
-              <div className="image-placeholder"></div>
+              <img
+                className="image-form-creation"
+                src="../../../jpg/horreur1.jpg"
+              />
+              <img
+                className="image-form-creation"
+                src="../../../jpg/horreur2.jpg"
+              />
+              <img
+                className="image-form-creation"
+                src="../../../jpg/fantastique1.jpg"
+              />
+              <img
+                className="image-form-creation"
+                src="../../../jpg/fantastique2.jpg"
+              />
+              <img
+                className="image-form-creation"
+                src="../../../jpg/futuriste1.png"
+              />
+              <img
+                className="image-form-creation"
+                src="../../../jpg/futuriste2.jpg"
+              />
             </div>
             <h3>Mes images</h3>
-            <button className="btn-import">
-              Importer une image personnalisée
-            </button>
+
+            <Link href="/importationImage">
+              <button className="btn-import">
+                Importer une image personnalisée
+              </button>
+            </Link>
           </div>
         </div>
       )}

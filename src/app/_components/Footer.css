@@ -1,0 +1,20 @@
+.footer-container-flex {
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  font-family: "Creato";
+  color: #000000ab;
+}
+
+.footer-logo {
+  width: 60%;
+}
+
+.footer-text {
+  margin: 0;
+}

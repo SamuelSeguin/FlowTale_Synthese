@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import "./CompteCreateur.css";
+import Footer from "../_components/Footer";
 
-const CompteCreateur = ({ user, story=[] }) => {
+const CompteCreateur = ({ user, story = [] }) => {
   console.log("USER COMPTE CREATEUR PARAMS :", user);
   console.log("STORY COMPTE CREATEUR PARAMS :", story);
 
@@ -19,42 +20,39 @@ const CompteCreateur = ({ user, story=[] }) => {
       <h1 className="titre-page">Vos créations</h1>
       <div className="histoires-container-flex">
         {story.length === 0 ? (
-          <p>Vous n'avez pas encore créé d'histoires. Commencez dès maintenant !</p>
+          <p>
+            Vous n'avez pas encore créé d'histoires. Commencez dès maintenant !
+          </p>
         ) : (
-        story.map((histoire) => (
-          <article className="histoire-container" key={histoire.id}>
-          <div className="histoire-image"></div>
+          story.map((histoire) => (
+            <article className="histoire-container" key={histoire.id}>
+              <div className="histoire-image"></div>
 
-          <div className="text-content">
-            <h2 className="histoire-titre">
-              {histoire.titre}
-            </h2>
-            <h2 className="histoire-auteur">{histoire.auteurName}</h2>
-            <p className="histoire-synopsis">
-              {histoire.synopsis}
-            </p>
-            <div className="icons">
-              <div className="icons-top">
-                <Link href={`/histoires/${histoire.id}/stats`}>
-                  <img src="/png/pencil-square-o.png" alt="modifier" />
-                </Link>
-                <Link href={`/histoires/${histoire.id}`}>
-                  <img src="/png/magnifier.png" alt="visualisation" />
-                </Link>
-              </div>
+              <div className="text-content">
+                <h2 className="histoire-titre">{histoire.titre}</h2>
+                <h2 className="histoire-auteur">{histoire.auteurName}</h2>
+                <p className="histoire-synopsis">{histoire.synopsis}</p>
+                <div className="icons">
+                  <div className="icons-top">
+                    <img src="/png/pencil-square-o.png" alt="modifier" />
+                    <Link href={`/histoires/${histoire.id}`}>
+                      <img src="/png/magnifier.png" alt="visualisation" />
+                    </Link>
+                  </div>
 
-              <div className="icons-bottom">
-                <a href="">
-                  <img src="/png/comment.png" alt="commentaires" />
-                  <p>Commentaires</p>
-                </a>
+                  <div className="icons-bottom">
+                    <Link href={`/histoires/${histoire.id}/stats`}>
+                      <img src="/png/comment.png" alt="commentaires" />
+                      <p>Commentaires</p>
+                    </Link>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          </article>
+            </article>
           ))
-        )} 
+        )}
       </div>
+      <Footer />
     </div>
   );
 };

@@ -3,8 +3,9 @@
   width: 73%;
   transform: translateX(10%);
   background-color: #e0e0e05b;
-  margin-top: 100px;
+  margin-top: 150px;
   padding: 100px;
+  padding-bottom: 0;
   font-family: "Creato";
   border-radius: 50px;
 }
@@ -18,10 +19,10 @@
 }
 
 .fiche-image {
-  background-color: #e0e0e05b;
   width: 500px;
   height: 500px;
   border-radius: 50px;
+  object-fit: cover;
 }
 
 .fiche-content {

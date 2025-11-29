@@ -1,6 +1,7 @@
 "use client";
 import "./Comments.css";
 import "./CompteCreateur.css";
+import Footer from "../_components/Footer";
 
 const Comments = () => {
   return (
@@ -61,6 +62,7 @@ const Comments = () => {
           </div>
         </article>
       </div>
+      <Footer />
     </div>
   );
 };

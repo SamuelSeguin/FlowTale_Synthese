@@ -1,6 +1,7 @@
 "use client";
 import "./Accueil.css";
 import RecentsUiCard from "../_components/RecentsUiCard";
+import Footer from "../_components/Footer";
 import Link from "next/link";
 
 const Accueil = ({ story }) => {
@@ -38,6 +39,7 @@ const Accueil = ({ story }) => {
         </div>
       </section>
       <RecentsUiCard story={story} />
+      <Footer />
     </div>
   );
 };
