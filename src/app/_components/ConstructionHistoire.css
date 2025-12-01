@@ -197,3 +197,31 @@
 .floating-label input:focus {
   border: 2px solid #ec6e9e;
 }
+
+.btn-personnalisation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn-ambiance {
+  border: 1.5px solid #ec6e9e;
+  color: #ec6e9e;
+  background-color: transparent;
+  border-radius: 50px;
+  width: 100%;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-family: "Creato";
+}
+.btn-image {
+  border: 1.5px solid #ec6e9e;
+  color: #ec6e9e;
+  background-color: transparent;
+  border-radius: 50px;
+  width: 100%;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-family: "Creato";
+}
