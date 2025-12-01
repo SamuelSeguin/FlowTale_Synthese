@@ -2,13 +2,12 @@
 import Link from "next/link";
 import "./CompteCreateur.css";
 import Footer from "../_components/Footer";
+import PublicDisplay from "./PublicDisplay";
 
 const CompteCreateur = ({ user, story = [] }) => {
 
-  const publicHandler = async (formData) => {
-    const publicCheck = formData.get("publicCheck");
-    console.log("TEST");
-    console.log(publicCheck)
+  const publicHandler = async () => {
+    
   }
 
   console.log("USER COMPTE CREATEUR PARAMS :", user);
@@ -55,9 +54,7 @@ const CompteCreateur = ({ user, story = [] }) => {
                     <Link href={`/histoires/${histoire.id}`}>
                       <img src="/png/magnifier.png" alt="visualisation" />
                     </Link>
-                    <form action={publicHandler}>
-                      
-                    </form>
+                    <PublicDisplay isPublic={histoire.public} storyId={histoire.id} userId={user.id}/>
                   </div>
 
                   <div className="icons-bottom">
