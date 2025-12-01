@@ -14,7 +14,7 @@ const Utilisateur = ({ histoire }) => {
       <div className="histoires-container-flex">
         {histoire.map((histoireItem) => (
           <article className="histoire-container" key={histoireItem.id}>
-          <div className="histoire-image"></div>
+           <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
 
           <div className="text-content">
             <h2 className="histoire-titre">

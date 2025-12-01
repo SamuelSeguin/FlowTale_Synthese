@@ -41,7 +41,7 @@ const CompteCreateur = ({ user, story = [] }) => {
         ) : (
           story.map((histoire) => (
             <article className="histoire-container" key={histoire.id}>
-              <div className="histoire-image"></div>
+              <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
               <div className="text-content">
                 <img className="bin" src="/png/bin.png" alt="" />
                 <h2 className="histoire-titre">{histoire.titre}</h2>

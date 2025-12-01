@@ -20,7 +20,7 @@ const RecentsUiCard = ({ story }) => {
                   />
                 </Link>
                 <h1 className="recents-title">{histoire.titre}</h1>
-                <Link href={`/compte/${histoire?.auteurId}`}>
+                <Link href={`/utilisateur/${histoire.auteur}`}>
                   <p className="recents-author">{histoire.auteurName}</p>
                 </Link>
                 <div className="genre-bg">

@@ -14,13 +14,13 @@ const ConstructionHistoirePage = async ({ params }) => {
   
   const storyData = await GetFullStoryByIdAction(histoireId);
   console.log("[STORY DATA COMPLETE]", storyData);
+  
   let user;
 
   try {
     const session = await getSession();
-    console.log("[USER SESSION]", session);
     user = session?.user;
-    if (user.id !== storyData.auteur) {
+    if (user.id !== storyData.auteur || !user) {
       redirect("/auth/signin");
     }
   } catch (err) {
@@ -49,7 +49,7 @@ const ConstructionHistoirePage = async ({ params }) => {
 
   return (
     <div className="construction-page-container">
-      <NavBar />
+      <NavBar user={user} />
       <div>
         <GridProvider
           initialNodes={initialNodes}
