@@ -19,7 +19,7 @@ const CreationHistoirePage = async () => {
 
   return (
     <div>
-      <NavBar />
+      <NavBar user={user} />
       <CreationHistoireForm user={user} />
     </div>
   );

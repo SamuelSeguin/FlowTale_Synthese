@@ -5,6 +5,7 @@ import Footer from "../_components/Footer";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import PublicDisplay from "./PublicDisplay";
 
 const CompteCreateur = ({ user, story = [] }) => {
   const containerRef = useRef();
@@ -30,11 +31,6 @@ const CompteCreateur = ({ user, story = [] }) => {
       delay: 0.3,
     });
   });
-
-  const publicHandler = async (formData) => {
-    const publicCheck = formData.get("publicCheck");
-    console.log(publicCheck);
-  };
 
   console.log("USER COMPTE CREATEUR PARAMS :", user);
   console.log("STORY COMPTE CREATEUR PARAMS :", story);
@@ -73,7 +69,7 @@ const CompteCreateur = ({ user, story = [] }) => {
         ) : (
           story.map((histoire) => (
             <article className="histoire-container" key={histoire.id}>
-              <div className="histoire-image"></div>
+              <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
               <div className="text-content">
                 <img className="bin" src="/png/bin.png" alt="" />
                 <h2 className="histoire-titre">{histoire.titre}</h2>
@@ -87,7 +83,7 @@ const CompteCreateur = ({ user, story = [] }) => {
                     <Link href={`/histoires/${histoire.id}`}>
                       <img src="/png/magnifier.png" alt="visualisation" />
                     </Link>
-                    <form action={publicHandler}></form>
+                    <PublicDisplay isPublic={histoire.public} storyId={histoire.id} userId={user.id}/>
                   </div>
 
                   <div className="icons-bottom">

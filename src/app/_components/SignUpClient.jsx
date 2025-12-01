@@ -32,8 +32,15 @@ const SignUpClient = () => {
     const result = await authClient.signUp.email({
       email,
       name,
-      password,
-      callbackURL: "/",
+      password,      
+    }, {
+      onSucess: (data) => {
+     // redirection
+
+      },
+      onError: (err) => {
+        console.log(err, 'SIGNUP ERROR');
+      }
     });
 
     console.log(result);

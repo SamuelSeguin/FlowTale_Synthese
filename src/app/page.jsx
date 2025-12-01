@@ -1,3 +1,4 @@
+import { getSession } from "@/lib/auth";
 import { GetAllStoriesAction } from "./_actions/storyAction";
 import Accueil from "./_components/Accueil";
 import NavBar from "./_components/NavBar";
@@ -20,11 +21,21 @@ const HomePage = async () => {
     // .ENV.PROD
   }
 
+  let user;
+
+  try {
+    const session = await getSession();
+    user = session?.user;
+    console.log("Vous êtes connecter!")
+  } catch (err) {
+    console.log("Vous n'êtes pas connecter!")
+  }
+
   const story = await GetAllStoriesAction();
 
   return (
     <>
-      <NavBar />
+      <NavBar user={user}/>
       <Accueil story={story} />
     </>
   );

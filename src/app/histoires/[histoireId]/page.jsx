@@ -13,9 +13,19 @@ const FicheHistoirePage = async ({ params }) => {
     redirect("/404");
   }
 
+  let user;
+
+  try {
+    const session = await getSession();
+    user = session?.user;
+    console.log("Vous êtes connecter!")
+  } catch (err) {
+    console.log("Vous n'êtes pas connecter!")
+  }
+
   return (
     <div>
-      <NavBar />
+      <NavBar user={user}/>
       <FicheHistoire histoire={histoire[0]}  />
     </div>
   );

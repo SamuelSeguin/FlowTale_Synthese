@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, startTransition} from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./CreationHistoireForm.css";
 import { CreationHistoireAction } from "../_actions/storyAction";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -62,6 +63,10 @@ const CreationForm = ({ user }) => {
     console.log(newHistoireData);
 
     await CreationHistoireAction(newHistoireData);
+
+    startTransition(() => {
+      redirect(`constructionHistoire/${newHistoireData.id}`)
+    })
   };
 
   const [modalOuvert, setModalOuvert] = useState(false);

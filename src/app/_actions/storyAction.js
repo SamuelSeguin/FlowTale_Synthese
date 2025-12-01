@@ -1,6 +1,6 @@
 "use server"
 
-import { CreationHistoire, GetAllStories, GetFullStoryById, GetStoryById, GetStoryByUserId } from "../_data/story"
+import { CreationHistoire, GetAllStories, GetFullStoryById, GetStoryById, GetStoryByUserId, UpdatePublicStoryById } from "../_data/story"
 import { revalidatePath } from "next/cache";
 
 export const CreationHistoireAction = async (histoireData) => {
@@ -26,4 +26,9 @@ export const GetStoryByIdAction = async (storyId) => {
 export const GetFullStoryByIdAction = async (storyId) => {
     const result = await GetFullStoryById(storyId) ;
     return result;
+}
+
+export const UpdatePublicStoryByIdAction = async (storyId, userId, publicValue) => {
+    await UpdatePublicStoryById(storyId, publicValue);
+    revalidatePath(`/compte/${userId}`)
 }
