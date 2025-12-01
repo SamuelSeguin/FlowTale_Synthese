@@ -1,11 +1,46 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./CreationHistoireForm.css";
 import { CreationHistoireAction } from "../_actions/storyAction";
 import Link from "next/link";
 
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+
 const CreationForm = ({ user }) => {
+  const formRef = useRef();
+  const leftMessageRef = useRef();
+
+  useGSAP(() => {
+    gsap.from(leftMessageRef.current, {
+      opacity: 0,
+      x: -40,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    gsap.from(formRef.current, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      delay: 0.3,
+      ease: "power3.out",
+    });
+
+    const fields = formRef.current.querySelectorAll(
+      "input, textarea, select, button[type='submit']"
+    );
+    gsap.from(fields, {
+      opacity: 0,
+      y: 25,
+      stagger: 0.12,
+      delay: 0.5,
+      duration: 0.7,
+      ease: "power2.out",
+    });
+  });
+
   const CreationAction = async (formData) => {
     // Récupérer les trois valeurs, titre / synopsis / ambiance / animation / musique
     const titre = formData.get("titre");
@@ -36,13 +71,13 @@ const CreationForm = ({ user }) => {
 
   return (
     <div className="form-background">
-      <div className="creation-left-message">
+      <div className="creation-left-message" ref={leftMessageRef}>
         <p>
           Imagine. <br /> Anime. <br /> Partage.
         </p>
       </div>
 
-      <form className="creation-form" action={CreationAction}>
+      <form className="creation-form" action={CreationAction} ref={formRef}>
         <h2 className="titre-form-creation">Nouvelle histoire</h2>
 
         <label>
