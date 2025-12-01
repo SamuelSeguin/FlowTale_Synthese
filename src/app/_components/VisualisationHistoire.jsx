@@ -9,6 +9,8 @@ import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 const VisualisationHistoire = ({ story }) => {
   const [parsedNodes, setParsedNodes] = useState([]);
   const [currentNode, setCurrentNode] = useState(null);
+  const [choixEnAttente, setChoixEnAttente] = useState(null);
+  const [choixTexte, setChoixTexte] = useState("");
   const textRef = useRef();
   const backgroundRef = useRef();
 
@@ -159,6 +161,11 @@ const VisualisationHistoire = ({ story }) => {
     if (next) setCurrentNode(next);
   };
 
+  const gererChoix = (idNoeud, texte) => {
+    setChoixEnAttente(idNoeud);
+    setChoixTexte(texte);
+  };
+
   return (
     <div className={wrapperClass} ref={backgroundRef}>
       {story.ambiance === "fantastique" && (
@@ -230,12 +237,25 @@ const VisualisationHistoire = ({ story }) => {
               {outgoing.map((edge) => (
                 <button
                   key={edge.id}
-                  className="choix-btn"
-                  onClick={() => goToNode(edge.target)}
+                  className={
+                    choixEnAttente === edge.target
+                      ? "choix-btn selected"
+                      : "choix-btn"
+                  }
+                  onClick={() => gererChoix(edge.target, edge.data?.texte)}
                 >
                   {edge.data?.texte || "Choisir"}
                 </button>
               ))}
+
+              {choixEnAttente && (
+                <button
+                  className="choix-btn-continuer"
+                  onClick={() => goToNode(choixEnAttente)}
+                >
+                  Continuer → {choixTexte}
+                </button>
+              )}
             </div>
           </div>
         )}
