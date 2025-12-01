@@ -1,0 +1,1 @@
+ALTER TABLE `story` ADD `public` integer NOT NULL;

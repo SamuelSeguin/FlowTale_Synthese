@@ -8,8 +8,7 @@ const RecentsUiCard = ({ story }) => {
     <section className="recents-section">
       <h1 className="recents-section-title">Créations du moment</h1>
       <div className="recents-grid">
-        {story.map(
-          (histoire) => (
+        {story.map((histoire) => histoire.public === 1 ? (
             console.log("HISTOIRE DANS RECENTSUICARD :", histoire),
             (
               <div className="card-container" key={histoire.id}>
@@ -29,7 +28,7 @@ const RecentsUiCard = ({ story }) => {
                 </div>
               </div>
             )
-          )
+          ) : null
         )}
       </div>
     </section>

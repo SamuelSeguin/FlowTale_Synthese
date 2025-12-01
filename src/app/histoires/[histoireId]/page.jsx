@@ -7,21 +7,11 @@ import { redirect } from "next/navigation";
 const FicheHistoirePage = async ({ params }) => {
   const { histoireId } = await params;
   const histoire = await GetStoryById(histoireId);
-  // let user;
+  console.log("HISTOIRE DANS FICHE HISTOIRE PAGE :", histoire);
 
-  // try {
-  //   const session = await getSession();
-  //   user = session?.user;
-  //   if (!user) {
-  //     redirect("/auth/signin");
-  //   }
-  // } catch (err) {
-  //   redirect("/auth/signin");
-  // }
-
-  // if (!histoire) {
-  //   redirect("/404");
-  // }
+  if (histoire === null || histoire.length === 0) {
+    redirect("/404");
+  }
 
   return (
     <div>

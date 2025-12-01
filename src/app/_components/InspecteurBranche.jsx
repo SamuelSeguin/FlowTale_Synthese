@@ -29,37 +29,11 @@ const InspecteurBranche = ({ selection, setHandler }) => {
     });
   };
 
-  const getNodeLabelById = (nodeId) => {
-    const node = nodes.find((n) => n.id === nodeId);
-    if (!node) return "Inconnu";
-
-    try {
-      const parsed =
-        typeof node.data === "string" ? JSON.parse(node.data) : node.data;
-      return parsed?.label ?? "Sans titre";
-    } catch {
-      return "Erreur parsing";
-    }
-  };
-
-  const sourceLabel = getNodeLabelById(selection.edge.source);
-  const targetLabel = getNodeLabelById(selection.edge.target);
-
   return (
     <>
       <div className="inspecteur-branche">
         <form action={updateLocalBranch}>
           <h1>Modifier une branche</h1>
-
-          {/* INFO SOURCE / TARGET */}
-          {/* <div>
-            <p>
-              <strong>Source :</strong> {sourceLabel}
-            </p>
-            <p>
-              <strong>Target :</strong> {targetLabel}
-            </p>
-          </div> */}
 
           <div className="floating-label">
             <label>Description </label>

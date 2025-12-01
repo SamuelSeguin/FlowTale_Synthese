@@ -12,7 +12,6 @@ const CreationForm = ({ user }) => {
     const auteur = user.id;
     const synopsis = formData.get("synopsis");
     const ambiance = formData.get("ambiance");
-    const animation = formData.get("animation");
     const musique = formData.get("musique");
 
     const newHistoireData = {
@@ -22,7 +21,6 @@ const CreationForm = ({ user }) => {
       auteurName: user.name,
       synopsis,
       ambiance,
-      animation,
       musique,
     };
 

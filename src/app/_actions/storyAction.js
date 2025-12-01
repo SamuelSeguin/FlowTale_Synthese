@@ -1,6 +1,6 @@
 "use server"
 
-import { CreationHistoire, GetAllStories, GetFullStoryById, GetStoryByUserId } from "../_data/story"
+import { CreationHistoire, GetAllStories, GetFullStoryById, GetStoryById, GetStoryByUserId } from "../_data/story"
 import { revalidatePath } from "next/cache";
 
 export const CreationHistoireAction = async (histoireData) => {
@@ -19,7 +19,7 @@ export const GetStoryByUserIdAction = async (userId) => {
 }
 
 export const GetStoryByIdAction = async (storyId) => {
-    const result = console.log(`Récupération de l'histoire avec l'ID ${storyId}`);
+    const result = await GetStoryById(storyId);
     return result;
 }
 

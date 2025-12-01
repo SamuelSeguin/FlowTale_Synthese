@@ -2,7 +2,7 @@
 import Link from "next/link";
 import "./NavBar.css";
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
   return (
     <div className="nav">
       <Link href="/">

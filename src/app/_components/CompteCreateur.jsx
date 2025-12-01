@@ -4,6 +4,12 @@ import "./CompteCreateur.css";
 import Footer from "../_components/Footer";
 
 const CompteCreateur = ({ user, story = [] }) => {
+
+  const publicHandler = async (formData) => {
+    const publicCheck = formData.get("publicCheck");
+    console.log(publicCheck)
+  }
+
   console.log("USER COMPTE CREATEUR PARAMS :", user);
   console.log("STORY COMPTE CREATEUR PARAMS :", story);
 
@@ -42,10 +48,15 @@ const CompteCreateur = ({ user, story = [] }) => {
                 <p className="histoire-synopsis">{histoire.synopsis}</p>
                 <div className="icons">
                   <div className="icons-top">
+                    <Link href={`/constructionHistoire/${histoire.id}`}>
                     <img src="/png/pencil-square-o.png" alt="modifier" />
+                    </Link>
                     <Link href={`/histoires/${histoire.id}`}>
                       <img src="/png/magnifier.png" alt="visualisation" />
                     </Link>
+                    <form action={publicHandler}>
+                      
+                    </form>
                   </div>
 
                   <div className="icons-bottom">

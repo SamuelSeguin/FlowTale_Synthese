@@ -2,7 +2,6 @@
 import AuthForm from "@/app/_components/AuthForm";
 import { authClient } from "@/lib/auth-client";
 import "./SignUpClient.css";
-import { redirect } from "next/dist/server/api-utils";
 
 const SignUpClient = () => {
   const InscriptionAction = async (formData) => {
@@ -18,10 +17,6 @@ const SignUpClient = () => {
       name,
       password,
       callbackURL: "/",
-    }, {
-      onSuccess: (ctx) => {
-        redirect("/auth/signin");
-      }
     });
 
     console.log(result);

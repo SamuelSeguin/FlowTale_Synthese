@@ -5,25 +5,30 @@ import MainPageClient from "@/app/_components/MainPageClient";
 import { GridProvider } from "@/app/_contexts/gridContext";
 import { redirect } from "next/navigation";
 import "../../_components/ConstructionHistoire.css";
+import { GetFullStoryByIdAction, GetStoryByIdAction } from "@/app/_actions/storyAction";
+import { getSession } from "@/lib/auth";
 
 const ConstructionHistoirePage = async ({ params }) => {
+  const { histoireId } = await params;
+  console.log("[HISTOIRE ID]", histoireId);
+  
+  const storyData = await GetFullStoryByIdAction(histoireId);
+  console.log("[STORY DATA COMPLETE]", storyData);
   let user;
 
   try {
     const session = await getSession();
     console.log("[USER SESSION]", session);
     user = session?.user;
-    if (!user) {
-      // redirect("/auth/signin");
+    if (user.id !== storyData.auteur) {
+      redirect("/auth/signin");
     }
   } catch (err) {
-    // redirect("/auth/signin");
+    console.log("[ERROR SESSION USER]", err);
+    redirect("/auth/signin");
   }
 
-  const { histoireId } = params;
-  console.log("[HISTOIRE ID]", histoireId);
-
-  const nodeData = await GetAllNodesAction();
+  const nodeData = storyData.nodes;
   console.log("[NODES RECUPERES]", nodeData);
 
   const initialNodes = nodeData.map((node) => ({
@@ -32,7 +37,7 @@ const ConstructionHistoirePage = async ({ params }) => {
     data: JSON.parse(node.data),
   }));
 
-  const edgeData = await GetAllEdgesAction();
+  const edgeData = storyData.edges;
   console.log("[EDGES RECUPERES]", edgeData);
 
   const initialEdges = edgeData.map((edge) => ({
@@ -52,7 +57,7 @@ const ConstructionHistoirePage = async ({ params }) => {
           storyId={histoireId}
         >
           <main>
-            <h1 className="construction-page-titre">Titre de l'histoire</h1>
+            <h1 className="construction-page-titre">{storyData.titre}</h1>
             <MainPageClient nodeData={initialNodes} />
           </main>
         </GridProvider>
