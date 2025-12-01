@@ -18,24 +18,20 @@ const Accueil = ({ story }) => {
           </h1>
           <div className="btn-hero">
             <Link href="/creationHistoire">
-            <button className="heroCta">
-              <span className="cta-arrow left">→</span>
-              <span className="cta-text">Créer</span>
-              <span className="cta-arrow right">→</span>
-            </button>
+              <button className="heroCta">
+                <span className="cta-arrow left">→</span>
+                <span className="cta-text">Créer</span>
+                <span className="cta-arrow right">→</span>
+              </button>
             </Link>
           </div>
         </section>
       </div>
 
       <section className="info">
-        <div>
-          <em>Créez </em>
-          des récits interactifs,
-          <em> explorez </em>
-          ceux des autres et
-          <em> partagez </em>
-          vos créations en quelques clics.
+        <div className="gradient-text">
+          Créez des récits interactifs, explorez ceux des autres et partagez vos
+          créations en quelques clics.
         </div>
       </section>
       <RecentsUiCard story={story} />

@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div>
       <div className="footer-container-flex">
-        <img className="footer-logo" src="/svg/logo.png" alt="" />
+        <img className="footer-logo" src="/png/logo-footer.png" alt="" />
         <p className="footer-text">
           Application réalisée par Émilie Paquin et Samuel Séguin
         </p>
