@@ -7,6 +7,7 @@ const CompteCreateur = ({ user, story = [] }) => {
 
   const publicHandler = async (formData) => {
     const publicCheck = formData.get("publicCheck");
+    console.log("TEST");
     console.log(publicCheck)
   }
 
