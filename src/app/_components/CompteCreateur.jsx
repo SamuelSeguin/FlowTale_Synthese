@@ -19,6 +19,14 @@ const CompteCreateur = ({ user, story = [] }) => {
       </div>
       <h1 className="titre-page">Vos créations</h1>
       <div className="histoires-container-flex">
+        <article className="histoire-container create-story">
+          <div>
+            <h2 className="create-title">Créer une histoire</h2>
+            <p className="create-text">Commencez votre aventure ici</p>
+          </div>
+          <img className="create-plus" src="/png/plus.png" alt="" />
+        </article>
+
         {story.length === 0 ? (
           <p>
             Vous n'avez pas encore créé d'histoires. Commencez dès maintenant !
@@ -27,8 +35,8 @@ const CompteCreateur = ({ user, story = [] }) => {
           story.map((histoire) => (
             <article className="histoire-container" key={histoire.id}>
               <div className="histoire-image"></div>
-
               <div className="text-content">
+                <img className="bin" src="/png/bin.png" alt="" />
                 <h2 className="histoire-titre">{histoire.titre}</h2>
                 <h2 className="histoire-auteur">{histoire.auteurName}</h2>
                 <p className="histoire-synopsis">{histoire.synopsis}</p>

@@ -35,7 +35,6 @@ export const storyTables = sqliteTable("story", {
     auteurName: text("auteurName").notNull(),
     synopsis: text("synopsis").notNull(),
     ambiance: text("ambiance").notNull(),
-    animation: text("animation").notNull(),
     musique: text("musique").notNull(),
     createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
 });

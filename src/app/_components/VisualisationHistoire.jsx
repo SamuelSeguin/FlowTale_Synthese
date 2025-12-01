@@ -176,15 +176,30 @@ const VisualisationHistoire = ({ story }) => {
             <div className="fin-histoire">
               <p ref={textRef}>{currentNode.data?.description}</p>
             </div>
-            <Link href={`/histoires/${story.id}`}>
-              <button className="visualisation-cta-btn">
-                <span className="visualisation-cta-arrow left">→</span>
-                <span className="visualisation-cta-text">
-                  Retour à l'accueil
-                </span>
-                <span className="visualisation-cta-arrow right">→</span>
-              </button>
-            </Link>
+            <div className="btn-flex">
+              <Link href={`/histoires/${story.id}`}>
+                <button className="visualisation-cta-btn">
+                  <span className="visualisation-cta-arrow left">→</span>
+                  <span className="visualisation-cta-text">
+                    Retour à l'accueil
+                  </span>
+                  <span className="visualisation-cta-arrow right">→</span>
+                </button>
+              </Link>
+              <Link href="">
+                <button className="visualisation-recommencer-btn">
+                  <span className="visualisation-recommencer-arrow left">
+                    →
+                  </span>
+                  <span className="visualisation-recommencer-text">
+                    Recommencer
+                  </span>
+                  <span className="visualisation-recommencer-arrow right">
+                    →
+                  </span>
+                </button>
+              </Link>
+            </div>
           </>
         )}
 

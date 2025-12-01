@@ -41,8 +41,9 @@
 .fiche-auteur {
   font-family: "Creato-Medium";
   font-size: 1.2rem;
-  margin-top: 1rem;
-  color: #ec6e9e;
+  color: rgba(54, 54, 54, 0.589);
+  margin-top: 5;
+  margin-bottom: 20;
 }
 
 .fiche-synopsis {
@@ -102,4 +103,17 @@
 .fiche-cta-btn:hover .fiche-cta-arrow.right {
   opacity: 0;
   transform: translateX(32px);
+}
+
+.genre-fiche {
+  color: white;
+  font-size: 0.9rem;
+  margin: 0;
+  font-family: "Creato";
+}
+.genre-fiche-bg {
+  display: inline-block;
+  background: linear-gradient(90deg, #ec6e9e, #f7ab93, #ffa97b);
+  padding: 4px 12px;
+  border-radius: 20px;
 }

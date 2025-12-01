@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: #e0e0e05b;
-  margin: 100px;
-  margin-bottom: 0;
+  margin: 0 100px 0 100px;
   border-radius: 50px;
   padding-bottom: 80px;
 }
@@ -13,17 +12,14 @@
   padding-top: 60px;
   font-size: 2.5rem;
   font-family: Creato;
-  text-transform: uppercase;
   color: rgb(54, 54, 54);
 }
 
 .recents-grid {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 400px 400px 400px;
+  gap: 100px;
   justify-content: center;
-  padding-top: 30px;
-  gap: 60px;
-  flex-wrap: wrap;
 }
 
 .card-container {
@@ -44,12 +40,32 @@
 }
 
 .recents-title {
-  padding-left: 10px;
+  font-family: "Creato-Bold";
+  font-size: 1.6rem;
+  margin-left: 10px;
   max-width: 400px;
   color: rgb(54, 54, 54);
+  margin-bottom: 5;
 }
 
 .recents-author {
   padding-left: 10px;
-  color: #ec6e9e;
+  color: rgba(54, 54, 54, 0.589);
+  font-family: "Creato-ExtraBold";
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.genre {
+  color: white;
+  font-size: 0.9rem;
+  margin: 0;
+  font-family: "Creato";
+}
+.genre-bg {
+  display: inline-block;
+  background: linear-gradient(90deg, #ec6e9e, #f7ab93, #ffa97b);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-left: 10px;
 }

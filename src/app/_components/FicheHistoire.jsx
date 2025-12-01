@@ -16,6 +16,9 @@ const FicheHistoire = ({ histoire, user }) => {
             <Link href={`/compte/${histoire?.auteurId}`}>
               <h2 className="fiche-auteur">{histoire?.auteurName}</h2>
             </Link>
+            <div className="genre-fiche-bg">
+              <p className="genre-fiche">{histoire.ambiance}</p>
+            </div>
             <p className="fiche-synopsis">{histoire?.synopsis}</p>
 
             <Link href={`/histoires/${histoire?.id}/jouer`}>
