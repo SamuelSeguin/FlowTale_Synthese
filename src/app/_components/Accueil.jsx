@@ -3,11 +3,70 @@ import "./Accueil.css";
 import RecentsUiCard from "../_components/RecentsUiCard";
 import Footer from "../_components/Footer";
 import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Accueil = ({ story }) => {
+  const heroRef = useRef();
+  const infoTextRef = useRef();
+  const cardsRef = useRef();
+
+  useGSAP(() => {
+    // HERO ANIMATION
+    gsap.from(heroRef.current.querySelector(".heroTitle"), {
+      opacity: 0,
+      y: 60,
+      duration: 1.2,
+      ease: "power3.out",
+    });
+
+    // HERO BUTTON ANIMATION
+    const btn = heroRef.current.querySelector(".heroCta");
+    gsap.from(btn, {
+      opacity: 0,
+      scale: 0.6,
+      delay: 0.4,
+      duration: 1,
+      ease: "back.out(1.7)",
+    });
+
+    // INFO TEXT SCROLL ANIMATION
+    gsap.from(infoTextRef.current, {
+      scrollTrigger: {
+        trigger: infoTextRef.current,
+        start: "top 90%",
+      },
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      ease: "power2.out",
+    });
+
+    // RECENT CARDS ANIMATION
+    const cards = cardsRef.current?.querySelectorAll(".recent-card");
+
+    if (cards) {
+      gsap.from(cards, {
+        scrollTrigger: {
+          trigger: cardsRef.current,
+          start: "top 85%",
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.9,
+        stagger: 0.15,
+        ease: "power3.out",
+      });
+    }
+  });
+
   return (
     <div className="container">
-      <div className="header-background">
+      <div className="header-background" ref={heroRef}>
         <section className="hero">
           <h1 className="heroTitle">
             L’ART DE RACONTER, RÉINVENTÉ.
@@ -29,12 +88,14 @@ const Accueil = ({ story }) => {
       </div>
 
       <section className="info">
-        <div className="gradient-text">
+        <div className="gradient-text" ref={infoTextRef}>
           Créez des récits interactifs, explorez ceux des autres et partagez vos
           créations en quelques clics.
         </div>
       </section>
-      <RecentsUiCard story={story} />
+      <div ref={cardsRef}>
+        <RecentsUiCard story={story} />
+      </div>
       <Footer />
     </div>
   );

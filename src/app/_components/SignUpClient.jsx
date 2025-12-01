@@ -4,7 +4,23 @@ import { authClient } from "@/lib/auth-client";
 import "./SignUpClient.css";
 import { redirect } from "next/dist/server/api-utils";
 
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 const SignUpClient = () => {
+  const containerRef = useRef();
+  const messageRef = useRef();
+
+  useGSAP(() => {
+    gsap.from(messageRef.current, {
+      opacity: 0,
+      x: -40,
+      duration: 1,
+      ease: "power3.out",
+    });
+  });
+
   const InscriptionAction = async (formData) => {
     // Récupérer les trois valeurs, username / email / password
     const name = formData.get("name");
@@ -13,39 +29,44 @@ const SignUpClient = () => {
     // Validation Client
 
     // AuthClient SignUp
-    const result = await authClient.signUp.email({
-      email,
-      name,
-      password,
-      callbackURL: "/",
-    }, {
-      onSuccess: (ctx) => {
-        redirect("/auth/signin");
+    const result = await authClient.signUp.email(
+      {
+        email,
+        name,
+        password,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: (ctx) => {
+          redirect("/auth/signin");
+        },
       }
-    });
+    );
 
     console.log(result);
   };
 
   return (
     <div>
-      <div className="signup-left-message">
+      <div className="signup-left-message" ref={messageRef}>
         <p>
           Créez un compte et <span>donnez vie</span> à vos{" "}
           <span>histoires</span>.
         </p>
       </div>
 
-      <AuthForm
-        titre={"Créez votre compte"}
-        callActionTitre={"S'inscrire"}
-        showName={true}
-        formAction={InscriptionAction}
-      >
-        <p className="text-signin">
-          Vous avez déjà un compte ? <a href="/auth/signin">Se connecter</a>
-        </p>
-      </AuthForm>
+      <div ref={containerRef}>
+        <AuthForm
+          titre={"Créez votre compte"}
+          callActionTitre={"S'inscrire"}
+          showName={true}
+          formAction={InscriptionAction}
+        >
+          <p className="text-signin">
+            Vous avez déjà un compte ? <a href="/auth/signin">Se connecter</a>
+          </p>
+        </AuthForm>
+      </div>
     </div>
   );
 };

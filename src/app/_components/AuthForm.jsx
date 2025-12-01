@@ -1,5 +1,9 @@
 import "./AuthForm.css";
 
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+
 const AuthForm = ({
   titre,
   callActionTitre,
@@ -8,9 +12,34 @@ const AuthForm = ({
   children,
 }) => {
   console.log(formAction);
+
+  const formRef = useRef();
+
+  useGSAP(() => {
+    const form = formRef.current;
+
+    gsap.from(form, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    const fields = form.querySelectorAll("input, button");
+
+    gsap.from(fields, {
+      opacity: 0,
+      y: 25,
+      stagger: 0.12,
+      delay: 0.3,
+      duration: 0.7,
+      ease: "power2.out",
+    });
+  });
+
   return (
     <div className="form-background">
-      <form action={formAction} className="auth-form">
+      <form ref={formRef} action={formAction} className="auth-form">
         <h2>{titre}</h2>
         {!showName ? (
           ""
