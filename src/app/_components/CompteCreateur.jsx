@@ -2,13 +2,39 @@
 import Link from "next/link";
 import "./CompteCreateur.css";
 import Footer from "../_components/Footer";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const CompteCreateur = ({ user, story = [] }) => {
+  const containerRef = useRef();
+  const titreRef = useRef();
+
+  useGSAP(() => {
+    gsap.from(titreRef.current, {
+      opacity: 0,
+      y: -40,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    const cards = containerRef.current.querySelectorAll(
+      ".histoire-container, .create-story"
+    );
+    gsap.from(cards, {
+      opacity: 0,
+      y: 30,
+      stagger: 0.5,
+      duration: 0.8,
+      ease: "power3.out",
+      delay: 0.3,
+    });
+  });
 
   const publicHandler = async (formData) => {
     const publicCheck = formData.get("publicCheck");
-    console.log(publicCheck)
-  }
+    console.log(publicCheck);
+  };
 
   console.log("USER COMPTE CREATEUR PARAMS :", user);
   console.log("STORY COMPTE CREATEUR PARAMS :", story);
@@ -23,15 +49,22 @@ const CompteCreateur = ({ user, story = [] }) => {
         )}
         <h2>{user?.name}</h2>
       </div>
-      <h1 className="titre-page">Vos créations</h1>
-      <div className="histoires-container-flex">
-        <article className="histoire-container create-story">
-          <div>
-            <h2 className="create-title">Créer une histoire</h2>
-            <p className="create-text">Commencez votre aventure ici</p>
-          </div>
-          <img className="create-plus" src="/png/plus.png" alt="" />
-        </article>
+      <h1 className="titre-page" ref={titreRef}>
+        Vos créations
+      </h1>
+      <div className="histoires-container-flex" ref={containerRef}>
+        <Link
+          href="/creationHistoire"
+          className="histoire-container create-story"
+        >
+          <article>
+            <div>
+              <h2 className="create-title">Créer une histoire</h2>
+              <p className="create-text">Commencez votre aventure ici</p>
+            </div>
+            <img className="create-plus" src="/png/plus.png" alt="" />
+          </article>
+        </Link>
 
         {story.length === 0 ? (
           <p>
@@ -49,14 +82,12 @@ const CompteCreateur = ({ user, story = [] }) => {
                 <div className="icons">
                   <div className="icons-top">
                     <Link href={`/constructionHistoire/${histoire.id}`}>
-                    <img src="/png/pencil-square-o.png" alt="modifier" />
+                      <img src="/png/pencil-square-o.png" alt="modifier" />
                     </Link>
                     <Link href={`/histoires/${histoire.id}`}>
                       <img src="/png/magnifier.png" alt="visualisation" />
                     </Link>
-                    <form action={publicHandler}>
-                      
-                    </form>
+                    <form action={publicHandler}></form>
                   </div>
 
                   <div className="icons-bottom">

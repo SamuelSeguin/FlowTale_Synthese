@@ -129,6 +129,7 @@
   font-family: "Creato";
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 75px;
 }
 
 .create-story:hover {
@@ -144,8 +145,8 @@
 }
 
 .create-text {
-  color: rgba(32, 32, 32, 0.616);
-  font-family: "Creato-Bold";
+  color: rgb(255, 255, 255);
+  font-family: "Creato";
   margin: 0;
 }
 

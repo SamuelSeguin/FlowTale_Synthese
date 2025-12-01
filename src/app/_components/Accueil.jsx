@@ -46,10 +46,10 @@ const Accueil = ({ story }) => {
       ease: "power2.out",
     });
 
-    // RECENT CARDS ANIMATION
-    const cards = cardsRef.current?.querySelectorAll(".recent-card");
+    // CARDS ANIMATION
+    const cards = cardsRef.current?.querySelectorAll(".card-container");
 
-    if (cards) {
+    if (cards?.length) {
       gsap.from(cards, {
         scrollTrigger: {
           trigger: cardsRef.current,
@@ -58,7 +58,7 @@ const Accueil = ({ story }) => {
         opacity: 0,
         y: 50,
         duration: 0.9,
-        stagger: 0.15,
+        stagger: 0.4,
         ease: "power3.out",
       });
     }
