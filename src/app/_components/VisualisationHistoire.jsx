@@ -10,7 +10,6 @@ const VisualisationHistoire = ({ story }) => {
   const [parsedNodes, setParsedNodes] = useState([]);
   const [currentNode, setCurrentNode] = useState(null);
   const [choixEnAttente, setChoixEnAttente] = useState(null);
-  const [choixTexte, setChoixTexte] = useState("");
   const textRef = useRef();
   const backgroundRef = useRef();
 
@@ -157,13 +156,19 @@ const VisualisationHistoire = ({ story }) => {
   const outgoing = currentNode.outgoingEdges || [];
 
   const goToNode = (nodeId) => {
-    const next = parsedNodes.find((n) => n.id === nodeId);
-    if (next) setCurrentNode(next);
+    // Cherche le noeud qui a cet id
+    const node = parsedNodes.find((node) => node.id === nodeId);
+
+    if (!node) {
+      return; // si rien trouvé, on sort
+    }
+
+    setCurrentNode(node);
+    setChoixEnAttente(null);
   };
 
   const gererChoix = (idNoeud, texte) => {
     setChoixEnAttente(idNoeud);
-    setChoixTexte(texte);
   };
 
   return (
@@ -250,10 +255,10 @@ const VisualisationHistoire = ({ story }) => {
 
               {choixEnAttente && (
                 <button
-                  className="choix-btn-continuer"
+                  className="choix-btn-confirmer"
                   onClick={() => goToNode(choixEnAttente)}
                 >
-                  Continuer → {choixTexte}
+                  Confirmer mon choix
                 </button>
               )}
             </div>
