@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, startTransition} from "react";
+import React, { useState, useRef, startTransition } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./CreationHistoireForm.css";
 import { CreationHistoireAction } from "../_actions/storyAction";
@@ -65,8 +65,8 @@ const CreationForm = ({ user }) => {
     await CreationHistoireAction(newHistoireData);
 
     startTransition(() => {
-      redirect(`constructionHistoire/${newHistoireData.id}`)
-    })
+      redirect(`constructionHistoire/${newHistoireData.id}`);
+    });
   };
 
   const [modalOuvert, setModalOuvert] = useState(false);
@@ -119,12 +119,17 @@ const CreationForm = ({ user }) => {
           <br />
 
           <label>
-            <select className="select" name="musique" required defaultValue="">
+            <select
+              className="select"
+              name="animation"
+              required
+              defaultValue=""
+            >
               <option value="" disabled>
-                Musique
+                Animation
               </option>
-              <option value="classique">Classique</option>
-              <option value="magique">Magique</option>
+              <option value="classique">Fade in</option>
+              <option value="magique">Futuriste</option>
               <option value="suspense">Suspense</option>
               <option value="cyberpunk">Cyberpunk</option>
               <option value="calme">Calme</option>

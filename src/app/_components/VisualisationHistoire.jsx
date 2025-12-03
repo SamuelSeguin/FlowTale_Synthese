@@ -9,6 +9,7 @@ import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 const VisualisationHistoire = ({ story }) => {
   const [parsedNodes, setParsedNodes] = useState([]);
   const [currentNode, setCurrentNode] = useState(null);
+  const [choixEnAttente, setChoixEnAttente] = useState(null);
   const textRef = useRef();
   const backgroundRef = useRef();
 
@@ -155,8 +156,19 @@ const VisualisationHistoire = ({ story }) => {
   const outgoing = currentNode.outgoingEdges || [];
 
   const goToNode = (nodeId) => {
-    const next = parsedNodes.find((n) => n.id === nodeId);
-    if (next) setCurrentNode(next);
+    // Cherche le noeud qui a cet id
+    const node = parsedNodes.find((node) => node.id === nodeId);
+
+    if (!node) {
+      return; // si rien trouvé, on sort
+    }
+
+    setCurrentNode(node);
+    setChoixEnAttente(null);
+  };
+
+  const gererChoix = (idNoeud, texte) => {
+    setChoixEnAttente(idNoeud);
   };
 
   return (
@@ -230,12 +242,25 @@ const VisualisationHistoire = ({ story }) => {
               {outgoing.map((edge) => (
                 <button
                   key={edge.id}
-                  className="choix-btn"
-                  onClick={() => goToNode(edge.target)}
+                  className={
+                    choixEnAttente === edge.target
+                      ? "choix-btn selected"
+                      : "choix-btn"
+                  }
+                  onClick={() => gererChoix(edge.target, edge.data?.texte)}
                 >
                   {edge.data?.texte || "Choisir"}
                 </button>
               ))}
+
+              {choixEnAttente && (
+                <button
+                  className="choix-btn-confirmer"
+                  onClick={() => goToNode(choixEnAttente)}
+                >
+                  Confirmer mon choix
+                </button>
+              )}
             </div>
           </div>
         )}
