@@ -71,7 +71,7 @@ const InspecteurBase = ({ addNode, nodeData }) => {
       </button>
 
       <div className="btn-personnalisation">
-        <button className="btn-ambiance">Ambiance</button>
+        <button className="btn-ambiance">Animation</button>
         <button className="btn-image">Image</button>
       </div>
     </div>

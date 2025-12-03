@@ -4,13 +4,23 @@ import { GetFullStoryByIdAction } from "@/app/_actions/storyAction";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 
+///Titre dynamique de l’onglet
+export async function generateMetadata({ params }) {
+  const { histoireId } = params;
+  const storyData = await GetFullStoryByIdAction(histoireId);
+
+  return {
+    title: `${storyData.titre} - Commentaires`,
+  };
+}
+
 const CommentairesPage = async ({ params }) => {
   const { histoireId } = await params;
   console.log("HISTOIRE ID DANS PAGE COMMENTAIRES :", histoireId);
 
   const storyData = await GetFullStoryByIdAction(histoireId);
   console.log("[STORY DATA COMPLETE]", storyData);
-  
+
   let user;
 
   try {

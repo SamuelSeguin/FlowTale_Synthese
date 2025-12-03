@@ -5,16 +5,29 @@ import MainPageClient from "@/app/_components/MainPageClient";
 import { GridProvider } from "@/app/_contexts/gridContext";
 import { redirect } from "next/navigation";
 import "../../_components/ConstructionHistoire.css";
-import { GetFullStoryByIdAction, GetStoryByIdAction } from "@/app/_actions/storyAction";
+import {
+  GetFullStoryByIdAction,
+  GetStoryByIdAction,
+} from "@/app/_actions/storyAction";
 import { getSession } from "@/lib/auth";
+
+//Titre dynamique de l’onglet
+export async function generateMetadata({ params }) {
+  const { histoireId } = params;
+  const storyData = await GetFullStoryByIdAction(histoireId);
+
+  return {
+    title: `Construction - ${storyData.titre}`,
+  };
+}
 
 const ConstructionHistoirePage = async ({ params }) => {
   const { histoireId } = await params;
   console.log("[HISTOIRE ID]", histoireId);
-  
+
   const storyData = await GetFullStoryByIdAction(histoireId);
   console.log("[STORY DATA COMPLETE]", storyData);
-  
+
   let user;
 
   try {

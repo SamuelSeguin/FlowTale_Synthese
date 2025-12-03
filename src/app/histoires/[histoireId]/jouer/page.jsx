@@ -4,12 +4,22 @@ import VisualisationHistoire from "../../../_components/VisualisationHistoire";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 
+//Titre dynamique de l’onglet
+export async function generateMetadata({ params }) {
+  const { histoireId } = params;
+  const storyTitle = await GetFullStoryByIdAction(histoireId);
+
+  return {
+    title: `${storyTitle.titre} - Lecture`,
+  };
+}
+
 const HistoireVisualisationPage = async ({ params }) => {
-    const { histoireId } = await params;
+  const { histoireId } = await params;
   console.log("[HISTOIRE ID VISUALISATION]", histoireId);
 
   const storyInfo = await GetFullStoryByIdAction(histoireId);
-  console.log("[HISTOIRE INFO]", storyInfo)
+  console.log("[HISTOIRE INFO]", storyInfo);
 
   let user;
 
@@ -26,7 +36,7 @@ const HistoireVisualisationPage = async ({ params }) => {
   return (
     <div>
       <NavBar user={user} />
-      <VisualisationHistoire story={storyInfo}/>
+      <VisualisationHistoire story={storyInfo} />
     </div>
   );
 };
