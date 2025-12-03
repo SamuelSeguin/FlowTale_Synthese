@@ -7,10 +7,12 @@ import { redirect } from "next/dist/server/api-utils";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useRouter } from "next/navigation";
 
 const SignUpClient = () => {
   const containerRef = useRef();
   const messageRef = useRef();
+  const router = useRouter();
 
   useGSAP(() => {
     gsap.from(messageRef.current, {
@@ -29,19 +31,21 @@ const SignUpClient = () => {
     // Validation Client
 
     // AuthClient SignUp
-    const result = await authClient.signUp.email({
-      email,
-      name,
-      password,      
-    }, {
-      onSucess: (data) => {
-     // redirection
-
+    const result = await authClient.signUp.email(
+      {
+        email,
+        name,
+        password,
       },
-      onError: (err) => {
-        console.log(err, 'SIGNUP ERROR');
+      {
+        onSuccess: (data) => {
+          router.push("/auth/signin");
+        },
+        onError: (err) => {
+          console.log(err, "SIGNUP ERROR");
+        },
       }
-    });
+    );
 
     console.log(result);
   };

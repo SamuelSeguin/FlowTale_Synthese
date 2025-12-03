@@ -2,8 +2,7 @@
 import Link from "next/link";
 import "./NavBar.css";
 
-const NavBar = ({ user, auth = false}) => {
-
+const NavBar = ({ user, auth = false }) => {
   return (
     <div className="nav">
       <Link href="/">
@@ -14,7 +13,7 @@ const NavBar = ({ user, auth = false}) => {
           <Link href="/auth/signin">
             <button className="nav-btn">
               <span className="nav-cta-arrow left">→</span>
-              <span className="nav-cta-text">Authentification</span>
+              <span className="nav-cta-text">Se connecter</span>
               <span className="nav-cta-arrow right">→</span>
             </button>
           </Link>
