@@ -43,7 +43,7 @@ const CreationForm = ({ user }) => {
   });
 
   const CreationAction = async (formData) => {
-    // Récupérer les trois valeurs, titre / synopsis / ambiance / animation / musique
+    // Récupérer les valeurs titre / synopsis / ambiance / animation
     const titre = formData.get("titre");
     const auteur = user.id;
     const synopsis = formData.get("synopsis");
@@ -119,20 +119,14 @@ const CreationForm = ({ user }) => {
           <br />
 
           <label>
-            <select
-              className="select"
-              name="animation"
-              required
-              defaultValue=""
-            >
+            <select className="select" name="musique" required defaultValue="">
               <option value="" disabled>
                 Animation
               </option>
-              <option value="classique">Fade in</option>
-              <option value="magique">Futuriste</option>
-              <option value="suspense">Suspense</option>
-              <option value="cyberpunk">Cyberpunk</option>
-              <option value="calme">Calme</option>
+              {/* <option value="fadein">Fade in</option> */}
+              <option value="entreeChaotique">Entrée chaotique</option>
+              <option value="glissement">Glissement</option>
+              <option value="dechiffrage">Déchiffrage</option>
             </select>
           </label>
         </div>

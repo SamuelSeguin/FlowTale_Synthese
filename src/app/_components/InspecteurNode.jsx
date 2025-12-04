@@ -38,7 +38,7 @@ const InspecteurNode = ({ selection, setHandler }) => {
     <>
       <div className="inspecteur-node">
         <form className="inspecteurs-forms" action={updateLocalNode}>
-          <h1>Modifier un noeud</h1>
+          <h1>Modifier un événement</h1>
           <div className="floating-label">
             <input
               type="text"
@@ -57,14 +57,14 @@ const InspecteurNode = ({ selection, setHandler }) => {
             <label>Description</label>
           </div>
           <button type="submit" className="btn-inspecteur">
-            Mettre à jour le noeud
+            Mettre à jour l'événement
           </button>
         </form>
         <button
           className="btn-supprimer-node"
           onClick={() => deleteLocalNode(selection.node.id)}
         >
-          Supprimer un noeud
+          Supprimer un événement
         </button>
       </div>
     </>

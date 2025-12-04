@@ -9,7 +9,7 @@ import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 const VisualisationHistoire = ({ story }) => {
   const [parsedNodes, setParsedNodes] = useState([]);
   const [currentNode, setCurrentNode] = useState(null);
-  const [choixEnAttente, setChoixEnAttente] = useState(null);
+  const [choixEnAttente, setChoixEnAttente] = useState();
   const textRef = useRef();
   const backgroundRef = useRef();
 
@@ -20,6 +20,7 @@ const VisualisationHistoire = ({ story }) => {
 
     const split = new SplitText(textRef.current, { type: "words" });
     const splitLines = new SplitText(textRef.current, { type: "lines" });
+
     const horreurTl = gsap.timeline();
     const horreurBgTl = gsap.timeline({ repeat: -1, yoyo: true });
     const fantTl = gsap.timeline();
@@ -27,27 +28,11 @@ const VisualisationHistoire = ({ story }) => {
     const futTl = gsap.timeline();
     const futBgTl = gsap.timeline({ repeat: -1, yoyo: true });
 
-    //  -- HORREUR --
+    //// AMBIANCES ////
+    // HORREUR
     if (story.ambiance === "horreur") {
-      gsap.set(backgroundRef.current, {
-        "--bg-color": "#5e0c0c",
-      });
-
-      gsap.set(textRef.current, {
-        color: "#f02525",
-      });
-
-      horreurTl.from(split.words, {
-        opacity: 0,
-        y: 30,
-        rotation: -5,
-        duration: 0.5,
-        stagger: {
-          each: 0.08,
-          from: "random",
-        },
-        ease: "back.out(2)",
-      });
+      gsap.set(backgroundRef.current, { "--bg-color": "#5e0c0c" });
+      gsap.set(textRef.current, { color: "#f02525" });
 
       horreurBgTl.to(backgroundRef.current, {
         "--bg-color": "#100000",
@@ -55,20 +40,9 @@ const VisualisationHistoire = ({ story }) => {
         ease: "sine.inOut",
       });
 
-      //  -- FANTASTIQUE --
+      // FANTASTIQUE
     } else if (story.ambiance === "fantastique") {
-      gsap.set(textRef.current, {
-        color: "#31243e",
-      });
-
-      fantTl.from(splitLines.lines, {
-        opacity: 0,
-        x: -90,
-        scale: 0.8,
-        duration: 1.2,
-        stagger: 0.7,
-        ease: "power2.out",
-      });
+      gsap.set(textRef.current, { color: "#31243e" });
 
       fantBgTl.to(backgroundRef.current, {
         backgroundPosition: "100% 0%",
@@ -88,10 +62,36 @@ const VisualisationHistoire = ({ story }) => {
         stagger: { each: 0.5, from: "random" },
       });
 
-      //  -- FUTURISTE --
+      // FUTURISTE
     } else if (story.ambiance === "futuriste") {
       gsap.set(textRef.current, { color: "#97f8ff" });
+    }
 
+    //// ANIMATIONS ////
+    // Entrée chaotique
+    if (story.musique === "entreeChaotique") {
+      horreurTl.from(split.words, {
+        opacity: 0,
+        y: 30,
+        rotation: -5,
+        duration: 0.5,
+        stagger: { each: 0.08, from: "random" },
+        ease: "back.out(2)",
+      });
+    }
+    // // Glissement
+    else if (story.musique === "glissement") {
+      fantTl.from(splitLines.lines, {
+        opacity: 0,
+        x: -90,
+        scale: 0.8,
+        duration: 1.2,
+        stagger: 0.7,
+        ease: "power2.out",
+      });
+    }
+    // // Déchiffrage
+    else if (story.musique === "dechiffrage") {
       futTl.to(textRef.current, {
         duration: 2,
         scrambleText: {
@@ -115,7 +115,7 @@ const VisualisationHistoire = ({ story }) => {
   // --- Fonction qui parse seulement si c'est une string JSON ---
   const safeParse = (value) => {
     if (!value) return {};
-    if (typeof value === "object") return value; // déjà un objet OK
+    if (typeof value === "object") return value;
     if (typeof value === "string") {
       try {
         return JSON.parse(value);
@@ -142,13 +142,8 @@ const VisualisationHistoire = ({ story }) => {
 
     setParsedNodes(nodes);
 
-    // Recherche du nœud "Début"
     const startNode = nodes.find((n) => n.data?.type === "Début");
-
-    console.log("Nœud de départ trouvé :", startNode);
-
     if (startNode) setCurrentNode(startNode);
-    else console.warn("Aucun nœud de type 'Début' trouvé");
   }, [story]);
 
   if (!currentNode) return <div>Chargement...</div>;
@@ -156,18 +151,13 @@ const VisualisationHistoire = ({ story }) => {
   const outgoing = currentNode.outgoingEdges || [];
 
   const goToNode = (nodeId) => {
-    // Cherche le noeud qui a cet id
     const node = parsedNodes.find((node) => node.id === nodeId);
-
-    if (!node) {
-      return; // si rien trouvé, on sort
-    }
-
+    if (!node) return;
     setCurrentNode(node);
     setChoixEnAttente(null);
   };
 
-  const gererChoix = (idNoeud, texte) => {
+  const gererChoix = (idNoeud) => {
     setChoixEnAttente(idNoeud);
   };
 
@@ -182,12 +172,13 @@ const VisualisationHistoire = ({ story }) => {
       )}
 
       <div className="histoire-container">
-        {/* FIN DE L'HISTOIRE */}
+        {/* FIN */}
         {outgoing.length === 0 && (
           <>
             <div className="fin-histoire">
               <p ref={textRef}>{currentNode.data?.description}</p>
             </div>
+
             <div className="btn-flex">
               <Link href={`/histoires/${story.id}`}>
                 <button className="visualisation-cta-btn">
@@ -198,6 +189,7 @@ const VisualisationHistoire = ({ story }) => {
                   <span className="visualisation-cta-arrow right">→</span>
                 </button>
               </Link>
+
               <Link href="">
                 <button className="visualisation-recommencer-btn">
                   <span className="visualisation-recommencer-arrow left">
@@ -215,7 +207,7 @@ const VisualisationHistoire = ({ story }) => {
           </>
         )}
 
-        {/* NODE AVEC UN SEUL CHEMIN → AFFICHER "CONTINUER" */}
+        {/* 1 CHOIX */}
         {outgoing.length === 1 && (
           <div>
             <div className="node-content">
@@ -231,7 +223,7 @@ const VisualisationHistoire = ({ story }) => {
           </div>
         )}
 
-        {/* NODE AVEC PLUSIEURS CHOIX */}
+        {/* CHOIX MULTIPLES */}
         {outgoing.length > 1 && (
           <div>
             <div className="node-content">

@@ -27,7 +27,7 @@ const ComptePage = async () => {
 
   return (
     <div>
-      <NavBar userID={user.id} />
+      <NavBar user={user} />
       <CompteCreateur user={user} story={story} />
     </div>
   );
