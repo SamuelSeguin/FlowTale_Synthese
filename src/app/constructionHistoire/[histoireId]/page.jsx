@@ -71,7 +71,9 @@ const ConstructionHistoirePage = async ({ params }) => {
         >
           <main>
             <h1 className="construction-page-titre">{storyData.titre}</h1>
-            <MainPageClient nodeData={initialNodes} />
+            <MainPageClient nodeData={initialNodes} 
+            
+            />
           </main>
         </GridProvider>
       </div>

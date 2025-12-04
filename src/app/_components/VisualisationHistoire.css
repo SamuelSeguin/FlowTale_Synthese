@@ -35,6 +35,8 @@
   line-height: 1.5;
   color: #fff;
   background: transparent;
+  border: none;
+  box-shadow: none;
   display: flex;
   gap: 50px;
 }

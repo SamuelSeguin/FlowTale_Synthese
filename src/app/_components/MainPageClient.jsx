@@ -58,6 +58,10 @@ const MainPageClient = ({ nodeData }) => {
           >
             <Background variant={BackgroundVariant.Dots} />
           </ReactFlow>
+          <div className="btns-construction">
+            <button className="btn-save">Sauvegarder</button>
+            <button className="btn-publier">Publier</button>
+          </div>
         </div>
       </div>
       <Footer />
