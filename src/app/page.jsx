@@ -5,7 +5,7 @@ import NavBar from "./_components/NavBar";
 
 export const metadata = {
   title: "FlowTale",
-  description: "Gabarit de départ - Web 5",
+  description: "Projet synthèse - Web 5",
 };
 
 const HomePage = async () => {
