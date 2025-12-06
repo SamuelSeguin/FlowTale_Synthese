@@ -11,17 +11,20 @@ const PublicDisplay = ({ isPublic, storyId, userId }) => {
     }
 
     return (
-        <div>
-            {isPublic === 0 ? (
-                <button onClick={togglePublic} className="???">
-                    Mettre Publique ?
-                </button>
-            ) : (
-                <button onClick={togglePublic} className="???">
-                    Mettre Privé ?
-                </button>
-            )}
-        </div>
+    <div className="toggle-wrapper">
+    <label className="switch">
+    <input
+        type="checkbox"
+        checked={isPublic === 1}
+        onChange={togglePublic}
+    />
+    <span className="slider round"></span>
+    </label>
+
+    <span className="toggle-text">
+    {isPublic === 1 ? "Publié" : "Brouillon"}
+    </span>
+</div>
     );
 }
 
