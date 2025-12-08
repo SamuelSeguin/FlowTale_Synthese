@@ -1,28 +1,29 @@
+
 import { UpdatePublicStoryByIdAction } from "../_actions/storyAction";
 import "./PublicDisplay.css";
-
 const PublicDisplay = ({ isPublic, storyId, userId }) => {
-
     const togglePublic = async () => {
-        {isPublic === 0 ? 
-            await UpdatePublicStoryByIdAction(storyId, userId, 1) 
-        : 
-            await UpdatePublicStoryByIdAction(storyId, userId, 0)}
+        {
+            isPublic === 0 ?
+            await UpdatePublicStoryByIdAction(storyId, userId, 1)
+            :
+            await UpdatePublicStoryByIdAction(storyId, userId, 0)
+        }
     }
-
     return (
-        <div>
-            {isPublic === 0 ? (
-                <button onClick={togglePublic} className="???">
-                    Mettre Publique ?
-                </button>
-            ) : (
-                <button onClick={togglePublic} className="???">
-                    Mettre Privé ?
-                </button>
-            )}
+        <div className="toggle-wrapper brouillon">
+            <span className="toggle-text">
+                {isPublic === 1 ? "Publié" : "Brouillon"}
+            </span>
+            <label className="switch">
+                <input
+                    type="checkbox"
+                    checked={isPublic === 1}
+                    onChange={togglePublic}
+                />
+                <span className="slider round"></span>
+            </label>
         </div>
     );
 }
-
 export default PublicDisplay;

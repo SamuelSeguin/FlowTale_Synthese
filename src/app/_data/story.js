@@ -13,17 +13,6 @@ export const CreationHistoire = async (histoireData) => {
   }
 };
 
-// export const GetAllStories = async () => {
-//   try {
-//     const result = await db.select().from(storyTables);
-//     return result;
-//   } catch (err) {
-//     console.log("[GET ALL STORIES ERROR]", err);
-//     throw err;
-//   }
-// };
-
-// -- NEW --
 export const getPublishedStories = async () => {
   try {
     const result = await db

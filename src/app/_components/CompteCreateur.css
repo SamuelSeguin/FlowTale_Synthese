@@ -47,7 +47,6 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  align-items: center;
   width: 60%;
   padding: 15px;
   margin-bottom: 3rem;
@@ -55,18 +54,26 @@
   font-family: "Creato";
   background-color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.histoire-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .histoire-image {
-  min-width: 345px;
+  width: 450px;
   height: 300px;
   background-color: #e0e0e05b;
   border-radius: 20px;
 }
 
 .text-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   padding-left: 25px;
-  padding-right: 25px;
 }
 
 .histoire-titre {
@@ -84,39 +91,48 @@
   font-family: "Creato-ExtraBold";
 }
 
+.icons img {
+  height: 18px;
+}
+
 .icons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   gap: 14px;
+  margin-top: auto;
 }
 
-.icons img {
-  height: 23px;
-}
-
-.icons-top {
+.icons-left {
   display: flex;
   flex-direction: row;
   gap: 15px;
 }
 
-.icons-bottom a {
+.icons-right {
   display: flex;
   flex-direction: row;
+  gap: 15px;
+}
+
+.brouillon {
+  position: absolute;
+  right: 20;
+  top: 20;
+}
+
+.btn-link button {
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 5px;
-}
-
-.icons-bottom a {
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.bin {
-  position: absolute;
-  width: 25px;
-  right: 15;
-  top: 15;
+  background-color: black;
+  color: white;
+  border-radius: 50px;
+  padding: 10px;
+  width: 100px;
+  cursor: pointer;
 }
 
 .create-story {
@@ -124,6 +140,7 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
   min-height: 300px;
   background: linear-gradient(90deg, #ec6e9e 0%, #f7ab93 50%, #ffa97b 100%);
   color: white;
@@ -156,4 +173,39 @@
   width: 32px;
   bottom: 15;
   right: 15;
+}
+
+.btn-left {
+  all: unset;
+  transition: transform 0.2s ease;
+  transform: scale(1);
+}
+
+.btn-left:hover {
+  background: linear-gradient(90deg, #ec6e9e 0%, #f7ab93 50%, #ffa97b 100%);
+  transform: scale(1.05);
+}
+
+.btn-small {
+  width: 50px;
+  border-radius: 50px;
+  background-color: transparent;
+  border: #000000 1px solid;
+  padding: 7px 0 7px 0;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-small:hover {
+  transform: scale(1.08);
+  background-color: #000;
+  border-color: #000;
+}
+
+.btn-small img {
+  transition: filter 0.15s ease;
+}
+
+.btn-small:hover img {
+  filter: brightness(0) invert(1);
 }

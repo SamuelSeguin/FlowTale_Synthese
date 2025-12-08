@@ -1,26 +1,23 @@
 .fiche-container {
   height: 65vh;
-  width: 73%;
-  transform: translateX(10%);
+  width: 75%;
   background-color: #e0e0e05b;
-  margin-top: 150px;
-  padding: 100px;
-  padding-bottom: 0;
+  padding: 60px;
   font-family: "Creato";
   border-radius: 50px;
+  margin: 150px auto 0;
 }
 
 .fiche-flex {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
   gap: 200px;
 }
 
 .fiche-image {
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   border-radius: 50px;
   object-fit: cover;
 }
@@ -112,6 +109,7 @@
   margin: 0;
   font-family: "Creato";
 }
+
 .genre-fiche-bg {
   display: inline-block;
   background: linear-gradient(90deg, #ec6e9e, #f7ab93, #ffa97b);

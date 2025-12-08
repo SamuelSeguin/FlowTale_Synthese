@@ -4,14 +4,17 @@
   font-family: "Creato";
   src: url("/fonts/CreatoDisplay-Regular.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Creato-Medium";
   src: url("/fonts/CreatoDisplay-Medium.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Creato-Bold";
   src: url("/fonts/CreatoDisplay-Bold.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Creato-ExtraBold";
   src: url("/fonts/CreatoDisplay-ExtraBold.otf") format("opentype");
@@ -19,11 +22,9 @@
 
 :root {
   --color-cookie-bg: #ebd1da;
-  --color-cookie-darken: color-mix(
-    in hsl,
-    var(--color-cookie-bg) 60%,
-    #000 40%
-  );
+  --color-cookie-darken: color-mix(in hsl,
+      var(--color-cookie-bg) 60%,
+      #000 40%);
 
   --color-todo-text: #999;
   --color-todo-border: #e4e4e4;
@@ -46,4 +47,34 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.react-flow__node {
+  background: transparent !important;
+  backdrop-filter: blur(6px);
+  border-radius: 50px !important;
+  padding: 0.9rem 1.2rem !important;
+  border: 1rem solid black;
+  /* border: 1px solid #ec6e9e !important; */
+  /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.18); */
+}
+
+/* Hover */
+.react-flow__node:hover {
+  box-shadow: 0 14px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Handles */
+.react-flow__handle {
+  width: 10px !important;
+  height: 10px !important;
+  background: #ec6e9e !important;
+  border-radius: 999px !important;
+  border: none !important;
+}
+
+/* Edges */
+.react-flow__edge-path {
+  /* stroke: white !important; */
+  /* stroke-width: 1 !important; */
 }

@@ -62,41 +62,44 @@ const CompteCreateur = ({ user, story = [] }) => {
           </article>
         </Link>
 
-        {story.length === 0 ? (
-          <p>
-            Vous n'avez pas encore créé d'histoires. Commencez dès maintenant !
-          </p>
-        ) : (
-          story.map((histoire) => (
-            <article className="histoire-container" key={histoire.id}>
-              <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
-              <div className="text-content">
-                <img className="bin" src="/png/bin.png" alt="" />
-                <h2 className="histoire-titre">{histoire.titre}</h2>
-                <h2 className="histoire-auteur">{histoire.auteurName}</h2>
-                <p className="histoire-synopsis">{histoire.synopsis}</p>
-                <div className="icons">
-                  <div className="icons-top">
-                    <Link href={`/constructionHistoire/${histoire.id}`}>
-                      <img src="/png/pencil-square-o.png" alt="modifier" />
-                    </Link>
-                    <Link href={`/histoires/${histoire.id}`}>
-                      <img src="/png/magnifier.png" alt="visualisation" />
-                    </Link>
-                    <PublicDisplay isPublic={histoire.public} storyId={histoire.id} userId={user.id}/>
-                  </div>
-
-                  <div className="icons-bottom">
-                    <Link href={`/histoires/${histoire.id}/stats`}>
+        {story.map((histoire) => (
+          <article className="histoire-container" key={histoire.id}>
+            <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
+            <div className="text-content">
+              <PublicDisplay className="bin" isPublic={histoire.public} storyId={histoire.id} userId={user.id} />
+              <h2 className="histoire-titre">{histoire.titre}</h2>
+              <h2 className="histoire-auteur">{histoire.auteurName}</h2>
+              <p className="histoire-synopsis">{histoire.synopsis}</p>
+              <div className="icons">
+                <div className="icons-left">
+                  <Link href={`/constructionHistoire/${histoire.id}`} className="btn-link reset">
+                    <button className="btn-left">
+                      Modifier
+                    </button>
+                  </Link>
+                  <Link href={`/histoires/${histoire.id}`} className="btn-link reset">
+                    <button className="btn-left">
+                      Visualiser
+                    </button>
+                  </Link>
+                </div>
+                <div className="icons-right">
+                  <Link href={`/histoires/${histoire.id}/stats`} className="">
+                    <button className="btn-small" >
                       <img src="/png/comment.png" alt="commentaires" />
-                      <p>Commentaires</p>
-                    </Link>
-                  </div>
+                    </button>
+                  </Link>
+                  <Link href="" className="">
+                    <button className="btn-small" >
+                      <img className="" src="/png/bin.png" alt="" />
+                    </button>
+                  </Link>
                 </div>
               </div>
-            </article>
-          ))
-        )}
+            </div>
+          </article>
+        ))
+        }
       </div>
       <Footer />
     </div>
