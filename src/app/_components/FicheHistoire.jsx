@@ -62,7 +62,7 @@ const FicheHistoire = ({ histoire, user }) => {
             </div>
             <p className="fiche-synopsis">{histoire?.synopsis}</p>
 
-            <Link href={`/storyvisualizer/${histoire.id}`}>
+            <Link href={`/visualisationhistoire/${histoire.id}`}>
               <button className="fiche-cta-btn" ref={btnRef}>
                 <span className="fiche-cta-arrow left">→</span>
                 <span className="fiche-cta-text">Visualiser</span>

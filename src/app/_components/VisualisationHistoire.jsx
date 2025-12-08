@@ -14,8 +14,8 @@ const VisualisationHistoire = ({
   isStoryEnd,
   startNodeId,
 }) => {
-  const textRef = useRef(null);
-  const backgroundRef = useRef(null);
+  const textRef = useRef();
+  const backgroundRef = useRef();
   const [selectedTarget, setSelectedTarget] = useState();
   const safeEdges = edges ?? [];
   const isChoice = safeEdges.length > 1;
@@ -99,13 +99,13 @@ const VisualisationHistoire = ({
     story?.ambiance === "horreur"
       ? "wrapper wrapper--horreur"
       : story?.ambiance === "fantastique"
-      ? "wrapper wrapper--fantastique"
-      : story?.ambiance === "futuriste"
-      ? "wrapper wrapper--futuriste"
-      : "wrapper";
+        ? "wrapper wrapper--fantastique"
+        : story?.ambiance === "futuriste"
+          ? "wrapper wrapper--futuriste"
+          : "wrapper";
 
   return (
-    
+
     <div className={wrapperClass} ref={backgroundRef}>
       {story.ambiance === "fantastique" && (
         <>
@@ -132,7 +132,7 @@ const VisualisationHistoire = ({
                 <span className="visualisation-cta-arrow right">→</span>
               </button>
             </Link>
-            <Link href={`/storyvisualizer/${storyId}/${startNodeId}`}>
+            <Link href={`/visualisationhistoire/${storyId}/${startNodeId}`}>
               <button className="visualisation-cta-btn">
                 <span className="visualisation-cta-arrow left">→</span>
                 <span className="visualisation-cta-text">Recommencer</span>
@@ -146,7 +146,7 @@ const VisualisationHistoire = ({
         {!isStoryEnd && safeEdges.length === 1 && (
           <div>
             <Link
-              href={`/storyvisualizer/${storyId}/${safeEdges[0].targetNodeId}`}
+              href={`/visualisationhistoire/${storyId}/${safeEdges[0].targetNodeId}`}
               className="choix-btn-continuer"
             >
               Continuer
@@ -173,7 +173,7 @@ const VisualisationHistoire = ({
 
             {selectedTarget && (
               <Link
-                href={`/storyvisualizer/${storyId}/${selectedTarget}`}
+                href={`visualisationhistoire/${storyId}/${selectedTarget}`}
                 className="choix-btn-confirmer"
               >
                 Confirmer mon choix
