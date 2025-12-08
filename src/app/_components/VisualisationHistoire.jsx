@@ -16,10 +16,10 @@ const VisualisationHistoire = ({
 }) => {
   const textRef = useRef();
   const backgroundRef = useRef();
-  const [selectedTarget, setSelectedTarget] = useState();
-  const safeEdges = edges ?? [];
-  const isChoice = safeEdges.length > 1;
-  const hasNext = safeEdges.length > 0;
+  const [selectedTarget, setSelectedTarget] = useState(null);
+
+  const isChoice = (edges?.length ?? 0) > 1;
+  const hasNext = (edges?.length ?? 0) > 0;
 
   useEffect(() => {
     if (!textRef.current || !backgroundRef.current || !story?.ambiance) return;
@@ -143,10 +143,10 @@ const VisualisationHistoire = ({
         ) : null}
 
         {/* Un seul choix */}
-        {!isStoryEnd && safeEdges.length === 1 && (
+        {!isStoryEnd && edges?.length === 1 && (
           <div>
             <Link
-              href={`/visualisationhistoire/${storyId}/${safeEdges[0].targetNodeId}`}
+              href={`/visualisationhistoire/${storyId}/${edges[0].targetNodeId}`}
               className="choix-btn-continuer"
             >
               Continuer
@@ -157,7 +157,7 @@ const VisualisationHistoire = ({
         {/* Plusieurs choix avec confirmation */}
         {!isStoryEnd && isChoice && (
           <div className="choix-container">
-            {safeEdges.map((edge) => (
+            {edges.map((edge) => (
               <button
                 key={edge.id}
                 className={
@@ -173,7 +173,7 @@ const VisualisationHistoire = ({
 
             {selectedTarget && (
               <Link
-                href={`visualisationhistoire/${storyId}/${selectedTarget}`}
+                href={`/visualisationhistoire/${storyId}/${selectedTarget}`}
                 className="choix-btn-confirmer"
               >
                 Confirmer mon choix

@@ -9,7 +9,6 @@ const NodeView = async ({ params }) => {
 
   const storyInfo = await getStoryInfoById(storyId);
   const nodeData = await getNodeInfoById(nodeId);
-  if (!storyInfo || !nodeData) redirect("/404");
 
   const story = {
     id: storyInfo.id,
