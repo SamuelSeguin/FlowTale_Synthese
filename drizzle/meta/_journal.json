@@ -85,6 +85,13 @@
       "when": 1764809205771,
       "tag": "0011_clear_brood",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1765160925537,
+      "tag": "0012_strong_zombie",
+      "breakpoints": true
     }
   ]
 }

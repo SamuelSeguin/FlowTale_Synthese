@@ -1,44 +1,41 @@
-import { GetFullStoryByIdAction } from "@/app/_actions/storyAction";
-import NavBar from "../../../_components/NavBar";
-import VisualisationHistoire from "../../../_components/VisualisationHistoire";
-import { redirect } from "next/navigation";
-import { getSession } from "@/lib/auth";
+// import { GetFullStoryByIdAction } from "@/app/_actions/storyAction";
+// import NavBar from "../../../_components/NavBar";
+// import VisualisationHistoire from "../../../_components/VisualisationHistoire";
+// import { redirect } from "next/navigation";
+// import { getSession } from "@/lib/auth";
 
-//Titre dynamique de l’onglet
-export async function generateMetadata({ params }) {
-  const { histoireId } = params;
-  const storyTitle = await GetFullStoryByIdAction(histoireId);
+// //Titre dynamique de l’onglet
+// export async function generateMetadata({ params }) {
+//   const { histoireId } = await params;
+//   const story = await GetFullStoryByIdAction(histoireId);
 
-  return {
-    title: `${storyTitle.titre} - Lecture`,
-  };
-}
+//   return {
+//     title: `${story.titre} - Lecture`,
+//   };
+// }
 
-const HistoireVisualisationPage = async ({ params }) => {
-  const { histoireId } = await params;
-  console.log("[HISTOIRE ID VISUALISATION]", histoireId);
+// const HistoireVisualisationPage = async ({ params }) => {
+//   const { histoireId } = await params;
+//   const storyInfo = await GetFullStoryByIdAction(histoireId);
 
-  const storyInfo = await GetFullStoryByIdAction(histoireId);
-  console.log("[HISTOIRE INFO]", storyInfo);
+//   let user;
 
-  let user;
+//   try {
+//     const session = await getSession();
+//     user = session?.user;
+//     if (!user) {
+//       redirect("/auth/signin");
+//     }
+//   } catch (err) {
+//     redirect("/auth/signin");
+//   }
 
-  try {
-    const session = await getSession();
-    user = session?.user;
-    if (!user) {
-      redirect("/auth/signin");
-    }
-  } catch (err) {
-    redirect("/auth/signin");
-  }
+//   return (
+//     <div>
+//       <NavBar user={user} />
+//       <VisualisationHistoire story={storyInfo} />
+//     </div>
+//   );
+// };
 
-  return (
-    <div>
-      <NavBar user={user} />
-      <VisualisationHistoire story={storyInfo} />
-    </div>
-  );
-};
-
-export default HistoireVisualisationPage;
+// export default HistoireVisualisationPage;
