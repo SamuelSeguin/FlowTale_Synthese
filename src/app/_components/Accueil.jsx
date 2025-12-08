@@ -10,7 +10,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Accueil = ({ story }) => {
+const Accueil = ({ stories }) => {
   const heroRef = useRef();
   const infoTextRef = useRef();
   const cardsRef = useRef();
@@ -94,7 +94,7 @@ const Accueil = ({ story }) => {
         </div>
       </section>
       <div ref={cardsRef}>
-        <RecentsUiCard story={story} />
+        <RecentsUiCard stories={stories} />
       </div>
       <Footer />
     </div>

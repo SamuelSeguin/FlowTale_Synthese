@@ -1,5 +1,8 @@
 import { getSession } from "@/lib/auth";
-import { GetAllStoriesAction } from "./_actions/storyAction";
+
+// -- NEW --
+// import { GetAllStoriesAction } from "./_actions/storyAction";
+import { getPublishedStoriesAction } from "./_actions/storyAction";
 import Accueil from "./_components/Accueil";
 import NavBar from "./_components/NavBar";
 
@@ -31,12 +34,14 @@ const HomePage = async () => {
     console.log("Vous n'êtes pas connecter!")
   }
 
-  const story = await GetAllStoriesAction();
+  // -- NEW --
+  // const story = await GetAllStoriesAction();
+  const stories = await getPublishedStoriesAction();
 
   return (
     <>
-      <NavBar user={user}/>
-      <Accueil story={story} />
+      <NavBar user={user} />
+      <Accueil stories={stories} />
     </>
   );
 };

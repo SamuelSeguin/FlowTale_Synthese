@@ -6,10 +6,18 @@ import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
-const VisualisationHistoire = ({ story }) => {
-  const [parsedNodes, setParsedNodes] = useState([]);
-  const [currentNode, setCurrentNode] = useState(null);
-  const [choixEnAttente, setChoixEnAttente] = useState();
+const VisualisationHistoire = ({ story,
+  current,
+  edges,
+  storyId,
+  isStoryEnd,
+  startNodeId, }) => {
+  // const [parsedNodes, setParsedNodes] = useState([]);
+  // const [currentNode, setCurrentNode] = useState(null);
+  // const [choixEnAttente, setChoixEnAttente] = useState();
+  const [selectedTarget, setSelectedTarget] = useState(null);
+  const isChoice = (edges?.length ?? 0) > 1;
+  const hasNext = (edges?.length ?? 0) > 0;
   const textRef = useRef();
   const backgroundRef = useRef();
 
@@ -101,65 +109,65 @@ const VisualisationHistoire = ({ story }) => {
         },
       });
     }
-  }, [currentNode, story]);
+  }, [current, story]);
 
   const wrapperClass =
     story?.ambiance === "horreur"
       ? "wrapper wrapper--horreur"
       : story?.ambiance === "fantastique"
-      ? "wrapper wrapper--fantastique"
-      : story?.ambiance === "futuriste"
-      ? "wrapper wrapper--futuriste"
-      : "wrapper";
+        ? "wrapper wrapper--fantastique"
+        : story?.ambiance === "futuriste"
+          ? "wrapper wrapper--futuriste"
+          : "wrapper";
 
   // --- Fonction qui parse seulement si c'est une string JSON ---
-  const safeParse = (value) => {
-    if (!value) return {};
-    if (typeof value === "object") return value;
-    if (typeof value === "string") {
-      try {
-        return JSON.parse(value);
-      } catch (e) {
-        console.warn("JSON invalide :", value);
-        return {};
-      }
-    }
-    return {};
-  };
+  // const safeParse = (value) => {
+  //   if (!value) return {};
+  //   if (typeof value === "object") return value;
+  //   if (typeof value === "string") {
+  //     try {
+  //       return JSON.parse(value);
+  //     } catch (e) {
+  //       console.warn("JSON invalide :", value);
+  //       return {};
+  //     }
+  //   }
+  //   return {};
+  // };
 
-  useEffect(() => {
-    if (!story || !story.nodes) return;
+  // useEffect(() => {
+  //   if (!story || !story.nodes) return;
 
-    const nodes = story.nodes.map((node) => ({
-      ...node,
-      data: safeParse(node.data),
-      outgoingEdges:
-        node.outgoingEdges?.map((edge) => ({
-          ...edge,
-          data: safeParse(edge.data),
-        })) || [],
-    }));
+  //   const nodes = story.nodes.map((node) => ({
+  //     ...node,
+  //     data: safeParse(node.data),
+  //     outgoingEdges:
+  //       node.outgoingEdges?.map((edge) => ({
+  //         ...edge,
+  //         data: safeParse(edge.data),
+  //       })) || [],
+  //   }));
 
-    setParsedNodes(nodes);
+  //   setParsedNodes(nodes);
 
-    const startNode = nodes.find((n) => n.data?.type === "Début");
-    if (startNode) setCurrentNode(startNode);
-  }, [story]);
+  //   const startNode = nodes.find((n) => n.data?.type === "Début");
+  //   if (startNode) setCurrentNode(startNode);
+  // }, [story]);
 
-  if (!currentNode) return <div>Chargement...</div>;
+  // if (!currentNode) return <div>Chargement...</div>;
 
-  const outgoing = currentNode.outgoingEdges || [];
+  // const outgoing = currentNode.outgoingEdges || [];
 
-  const goToNode = (nodeId) => {
-    const node = parsedNodes.find((node) => node.id === nodeId);
-    if (!node) return;
-    setCurrentNode(node);
-    setChoixEnAttente(null);
-  };
+  // const goToNode = (nodeId) => {
+  //   const node = parsedNodes.find((node) => node.id === nodeId);
+  //   if (!node) return;
+  //   setCurrentNode(node);
+  //   setChoixEnAttente(null);
+  // };
 
-  const gererChoix = (idNoeud) => {
-    setChoixEnAttente(idNoeud);
-  };
+  // const gererChoix = (idNoeud) => {
+  //   setChoixEnAttente(idNoeud);
+  // };
 
   return (
     <div className={wrapperClass} ref={backgroundRef}>
@@ -172,7 +180,76 @@ const VisualisationHistoire = ({ story }) => {
       )}
 
       <div className="histoire-container">
-        {/* FIN */}
+        <div className="node-content">
+          <p ref={textRef}>{current.data?.description}</p>
+        </div>
+        {/* Fin d'histoire */}
+        {isStoryEnd || !hasNext ? (
+          <div className="btn-flex">
+            <Link href={`/histoires/${story.id}`}>
+              <button className="visualisation-cta-btn">
+                <span className="visualisation-cta-arrow left">→</span>
+                <span className="visualisation-cta-text">
+                  Retour à l'accueil
+                </span>
+                <span className="visualisation-cta-arrow right">→</span>
+              </button>
+            </Link>
+            <Link href={`/visualisationhistoire/${storyId}/${startNodeId}`}>
+              <button className="visualisation-cta-btn">
+                <span className="visualisation-cta-arrow left">→</span>
+                <span className="visualisation-cta-text">Recommencer</span>
+                <span className="visualisation-cta-arrow right">→</span>
+              </button>
+            </Link>
+          </div>
+        ) : null}
+        {/* Un seul choix */}
+        {!isStoryEnd && edges?.length === 1 && (
+          <div>
+            <Link
+              href={`/visualisationhistoire/${storyId}/${edges[0].targetNodeId}`}
+              className="choix-btn-continuer"
+            >
+              Continuer
+            </Link>
+          </div>
+        )}
+        {/* Plusieurs choix avec confirmation */}
+        {!isStoryEnd && isChoice && (
+          <div className="choix-container">
+            {edges.map((edge) => (
+              <button
+                key={edge.id}
+                className={
+                  selectedTarget === edge.targetNodeId
+                    ? "choix-btn selected"
+                    : "choix-btn"
+                }
+                onClick={() => setSelectedTarget(edge.targetNodeId)}
+              >
+                {edge.texte || "Choisir"}
+              </button>
+            ))}
+            {selectedTarget && (
+              <Link
+                href={`/visualisationhistoire/${storyId}/${selectedTarget}`}
+                className="choix-btn-confirmer"
+              >
+                Confirmer mon choix
+              </Link>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+export default VisualisationHistoire;
+
+
+{/* <div className="histoire-container">
+        FIN
         {outgoing.length === 0 && (
           <>
             <div className="fin-histoire">
@@ -207,7 +284,7 @@ const VisualisationHistoire = ({ story }) => {
           </>
         )}
 
-        {/* 1 CHOIX */}
+        1 CHOIX
         {outgoing.length === 1 && (
           <div>
             <div className="node-content">
@@ -223,7 +300,7 @@ const VisualisationHistoire = ({ story }) => {
           </div>
         )}
 
-        {/* CHOIX MULTIPLES */}
+        CHOIX MULTIPLES
         {outgoing.length > 1 && (
           <div>
             <div className="node-content">
@@ -261,4 +338,4 @@ const VisualisationHistoire = ({ story }) => {
   );
 };
 
-export default VisualisationHistoire;
+export default VisualisationHistoire; */}
