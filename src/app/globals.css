@@ -4,14 +4,17 @@
   font-family: "Creato";
   src: url("/fonts/CreatoDisplay-Regular.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Creato-Medium";
   src: url("/fonts/CreatoDisplay-Medium.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Creato-Bold";
   src: url("/fonts/CreatoDisplay-Bold.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Creato-ExtraBold";
   src: url("/fonts/CreatoDisplay-ExtraBold.otf") format("opentype");
@@ -46,4 +49,52 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/* Nodes */
+.react-flow__node {
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 18px !important;
+  padding: 0.9rem 1.2rem !important;
+  border: 1px solid rgba(236, 110, 158, 0.7) !important;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.103);
+  transition: box-shadow 0.2s ease, border 0.2s ease;
+}
+
+.react-flow__node-default.selectable.selected,
+.react-flow__node-default.selectable:focus {
+  box-shadow: none !important;
+}
+
+/* Handles */
+.react-flow__handle {
+  width: 10px !important;
+  height: 10px !important;
+  background: #ec6e9e !important;
+  border-radius: 999px !important;
+  border: none !important;
+  box-shadow: 0 0 0 3px rgba(236, 110, 158, 0.25);
+}
+
+/* Edges */
+.react-flow__edge-path {
+  stroke: rgba(0, 0, 0, 0.45) !important;
+  stroke-width: 2 !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #ec6e9e !important;
+}
+
+.react-flow__edge-textbg {
+  fill: rgb(77, 77, 77) !important;
+  height: 18px;
+  width: 18px;
+  transform: translateX(-3px);
+}
+
+.react-flow__edge-text {
+  fill: #ffffff !important;
+  font-family: "Creato";
 }

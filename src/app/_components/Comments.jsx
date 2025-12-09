@@ -29,11 +29,6 @@ const Comments = () => {
             </p>
             <img className="comment-icon" src="/png/comment.png" alt="" />
           </div>
-        </article>
-        <article className="comments-container">
-          <h2 className="histoire-titre-comment">
-            Les Brumes d’Éloria (exemple pour mise en page)
-          </h2>
           <div className="comment-content">
             <h2 className="nom-utilisateur">Camille Lenoir</h2>
             <p className="commentaire">
@@ -46,8 +41,7 @@ const Comments = () => {
               grandit dans l’ombre.
             </p>
             <img className="comment-icon" src="/png/comment.png" alt="" />
-          </div>
-          <div className="comment-content">
+          </div> <div className="comment-content">
             <h2 className="nom-utilisateur">Camille Lenoir</h2>
             <p className="commentaire">
               Dans le royaume caché d’Éloria, la brume ne se dissipe jamais

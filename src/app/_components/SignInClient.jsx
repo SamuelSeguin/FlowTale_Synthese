@@ -45,6 +45,7 @@ const SignInClient = () => {
         <AuthForm
           titre={"Bienvenue à nouveau !"}
           callActionTitre={"Se connecter"}
+          showGithub={true}
           showName={false}
           formAction={ConnexionAction}
         >

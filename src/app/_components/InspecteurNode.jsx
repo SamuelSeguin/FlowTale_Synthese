@@ -37,8 +37,17 @@ const InspecteurNode = ({ selection, setHandler }) => {
   return (
     <>
       <div className="inspecteur-node">
-        <form className="inspecteurs-forms" action={updateLocalNode}>
-          <h1>Modifier un événement</h1>
+        <h1 className="inspecteur-title personnalisation">Personnalisation</h1>
+        <div className="btn-personnalisation">
+          <button className="btn-secondary">Ambiance</button>
+          <button className="btn-secondary">Animation</button>
+          <button className="btn-secondary">Image</button>
+        </div>
+        <form
+          className="inspecteurs-forms"
+          action={updateLocalNode}
+        >
+          <h1 className="inspecteur-title type-branche">Modifier un événement</h1>
           <div className="floating-label">
             <input
               type="text"
@@ -56,12 +65,12 @@ const InspecteurNode = ({ selection, setHandler }) => {
             />
             <label>Description</label>
           </div>
-          <button type="submit" className="btn-inspecteur">
+          <button type="submit" className="btn-primary">
             Mettre à jour l'événement
           </button>
         </form>
         <button
-          className="btn-supprimer-node"
+          className="btn-danger"
           onClick={() => deleteLocalNode(selection.node.id)}
         >
           Supprimer un événement

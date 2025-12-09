@@ -1,11 +1,27 @@
-import { startTransition } from "react";
+import { startTransition, useState } from "react";
 import { RemoveEdgesAction } from "../_actions/edgesAction";
 import { useGrid } from "../_contexts/gridContext";
 import { UpdateNodesInfoAction } from "../_actions/nodesAction";
 import "./ConstructionHistoire.css";
-
 const InspecteurBranche = ({ selection, setHandler }) => {
   const { edges, nodes } = useGrid();
+  const [type, setType] = useState(
+    selection.edge.data.typeBranche || "regulier"
+  );
+
+  const setBranchType = (newType) => {
+    setType(newType);
+
+    const updatedEdge = {
+      ...selection.edge,
+      data: {
+        ...selection.edge.data,
+        typeBranche: newType, // "regulier" | "historique" | "conditionnel"
+      },
+    };
+
+    setHandler(edges.map((e) => (e.id === updatedEdge.id ? updatedEdge : e)));
+  };
 
   const deleteLocalBranch = async (edgeId) => {
     setHandler(edges.filter((edge) => edge.id !== edgeId));
@@ -32,8 +48,51 @@ const InspecteurBranche = ({ selection, setHandler }) => {
   return (
     <>
       <div className="inspecteur-branche">
+        <h1 className="inspecteur-title personnalisation">Type de choix</h1>
+        <div className="btn-personnalisation-toggle">
+          <button
+            type="button"
+            className={`btn-toggle ${type === "regulier" ? "active" : ""}`}
+            onClick={() => setBranchType("regulier")}
+          >
+            Régulier
+          </button>
+          <button
+            type="button"
+            className={`btn-toggle ${type === "historique" ? "active" : ""}`}
+            onClick={() => setBranchType("historique")}
+          >
+            Historique
+          </button>
+          <button
+            type="button"
+            className={`btn-toggle ${type === "conditionnel" ? "active" : ""}`}
+            onClick={() => setBranchType("conditionnel")}
+          >
+            Conditionnel
+          </button>
+        </div>
+
+        {type === "regulier" && (
+          <p className="description-branches">
+            <strong>Choix régulier :</strong> choix normal, sans historique ni
+            condition particulière.
+          </p>
+        )}
+        {type === "historique" && (
+          <p className="description-branches">
+            <strong>Choix historique :</strong> enregistre ce choix pour s'en
+            servir plus tard dans l'histoire.
+          </p>
+        )}
+        {type === "conditionnel" && (
+          <p className="description-branches">
+            <strong>Choix conditionnel :</strong> ce choix n'est visible que si
+            l'utilisateur a déjà déclenché un identifiant historique.
+          </p>
+        )}
         <form action={updateLocalBranch}>
-          <h1>Modifier un choix</h1>
+          <h1 className="inspecteur-title type-branche">Modifier un choix</h1>
 
           <div className="floating-label">
             <label>Description </label>
@@ -44,12 +103,12 @@ const InspecteurBranche = ({ selection, setHandler }) => {
             />
           </div>
 
-          <button type="submit" className="btn-inspecteur">
+          <button type="submit" className="btn-primary">
             Mettre à jour un choix
           </button>
         </form>
         <button
-          className="btn-supprimer-branche"
+          className="btn-danger"
           onClick={() => deleteLocalBranch(selection.edge.id)}
         >
           Supprimer un choix

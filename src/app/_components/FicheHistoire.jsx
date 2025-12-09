@@ -2,13 +2,11 @@
 import Link from "next/link";
 import Footer from "../_components/Footer";
 import "./FicheHistoire.css";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const FicheHistoire = ({ histoire, user }) => {
-  console.log("HISTOIRE DANS FICHE HISTOIRE :", histoire);
-
   const containerRef = useRef();
   const imageRef = useRef();
   const contentRef = useRef();

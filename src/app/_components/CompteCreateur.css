@@ -1,42 +1,61 @@
+.pfp-bg {
+  position: relative;
+  width: 80%;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 120px;
+  border-radius: 50px;
+  margin-bottom: 100px;
+  background-image: url("/png/gradient1.png");
+  background-color: #ffe4d6;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .pfp-name-flex {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  justify-content: center;
+  gap: 20px;
   align-items: center;
-  top: 8rem;
-  font-family: "Creato-ExtraBold";
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  color: rgb(54, 54, 54);
+  bottom: -4rem;
+  left: 16rem;
 }
 
 .pfp-createur {
   width: 10rem;
   background-color: white;
+  border: 8px solid white;
   border-radius: 500%;
+}
+
+.compte-nom {
+  font-family: "Creato-Bold";
+  font-size: 2.5rem;
+  color: rgb(0, 0, 0);
+  margin-bottom: 40;
 }
 
 .titre-page {
   position: absolute;
-  left: 29.5rem;
-  top: 25rem;
+  left: 17.5rem;
+  top: 3rem;
   font-size: 2.5rem;
   font-family: Creato;
   color: rgb(54, 54, 54);
+  z-index: 100;
 }
 
 .histoires-container-flex {
+  position: relative;
   display: flex;
   width: 80%;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  margin-top: 15rem;
   border-radius: 50px;
-  padding-top: 17rem;
+  padding-top: 9rem;
   min-height: 70vh;
   color: rgb(54, 54, 54);
   background-color: #e0e0e05b;
@@ -47,7 +66,6 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  align-items: center;
   width: 60%;
   padding: 15px;
   margin-bottom: 3rem;
@@ -55,18 +73,30 @@
   font-family: "Creato";
   background-color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.histoire-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .histoire-image {
-  min-width: 345px;
+  width: 450px;
   height: 300px;
   background-color: #e0e0e05b;
   border-radius: 20px;
 }
 
+.histoire-synopsis {
+  margin: 0;
+}
+
 .text-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   padding-left: 25px;
-  padding-right: 25px;
 }
 
 .histoire-titre {
@@ -84,39 +114,48 @@
   font-family: "Creato-ExtraBold";
 }
 
+.icons img {
+  height: 18px;
+}
+
 .icons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   gap: 14px;
+  margin-top: auto;
 }
 
-.icons img {
-  height: 23px;
-}
-
-.icons-top {
+.icons-left {
   display: flex;
   flex-direction: row;
   gap: 15px;
 }
 
-.icons-bottom a {
+.icons-right {
   display: flex;
   flex-direction: row;
+  gap: 15px;
+}
+
+.brouillon {
+  position: absolute;
+  right: 20;
+  top: 20;
+}
+
+.btn-link button {
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 5px;
-}
-
-.icons-bottom a {
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.bin {
-  position: absolute;
-  width: 25px;
-  right: 15;
-  top: 15;
+  background-color: black;
+  color: white;
+  border-radius: 50px;
+  padding: 10px;
+  width: 100px;
+  cursor: pointer;
 }
 
 .create-story {
@@ -124,6 +163,7 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
   min-height: 300px;
   background: linear-gradient(90deg, #ec6e9e 0%, #f7ab93 50%, #ffa97b 100%);
   color: white;
@@ -156,4 +196,40 @@
   width: 32px;
   bottom: 15;
   right: 15;
+}
+
+.btn-left {
+  all: unset;
+  transition: transform 0.2s ease;
+  transform: scale(1);
+}
+
+.btn-left:hover {
+  background: linear-gradient(90deg, #ec6e9e 0%, #f7ab93 50%, #ffa97b 100%);
+  transform: scale(1.05);
+}
+
+.btn-small {
+  width: 50px;
+  border-radius: 50px;
+  background-color: transparent;
+  border: #000000 1px solid;
+  padding: 7px 0 7px 0;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn-small:hover {
+  transform: scale(1.08);
+  background-color: #000;
+  border-color: #000;
+}
+
+.btn-small img {
+  transition: filter 0.15s ease;
+}
+
+.btn-small:hover img {
+  filter: brightness(0) invert(1);
 }

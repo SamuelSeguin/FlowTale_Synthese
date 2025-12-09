@@ -107,11 +107,19 @@ const useAudio = (stopOnUnmount = false) => {
 
   const playHandler = () => {
     if (!audio) return;
+    console.log("PLAY HANDLER CALLED", {
+      src: audio.src,
+      currentTime: audio.currentTime,
+    });
     if (audio.paused) audio.play();
   };
 
   const stopHandler = () => {
     if (!audio) return;
+    console.log("STOP HANDLER CALLED", {
+      src: audio.src,
+      currentTime: audio.currentTime,
+    });
     pauseHandler();
     setStopCount((current) => current + 1);
     audio.currentTime = 0;
@@ -128,6 +136,12 @@ const useAudio = (stopOnUnmount = false) => {
     setVolume(val);
   };
 
+  console.log("useAudio hook", {
+    stopOnUnmount,
+    isReady: ready,
+    isPaused: audio?.paused,
+    src: audio?.src,
+  });
   return {
     changeSource: setSrc,
     pause: pauseHandler,
