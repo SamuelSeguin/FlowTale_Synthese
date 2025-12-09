@@ -155,7 +155,7 @@ const VisualisationHistoire = ({
         {/* Fin d'histoire */}
         {isStoryEnd || !hasNext ? (
           <div className="btn-flex">
-            <Link href={`/histoires/${story.id}`}>
+            <Link href="/">
               <button className="visualisation-cta-btn">
                 <span className="visualisation-cta-arrow left">→</span>
                 <span className="visualisation-cta-text">

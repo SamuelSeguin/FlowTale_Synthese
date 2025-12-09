@@ -5,19 +5,12 @@ import "./FicheHistoire.css";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useAudio } from "../_contexts/AudioContext";
 
 const FicheHistoire = ({ histoire, user }) => {
   const containerRef = useRef();
   const imageRef = useRef();
   const contentRef = useRef();
   const btnRef = useRef();
-
-  const { stop } = useAudio(false);
-
-  useEffect(() => {
-    stop();
-  }, []);
 
   useGSAP(() => {
     // IMAGE ANIMATION
