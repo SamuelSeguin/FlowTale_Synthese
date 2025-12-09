@@ -16,7 +16,7 @@ const InspecteurBase = ({ addNode, nodeData }) => {
   return (
     <div className="inspecteur-base">
       <button
-        className={`btn-ajouter-debut ${
+        className={`btn-primary ${
           alreadyHasStartNode ? "btn-ajouter-debut--disabled" : ""
         }`}
         disabled={alreadyHasStartNode}
@@ -34,7 +34,7 @@ const InspecteurBase = ({ addNode, nodeData }) => {
         Ajouter un noeud Début (à supprimer)
       </button>
       <button
-        className="btn-ajouter"
+        className="btn-secondary"
         onClick={() =>
           addNode({
             id: uuidv4(),
@@ -52,7 +52,7 @@ const InspecteurBase = ({ addNode, nodeData }) => {
         Ajouter un événement
       </button>
       <button
-        className="btn-ajouter-fin"
+        className="btn-secondary"
         onClick={() =>
           addNode({
             id: uuidv4(),
@@ -70,9 +70,10 @@ const InspecteurBase = ({ addNode, nodeData }) => {
         Ajouter une fin
       </button>
 
+      <h1 className="inspecteur-title personnalisation">Personnalisation</h1>
       <div className="btn-personnalisation">
-        <button className="btn-ambiance">Animation</button>
-        <button className="btn-image">Image</button>
+        <button className="btn-secondary">Animation</button>
+        <button className="btn-secondary">Image</button>
       </div>
     </div>
   );

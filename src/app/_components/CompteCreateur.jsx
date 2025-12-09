@@ -2,14 +2,21 @@
 import Link from "next/link";
 import "./CompteCreateur.css";
 import Footer from "../_components/Footer";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import PublicDisplay from "./PublicDisplay";
+import { useAudio } from "../_contexts/AudioContext";
 
 const CompteCreateur = ({ user, story = [] }) => {
   const containerRef = useRef();
   const titreRef = useRef();
+
+  const { stop } = useAudio(false);
+
+  useEffect(() => {
+    stop();
+  }, []);
 
   useGSAP(() => {
     gsap.from(titreRef.current, {
@@ -32,9 +39,6 @@ const CompteCreateur = ({ user, story = [] }) => {
     });
   });
 
-  console.log("USER COMPTE CREATEUR PARAMS :", user);
-  console.log("STORY COMPTE CREATEUR PARAMS :", story);
-
   return (
     <div>
       <div className="pfp-bg">
@@ -48,7 +52,7 @@ const CompteCreateur = ({ user, story = [] }) => {
           ) : (
             <img className="pfp-createur" src={user?.image} alt="" />
           )}
-          <h2 className="compte-nom" >{user?.name}</h2>
+          <h2 className="compte-nom">{user?.name}</h2>
         </div>
       </div>
       <div className="histoires-container-flex" ref={containerRef}>

@@ -3,10 +3,11 @@ import "./Accueil.css";
 import RecentsUiCard from "../_components/RecentsUiCard";
 import Footer from "../_components/Footer";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useAudio } from "../_contexts/AudioContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,12 @@ const Accueil = ({ stories }) => {
   const heroRef = useRef();
   const infoTextRef = useRef();
   const cardsRef = useRef();
+
+  const { stop } = useAudio(false);
+
+  useEffect(() => {
+    stop();
+  }, []);
 
   useGSAP(() => {
     // HERO ANIMATION

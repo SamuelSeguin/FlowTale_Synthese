@@ -1,14 +1,16 @@
 "use client";
 import Link from "next/link";
 import "./NavBar.css";
+import { useAudio } from "../_contexts/AudioContext";
 
 const NavBar = ({ user, auth = false }) => {
   const isLoggedIn = !!user;
+  const { stop } = useAudio(false);
 
   return (
     <div className="nav">
       <Link href="/">
-        <img className="logo" src="/svg/logo.png" alt="" />
+        <img className="logo" src="/png/logo.png" alt=""/>
       </Link>
       {auth === false ? (
         !isLoggedIn ? (

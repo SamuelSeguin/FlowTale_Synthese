@@ -1,9 +1,12 @@
+/* ---------- BACKGROUNDS SELON THEME ---------- */
 .wrapper--horreur {
   height: 100vh;
   --bg-color: #000;
-  background: radial-gradient(circle at center,
-      var(--bg-color) 0%,
-      #050000 70%);
+  background: radial-gradient(
+    circle at center,
+    var(--bg-color) 0%,
+    #050000 70%
+  );
 }
 
 .wrapper--fantastique {
@@ -14,13 +17,39 @@
 
 .wrapper--futuriste {
   height: 100vh;
-  background: linear-gradient(115deg,
-      #0456cf 0%,
-      #3682ac 35%,
-      #0599cf 80%,
-      #1e90ff 100%);
+  background: linear-gradient(
+    115deg,
+    #0456cf 0%,
+    #3682ac 35%,
+    #0599cf 80%,
+    #1e90ff 100%
+  );
 }
 
+/* sparkles fantastique */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffffe6;
+  box-shadow: 0 0 12px #ffffffe6;
+}
+
+.sparkle-1 {
+  top: 30%;
+  left: 15%;
+}
+.sparkle-2 {
+  top: 50%;
+  right: 10%;
+}
+.sparkle-3 {
+  bottom: 20%;
+  left: 40%;
+}
+
+/* ---------- CONTAINER TEXTE ---------- */
 .histoire-container-visualisation {
   position: absolute;
   top: 50%;
@@ -50,6 +79,7 @@
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
+/* ---------- BTN RECOMMENCER + RETOUR ---------- */
 .visualisation-cta-btn {
   display: flex;
   align-items: center;
@@ -59,11 +89,10 @@
   background: black;
   color: white;
   border-radius: 100px;
-  padding: 8px 18px;
+  padding: 8px;
   padding-left: 0;
   overflow: hidden;
   font-family: "Creato";
-  margin-top: 30px;
 }
 
 .visualisation-cta-text {
@@ -101,88 +130,15 @@
   transform: translateX(32px);
 }
 
-.visualisation-recommencer-btn {
-  display: flex;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-  background: black;
-  color: white;
-  border-radius: 100px;
-  padding: 8px 18px;
-  padding-left: 0;
-  overflow: hidden;
-  font-family: "Creato";
-  margin-top: 30px;
-}
-
-.visualisation-recommencer-text {
-  font-size: 1rem;
-  padding: 0 16px;
-  transition: transform 0.45s;
-}
-
-.visualisation-recommencer-arrow {
-  font-size: 1.6rem;
-  opacity: 1;
-  transition: transform 0.5s, opacity 0.2s;
-}
-
-.visualisation-recommencer-arrow.left {
-  opacity: 0;
-  transform: translateX(-20px);
-}
-
-.visualisation-recommencer-btn:hover {
-  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
-}
-
-.visualisation-recommencer-btn:hover .visualisation-recommencer-text {
-  transform: translateX(36px);
-}
-
-.visualisation-recommencer-btn:hover .visualisation-recommencer-arrow.left {
-  opacity: 1;
-  transform: translateX(30px);
-}
-
-.visualisation-recommencer-btn:hover .visualisation-recommencer-arrow.right {
-  opacity: 0;
-  transform: translateX(32px);
-}
-
+/* ---------- BTNS HISTOIRE ---------- */
 .btn-flex {
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  gap: 100px;
   position: absolute;
   bottom: -200;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.sparkle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #ffffffe6;
-  box-shadow: 0 0 12px #ffffffe6;
-}
-
-.sparkle-1 {
-  top: 30%;
-  left: 15%;
-}
-
-.sparkle-2 {
-  top: 50%;
-  right: 10%;
-}
-
-.sparkle-3 {
-  bottom: 20%;
-  left: 40%;
 }
 
 .choix-container {
@@ -194,61 +150,109 @@
   gap: 100px;
 }
 
-.choix-btn {
-  background: black;
-  color: white;
-  font-size: 1.3rem;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  padding: 15px 25px;
-  font-family: "Creato";
-
-  &:hover {
-    transform: scale(1.1);
-  }
-}
-
-.choix-btn.selected {
-  background: #616161;
-  color: #ffffff;
-}
-
+/* meme base pour tous les boutons */
+.choix-btn,
+.choix-btn-confirmer,
 .choix-btn-continuer {
+  position: relative;
   background: black;
   color: white;
-  font-size: 1rem;
-  border-radius: 50px;
+  font-family: "Creato";
   border: none;
   cursor: pointer;
-  padding: 15px 25px;
-  font-family: "Creato";
-  position: absolute;
-  bottom: -130;
-  left: 50%;
-  transform: translateX(-50%);
+  border-radius: 999px;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
 
-  &:hover {
-    background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
-  }
+.choix-btn {
+  font-size: 1.2rem;
+  padding: 12px 26px;
 }
 
 .choix-btn-confirmer {
-  width: 145px;
-  background: black;
-  color: white;
+  width: 150px;
   font-size: 1rem;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  padding: 15px 25px;
-  font-family: "Creato";
+  padding: 12px 26px;
   position: absolute;
-  bottom: -130;
+  bottom: -100px;
   left: 50%;
   transform: translateX(-50%);
+  text-align: center;
+}
 
-  &:hover {
-    background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
-  }
+.choix-btn-continuer {
+  font-size: 1rem;
+  padding: 15px 25px;
+  position: absolute;
+  bottom: -200;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* HOVER ANIM PAR DÉFAUT */
+.choix-btn:hover,
+.choix-btn-confirmer:hover,
+.choix-btn-continuer:hover {
+  transform: translateX(-50%) translateY(-4px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.choix-btn:hover {
+  transform: translateY(-4px);
+}
+
+/* ---------- BTNS HORREUR ---------- */
+.wrapper--horreur .choix-btn.selected {
+  background: linear-gradient(135deg, #5c1610, #8e2a1f);
+  color: #ffe7e7;
+  box-shadow: 0 0 18px rgba(192, 40, 40, 0.9);
+}
+
+.wrapper--horreur .choix-btn-confirmer {
+  background: #120000;
+  border: 1px solid #8e2a1f;
+}
+
+.wrapper--horreur .choix-btn-confirmer:hover,
+.wrapper--horreur .choix-btn-continuer:hover {
+  background: linear-gradient(135deg, #5c1610, #8e2a1f);
+  box-shadow: 0 0 18px rgba(192, 40, 40, 0.9);
+}
+
+/* ---------- BTNS FANTASTIQUE ---------- */
+.wrapper--fantastique .choix-btn.selected {
+  background: linear-gradient(135deg, #bddd7e, #77c39b);
+  color: #1f3020;
+  box-shadow: 0 0 18px rgba(189, 221, 126, 0.9);
+}
+
+.wrapper--fantastique .choix-btn-confirmer {
+  background: rgba(15, 40, 20, 0.9);
+  border: 1px solid rgba(189, 221, 126, 0.9);
+}
+
+.wrapper--fantastique .choix-btn-confirmer:hover,
+.wrapper--fantastique .choix-btn-continuer:hover {
+  background: linear-gradient(135deg, #bddd7e, #77c39b);
+  color: #1f3020;
+  box-shadow: 0 0 18px rgba(189, 221, 126, 0.9);
+}
+
+/* ---------- BTNS FUTURISTE ---------- */
+.wrapper--futuriste .choix-btn.selected {
+  background: linear-gradient(135deg, #0599cf, #1e90ff);
+  color: #e8fbff;
+  box-shadow: 0 0 20px rgba(5, 153, 207, 0.95);
+}
+
+.wrapper--futuriste .choix-btn-confirmer {
+  background: rgba(0, 10, 25, 0.95);
+  border: 1px solid rgba(5, 153, 207, 0.9);
+}
+
+.wrapper--futuriste .choix-btn-confirmer:hover,
+.wrapper--futuriste .choix-btn-continuer:hover {
+  background: linear-gradient(135deg, #0599cf, #1e90ff);
+  box-shadow: 0 0 20px rgba(5, 153, 207, 0.95);
 }

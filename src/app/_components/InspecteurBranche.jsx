@@ -33,7 +33,7 @@ const InspecteurBranche = ({ selection, setHandler }) => {
     <>
       <div className="inspecteur-branche">
         <form action={updateLocalBranch}>
-          <h1>Modifier un choix</h1>
+          <h1 className="inspecteur-title">Modifier un choix</h1>
 
           <div className="floating-label">
             <label>Description </label>
@@ -44,12 +44,12 @@ const InspecteurBranche = ({ selection, setHandler }) => {
             />
           </div>
 
-          <button type="submit" className="btn-inspecteur">
+          <button type="submit" className="btn-primary">
             Mettre à jour un choix
           </button>
         </form>
         <button
-          className="btn-supprimer-branche"
+          className="btn-danger"
           onClick={() => deleteLocalBranch(selection.edge.id)}
         >
           Supprimer un choix

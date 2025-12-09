@@ -7,12 +7,14 @@ import SplitText from "gsap/SplitText";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { useAudio } from "../_contexts/AudioContext";
 
-const VisualisationHistoire = ({ story,
+const VisualisationHistoire = ({
+  story,
   current,
   edges,
   storyId,
   isStoryEnd,
-  startNodeId, }) => {
+  startNodeId,
+}) => {
   const [selectedTarget, setSelectedTarget] = useState(null);
   const isChoice = (edges?.length ?? 0) > 1;
   const hasNext = (edges?.length ?? 0) > 0;
@@ -99,33 +101,42 @@ const VisualisationHistoire = ({ story,
     }
   }, [current, story]);
 
-  const { changeSource } = useAudio(true);
-  const isFirstNode = current?.id === startNodeId;
+  const { changeSource, play, isReady, changeVolume } = useAudio(false);
+  const isNodeStart = useRef(false);
 
   useEffect(() => {
-    if (!isFirstNode || !story?.ambiance) return;
+    if (current.id !== startNodeId) return;
+    if (isNodeStart.current) return;
+    isNodeStart.current = true;
 
-    const ambianceToAudio = {
-      horreur: "/audio/horreur.mp3",
-      fantastique: "/audio/fantastique.mp3",
-      futuriste: "/audio/futuriste.mp3",
-    };
+    const fichierAudio =
+      story.ambiance === "horreur"
+        ? "/audio/horreur.mp3"
+        : story.ambiance === "fantastique"
+        ? "/audio/fantastique.mp3"
+        : story.ambiance === "futuriste"
+        ? "/audio/futuriste.mp3"
+        : null;
 
-    const src = ambianceToAudio[story.ambiance];
-    if (src) {
-      changeSource(src, true);
-    }
-  }, [isFirstNode, story?.ambiance, changeSource]);
+    changeSource(fichierAudio, false);
+    changeVolume(0.1);
+  }, [story?.ambiance, current?.id, startNodeId, changeSource]);
 
+  useEffect(() => {
+    if (!isReady) return;
+    if (current?.id !== startNodeId) return;
+
+    play();
+  }, [isReady, current?.id, startNodeId, play]);
 
   const wrapperClass =
     story?.ambiance === "horreur"
       ? "wrapper wrapper--horreur"
       : story?.ambiance === "fantastique"
-        ? "wrapper wrapper--fantastique"
-        : story?.ambiance === "futuriste"
-          ? "wrapper wrapper--futuriste"
-          : "wrapper";
+      ? "wrapper wrapper--fantastique"
+      : story?.ambiance === "futuriste"
+      ? "wrapper wrapper--futuriste"
+      : "wrapper";
 
   return (
     <div className={wrapperClass} ref={backgroundRef}>
