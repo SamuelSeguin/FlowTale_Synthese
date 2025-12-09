@@ -59,13 +59,13 @@
 }
 
 .form-cta-text {
-  font-size: 1rem;
-  padding: 0 16px;
+  font-size: 0.9rem;
+  padding: 0 14px;
   transition: transform 0.45s;
 }
 
 .form-cta-arrow {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   opacity: 1;
   transition: transform 0.5s, opacity 0.2s;
 }
@@ -80,7 +80,7 @@
 }
 
 .form-cta-btn:hover .form-cta-text {
-  transform: translateX(36px);
+  transform: translateX(30px);
 }
 
 .form-cta-btn:hover .form-cta-arrow.left {
@@ -91,4 +91,12 @@
 .form-cta-btn:hover .form-cta-arrow.right {
   opacity: 0;
   transform: translateX(32px);
+}
+
+.form-cta-arrow img {
+  width: 18px;
+}
+
+.github {
+  margin-top: 10px;
 }

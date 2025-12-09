@@ -9,6 +9,7 @@ const AuthForm = ({
   callActionTitre,
   showName,
   formAction,
+  showGithub = false,
   children,
 }) => {
   console.log(formAction);
@@ -81,6 +82,18 @@ const AuthForm = ({
           <span className="form-cta-text">{callActionTitre}</span>
           <span className="form-cta-arrow right">→</span>
         </button>
+
+        {showGithub && (
+          <button type="button" className="form-cta-btn github">
+            <span className="form-cta-arrow left">
+              <img src="/png/github.png" alt="GitHub" />
+            </span>
+            <span className="form-cta-text">Se connecter avec GitHub</span>
+            <span className="form-cta-arrow right">
+              <img src="/png/github.png" alt="GitHub" />
+            </span>
+          </button>
+        )}
 
         {children}
       </form>
