@@ -15,6 +15,9 @@ const InspecteurBase = ({ addNode, nodeData }) => {
 
   return (
     <div className="inspecteur-base">
+      <h1 className="inspecteur-title">
+        Construction de l’histoire
+      </h1>
       <button
         className={`btn-primary ${
           alreadyHasStartNode ? "btn-ajouter-debut--disabled" : ""
