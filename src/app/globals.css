@@ -86,3 +86,15 @@ a {
 .react-flow__edge.selected .react-flow__edge-path {
   stroke: #ec6e9e !important;
 }
+
+.react-flow__edge-textbg {
+  fill: rgb(77, 77, 77) !important;
+  height: 18px;
+  width: 18px;
+  transform: translateX(-3px);
+}
+
+.react-flow__edge-text {
+  fill: #ffffff !important;
+  font-family: "Creato";
+}

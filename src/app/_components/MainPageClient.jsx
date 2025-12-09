@@ -33,6 +33,19 @@ const MainPageClient = ({ nodeData }) => {
     console.log("MA SELECTION", selection);
   }, [selection]);
 
+  const edgesWithTypeLabel = edges.map((edge) => {
+    let label = "";
+
+    if (edge.data?.typeBranche === "regulier") label = "R";
+    if (edge.data?.typeBranche === "historique") label = "H";
+    if (edge.data?.typeBranche === "conditionnel") label = "C";
+
+    return {
+      ...edge,
+      label,
+    };
+  });
+
   return (
     <div>
       <div className="container-flex">
@@ -45,7 +58,7 @@ const MainPageClient = ({ nodeData }) => {
         <div className="reactFlow-container">
           <ReactFlow
             nodes={nodes}
-            edges={edges}
+            edges={edgesWithTypeLabel}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onSelectionChange={onSelectionChange}

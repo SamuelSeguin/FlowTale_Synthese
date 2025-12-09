@@ -72,13 +72,6 @@ const InspecteurBase = ({ addNode, nodeData }) => {
       >
         Ajouter une fin
       </button>
-
-      <h1 className="inspecteur-title personnalisation">Personnalisation</h1>
-      <div className="btn-personnalisation">
-        <button className="btn-secondary">Ambiance</button>
-        <button className="btn-secondary">Animation</button>
-        <button className="btn-secondary">Image</button>
-      </div>
     </div>
   );
 };
