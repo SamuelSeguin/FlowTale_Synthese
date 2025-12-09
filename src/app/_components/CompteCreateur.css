@@ -1,4 +1,4 @@
-.pfp-name-flex {
+/* .pfp-name-flex {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -17,26 +17,65 @@
   width: 10rem;
   background-color: white;
   border-radius: 500%;
+} */
+
+.pfp-bg {
+  position: relative;
+  width: 80%;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 120px;
+  border-radius: 50px;
+  margin-bottom: 100px;
+  background-image: url("/png/gradient1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pfp-name-flex {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  gap: 20px;
+  align-items: center;
+  bottom: -4rem;
+  left: 16rem;
+}
+
+.pfp-createur {
+  width: 10rem;
+  background-color: white;
+  border: 8px solid white;
+  border-radius: 500%;
+}
+
+.compte-nom {
+  font-family: "Creato-Bold";
+  font-size: 2rem;
+  color: rgb(54, 54, 54);
+  margin: 0;
 }
 
 .titre-page {
   position: absolute;
-  left: 29.5rem;
-  top: 25rem;
+  left: 17.5rem;
+  top: 4rem;
   font-size: 2.5rem;
   font-family: Creato;
   color: rgb(54, 54, 54);
+  z-index: 100;
 }
 
 .histoires-container-flex {
+  position: relative;
   display: flex;
   width: 80%;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  margin-top: 15rem;
   border-radius: 50px;
-  padding-top: 17rem;
+  padding-top: 12rem;
   min-height: 70vh;
   color: rgb(54, 54, 54);
   background-color: #e0e0e05b;
@@ -193,7 +232,8 @@
   border: #000000 1px solid;
   padding: 7px 0 7px 0;
   cursor: pointer;
-  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .btn-small:hover {
