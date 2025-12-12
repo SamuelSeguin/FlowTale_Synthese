@@ -1,71 +1,98 @@
+/* ===========================================
+   STRUCTURE GLOBALE
+   =========================================== */
 .recents-section {
   display: flex;
   flex-direction: column;
-  background-color: #e0e0e05b;
-  margin: 0 100px 0 100px;
-  border-radius: 50px;
+  margin: 0 100px;
   padding-bottom: 80px;
+  border-radius: 50px;
+  background-color: #e0e0e05b;
 }
 
 .recents-section-title {
   padding-left: 161px;
   padding-top: 60px;
-  font-size: 2.5rem;
   font-family: Creato;
+  font-size: 2.5rem;
   color: rgb(54, 54, 54);
 }
 
+/* ===========================================
+   GRILLE
+   =========================================== */
 .recents-grid {
   display: grid;
-  grid-template-columns: 400px 400px 400px;
+  grid-template-columns: repeat(3, 400px);
   gap: 100px;
   justify-content: center;
 }
 
+/* ===========================================
+   CARTE
+   =========================================== */
 .card-container {
-  background-color: #ffffff;
   width: 400px;
   height: 500px;
-  border-radius: 25px;
   padding: 10px;
+  border-radius: 25px;
+  background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   font-family: Creato;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease;
 }
 
+.card-container:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* ===========================================
+   IMAGE
+   =========================================== */
 .recents-img {
   width: 100%;
   height: 70%;
   object-fit: cover;
   border-radius: 25px;
+  margin-bottom: 10px;
 }
 
+/* ===========================================
+   TITRE + AUTEUR
+   =========================================== */
 .recents-title {
+  margin: 0 0 5px 10px;
   font-family: "Creato-Bold";
   font-size: 1.6rem;
-  margin-left: 10px;
-  max-width: 400px;
   color: rgb(54, 54, 54);
-  margin-bottom: 5;
 }
 
 .recents-author {
-  padding-left: 10px;
-  color: rgba(54, 54, 54, 0.589);
+  margin: 0 0 25px 10px;
   font-family: "Creato-ExtraBold";
-  margin-top: 0;
-  margin-bottom: 25px;
+  color: rgba(54, 54, 54, 0.589);
+}
+
+/* ===========================================
+   GENRE (tag)
+   =========================================== */
+.genre-bg {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #ec6e9e, #f7ab93, #ffa97b);
+  transition: box-shadow 0.25s ease;
 }
 
 .genre {
-  color: white;
-  font-size: 0.9rem;
   margin: 0;
   font-family: "Creato";
+  font-size: 0.9rem;
+  color: white;
 }
-.genre-bg {
-  display: inline-block;
-  background: linear-gradient(90deg, #ec6e9e, #f7ab93, #ffa97b);
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-left: 10px;
+
+.card-container:hover .genre-bg {
+  box-shadow: 0 0 12px rgba(255, 150, 150, 0.5);
 }

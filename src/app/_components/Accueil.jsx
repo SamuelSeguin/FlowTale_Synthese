@@ -18,12 +18,13 @@ const Accueil = ({ stories }) => {
 
   const { stop } = useAudio(false);
 
+  // Stop l'audio
   useEffect(() => {
     stop();
   }, []);
 
+  // Animations GSAP
   useGSAP(() => {
-    // HERO ANIMATION
     gsap.from(heroRef.current.querySelector(".heroTitle"), {
       opacity: 0,
       y: 60,
@@ -31,7 +32,6 @@ const Accueil = ({ stories }) => {
       ease: "power3.out",
     });
 
-    // HERO BUTTON ANIMATION
     const btn = heroRef.current.querySelector(".heroCta");
     gsap.from(btn, {
       opacity: 0,
@@ -41,7 +41,6 @@ const Accueil = ({ stories }) => {
       ease: "back.out(1.7)",
     });
 
-    // INFO TEXT SCROLL ANIMATION
     gsap.from(infoTextRef.current, {
       scrollTrigger: {
         trigger: infoTextRef.current,
@@ -53,9 +52,7 @@ const Accueil = ({ stories }) => {
       ease: "power2.out",
     });
 
-    // CARDS ANIMATION
     const cards = cardsRef.current?.querySelectorAll(".card-container");
-
     if (cards?.length) {
       gsap.from(cards, {
         scrollTrigger: {
@@ -73,6 +70,7 @@ const Accueil = ({ stories }) => {
 
   return (
     <div className="container">
+      {/* SECTION HERO */}
       <div className="header-background" ref={heroRef}>
         <section className="hero">
           <h1 className="heroTitle">
@@ -82,6 +80,8 @@ const Accueil = ({ stories }) => {
             <br />
             TOUTES LES FORMES.
           </h1>
+
+          {/* BOUTON HERO */}
           <div className="btn-hero">
             <Link href="/creationHistoire">
               <button className="heroCta">
@@ -94,15 +94,19 @@ const Accueil = ({ stories }) => {
         </section>
       </div>
 
+      {/* SECTION INFO */}
       <section className="info">
         <div className="gradient-text" ref={infoTextRef}>
           Créez des récits interactifs, explorez ceux des autres et partagez vos
           créations en quelques clics.
         </div>
       </section>
+
+      {/* CARDS RÉCENTES */}
       <div ref={cardsRef}>
         <RecentsUiCard stories={stories} />
       </div>
+
       <Footer />
     </div>
   );

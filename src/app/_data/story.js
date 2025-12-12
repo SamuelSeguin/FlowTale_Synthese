@@ -89,15 +89,18 @@ export const GetFullStoryById = async (storyId) => {
 
 export const UpdatePublicStoryById = async (storyId, publicValue) => {
   try {
-    const result = await db.update(storyTables).set({
-      public: publicValue,
-    }).where(eq(storyTables.id, storyId));
+    const result = await db
+      .update(storyTables)
+      .set({
+        public: publicValue,
+      })
+      .where(eq(storyTables.id, storyId));
     return result;
   } catch (err) {
     console.log("[UPDATE NODE POSITION ERROR]", err);
     throw err;
   }
-}
+};
 
 export const getStoryInfoById = async (storyId) => {
   const [story] = await db

@@ -4,6 +4,15 @@ import { getStoryInfoById, getNodeInfoById } from "@/app/_data/story";
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
+export async function generateMetadata({ params }) {
+  const { storyId } = params;
+  const storyInfo = await getStoryInfoById(storyId);
+
+  return {
+    title: `${storyInfo.title} - Lecture`,
+  };
+}
+
 const NodeView = async ({ params }) => {
   const { storyId, nodeId } = await params;
 

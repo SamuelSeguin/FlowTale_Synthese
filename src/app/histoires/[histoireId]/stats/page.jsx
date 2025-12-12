@@ -16,22 +16,17 @@ export async function generateMetadata({ params }) {
 
 const CommentairesPage = async ({ params }) => {
   const { histoireId } = await params;
-  console.log("HISTOIRE ID DANS PAGE COMMENTAIRES :", histoireId);
-
   const storyData = await GetFullStoryByIdAction(histoireId);
-  console.log("[STORY DATA COMPLETE]", storyData);
 
   let user;
 
   try {
     const session = await getSession();
-    console.log("[USER SESSION]", session);
     user = session?.user;
     if (user.id !== storyData.auteur || !user) {
       redirect("/auth/signin");
     }
   } catch (err) {
-    console.log("[ERROR SESSION USER]", err);
     redirect("/auth/signin");
   }
 

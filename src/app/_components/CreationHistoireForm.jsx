@@ -13,6 +13,7 @@ const CreationForm = ({ user }) => {
   const formRef = useRef();
   const leftMessageRef = useRef();
 
+  // Animation GSAP
   useGSAP(() => {
     gsap.from(leftMessageRef.current, {
       opacity: 0,
@@ -42,14 +43,16 @@ const CreationForm = ({ user }) => {
     });
   });
 
+  // Fonction pour gérer la création d'une nouvelle histoire
   const CreationAction = async (formData) => {
-    // Récupérer les valeurs titre / synopsis / ambiance / animation
+    // Récupération des valeurs du formulaire
     const titre = formData.get("titre");
     const auteur = user.id;
     const synopsis = formData.get("synopsis");
     const ambiance = formData.get("ambiance");
     const musique = formData.get("musique");
 
+    // Construction de l'objet histoire
     const newHistoireData = {
       id: uuidv4(),
       titre,
@@ -64,11 +67,13 @@ const CreationForm = ({ user }) => {
 
     await CreationHistoireAction(newHistoireData);
 
+    // Redirection vers la page de construction de l'histoire
     startTransition(() => {
       redirect(`constructionHistoire/${newHistoireData.id}`);
     });
   };
 
+  // Gestion du modal pour choisir une image
   const [modalOuvert, setModalOuvert] = useState(false);
 
   const ouvrirModal = () => setModalOuvert(true);
@@ -82,9 +87,11 @@ const CreationForm = ({ user }) => {
         </p>
       </div>
 
+      {/* Formulaire de création d'histoire */}
       <form className="creation-form" action={CreationAction} ref={formRef}>
         <h2 className="titre-form-creation">Nouvelle histoire</h2>
 
+        {/* Champ titre */}
         <label>
           <input
             id="fld_title"
@@ -95,6 +102,8 @@ const CreationForm = ({ user }) => {
           />
         </label>
         <br />
+
+        {/* Champ synopsis */}
         <label>
           <textarea
             id="fld_synopsis"
@@ -105,6 +114,8 @@ const CreationForm = ({ user }) => {
           />
         </label>
         <br />
+
+        {/* Sélection ambiance et animation */}
         <div className="form-flex">
           <label>
             <select className="select" name="ambiance" required defaultValue="">
@@ -123,7 +134,6 @@ const CreationForm = ({ user }) => {
               <option value="" disabled>
                 Animation
               </option>
-              {/* <option value="fadein">Fade in</option> */}
               <option value="entreeChaotique">Entrée chaotique</option>
               <option value="glissement">Glissement</option>
               <option value="dechiffrage">Déchiffrage</option>
@@ -131,9 +141,13 @@ const CreationForm = ({ user }) => {
           </label>
         </div>
         <br />
+
+        {/* Bouton pour ouvrir le modal d'image */}
         <button className="btn-import" type="button" onClick={ouvrirModal}>
           Choisir une image
         </button>
+
+        {/* Bouton de soumission du formulaire */}
         <button type="submit" className="form-cta-btn">
           <span className="form-cta-arrow left">→</span>
           <span className="form-cta-text">Confirmer</span>
@@ -141,13 +155,17 @@ const CreationForm = ({ user }) => {
         </button>
       </form>
 
+      {/* Modal pour sélectionner ou importer une image */}
       {modalOuvert && (
         <div className="modal-fond">
           <div className="modal-contenu">
             <button className="modal-fermer" onClick={fermerModal}>
               &times;
             </button>
+
             <h2>Banque publique</h2>
+
+            {/* Grille des images disponibles */}
             <div className="grille-images">
               <img
                 className="image-form-creation"
@@ -174,8 +192,9 @@ const CreationForm = ({ user }) => {
                 src="../../../jpg/futuriste2.jpg"
               />
             </div>
-            <h3>Mes images</h3>
 
+            {/* Option pour importer ses propres images */}
+            <h3>Mes images</h3>
             <Link href="/importationImage">
               <button className="btn-import">
                 Importer une image personnalisée

@@ -14,10 +14,12 @@ const CompteCreateur = ({ user, story = [] }) => {
 
   const { stop } = useAudio(false);
 
+  // Stop l'audio au chargement du composant
   useEffect(() => {
     stop();
   }, []);
 
+  // Animation GSAP
   useGSAP(() => {
     gsap.from(titreRef.current, {
       opacity: 0,
@@ -43,6 +45,7 @@ const CompteCreateur = ({ user, story = [] }) => {
     <div>
       <div className="pfp-bg">
         <div className="pfp-name-flex">
+          {/* Affichage de l'image utilisateur ou placeholder */}
           {user?.image === null ? (
             <img
               className="pfp-createur"
@@ -55,10 +58,14 @@ const CompteCreateur = ({ user, story = [] }) => {
           <h2 className="compte-nom">{user?.name}</h2>
         </div>
       </div>
+
+      {/* LISTE DES HISTOIRES */}
       <div className="histoires-container-flex" ref={containerRef}>
         <h1 className="titre-page" ref={titreRef}>
           Vos créations
         </h1>
+
+        {/* Carte pour créer une nouvelle histoire */}
         <Link
           href="/creationHistoire"
           className="histoire-container create-story"
@@ -72,27 +79,37 @@ const CompteCreateur = ({ user, story = [] }) => {
           </article>
         </Link>
 
+        {/* Boucle sur toutes les histoires de l'utilisateur */}
         {story.map((histoire) => (
           <article className="histoire-container" key={histoire.id}>
             <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
+
             <div className="text-content">
+              {/* Composant pour gérer l'affichage public/privé */}
               <PublicDisplay
                 className="bin"
                 isPublic={histoire.public}
                 storyId={histoire.id}
                 userId={user.id}
               />
+
               <h2 className="histoire-titre">{histoire.titre}</h2>
               <h2 className="histoire-auteur">{histoire.auteurName}</h2>
+
               <p className="histoire-synopsis">{histoire.synopsis}</p>
+
+              {/* BOUTONS D'ACTIONS */}
               <div className="icons">
                 <div className="icons-left">
+                  {/* Bouton pour modifier l'histoire */}
                   <Link
                     href={`/constructionHistoire/${histoire.id}`}
                     className="btn-link reset"
                   >
                     <button className="btn-left">Modifier</button>
                   </Link>
+
+                  {/* Bouton pour visualiser l'histoire */}
                   <Link
                     href={`/histoires/${histoire.id}`}
                     className="btn-link reset"
@@ -100,12 +117,16 @@ const CompteCreateur = ({ user, story = [] }) => {
                     <button className="btn-left">Visualiser</button>
                   </Link>
                 </div>
+
                 <div className="icons-right">
+                  {/* Bouton commentaires */}
                   <Link href={`/histoires/${histoire.id}/stats`} className="">
                     <button className="btn-small">
                       <img src="/png/comment.png" alt="commentaires" />
                     </button>
                   </Link>
+
+                  {/* Bouton pour supprimer l'histoire */}
                   <Link href="" className="">
                     <button className="btn-small">
                       <img className="" src="/png/bin.png" alt="" />
@@ -117,6 +138,7 @@ const CompteCreateur = ({ user, story = [] }) => {
           </article>
         ))}
       </div>
+
       <Footer />
     </div>
   );

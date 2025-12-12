@@ -3,8 +3,11 @@ import CreationHistoireForm from "../_components/CreationHistoireForm";
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
-const CreationHistoirePage = async () => {
+export const metadata = {
+  title: "Créer une histoire",
+};
 
+const CreationHistoirePage = async () => {
   let user;
 
   try {

@@ -2,6 +2,7 @@
 import NavBar from "../_components/NavBar";
 import Page404 from "../_components/Page404";
 
+
 const PageErreur404 = () => {
   return (
     <div>
