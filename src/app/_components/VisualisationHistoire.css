@@ -1,4 +1,6 @@
-/* ---------- BACKGROUNDS SELON THEME ---------- */
+/* ==========================================================
+   BACKGROUNDS SELON THEME
+========================================================== */
 .wrapper--horreur {
   height: 100vh;
   --bg-color: #000;
@@ -26,7 +28,9 @@
   );
 }
 
-/* sparkles fantastique */
+/* ==========================================================
+   EFFETS SPARKLES POUR FANTASTIQUE
+========================================================== */
 .sparkle {
   position: absolute;
   width: 6px;
@@ -49,7 +53,9 @@
   left: 40%;
 }
 
-/* ---------- CONTAINER TEXTE ---------- */
+/* ==========================================================
+   CONTAINER TEXTE PRINCIPAL
+========================================================== */
 .histoire-container-visualisation {
   position: absolute;
   top: 50%;
@@ -79,82 +85,89 @@
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
-/* ---------- BTN RECOMMENCER + RETOUR ---------- */
-.visualisation-cta-btn {
-  display: flex;
-  align-items: center;
-  width: 230px;
-  border: none;
-  cursor: pointer;
-  background: black;
-  color: white;
-  border-radius: 100px;
-  padding: 8px;
-  padding-left: 0;
-  overflow: hidden;
-  font-family: "Creato";
-}
-
-.visualisation-cta-text {
-  font-size: 1rem;
-  padding: 0 16px;
-  transition: transform 0.45s;
-}
-
-.visualisation-cta-arrow {
-  font-size: 1.6rem;
-  opacity: 1;
-  transition: transform 0.5s, opacity 0.2s;
-}
-
-.visualisation-cta-arrow.left {
-  opacity: 0;
-  transform: translateX(-20px);
-}
-
-.visualisation-cta-btn:hover {
-  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
-}
-
-.visualisation-cta-btn:hover .visualisation-cta-text {
-  transform: translateX(36px);
-}
-
-.visualisation-cta-btn:hover .visualisation-cta-arrow.left {
-  opacity: 1;
-  transform: translateX(30px);
-}
-
-.visualisation-cta-btn:hover .visualisation-cta-arrow.right {
-  opacity: 0;
-  transform: translateX(32px);
-}
-
-/* ---------- BTNS HISTOIRE ---------- */
-.btn-flex {
+.histoire-container-visualisation.avec-image {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 100px;
-  position: absolute;
-  bottom: -200;
+  width: 78%;
+}
+
+.node-image img {
+  width: 600px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+/* ==========================================================
+   BOUTONS RECOMMENCER / RETOUR
+========================================================== */
+.btn-visualisation {
+  transition: transform 0.2s ease;
+}
+
+.btn-visualisation:hover {
+  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+  box-shadow: 0 5px 20px #ec6e9e49;
+  transform: translateY(-4px);
+}
+
+.btn-link-visualisation button,
+.btn-commentaire {
+  border: none;
+  font-family: "Creato";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 15px;
+  color: white;
+  background-color: black;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.btn-link-visualisation button {
+  font-size: 0.9rem;
+  width: 160px;
+}
+
+.btn-commentaire {
+  font-size: 0.9rem;
+  width: 180px;
+  gap: 5px;
+}
+
+/* ==========================================================
+   BOUTONS INTERACTIONS HISTOIRE (CHOIX / CONFIRMER / CONTINUER)
+========================================================== */
+.btn-flex {
+  position: fixed;
+  bottom: 150px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+  justify-content: center;
 }
 
 .choix-container {
-  position: absolute;
-  bottom: -200;
+  position: fixed;
+  bottom: 150px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 100px;
+  gap: 20px;
+  z-index: 100;
 }
 
-/* meme base pour tous les boutons */
+/* Styles de base pour tous les boutons de choix */
 .choix-btn,
 .choix-btn-confirmer,
 .choix-btn-continuer {
-  position: relative;
   background: black;
   color: white;
   font-family: "Creato";
@@ -170,39 +183,47 @@
 }
 
 .choix-btn-confirmer {
-  width: 150px;
-  font-size: 1rem;
-  padding: 12px 26px;
-  position: absolute;
-  bottom: -100px;
+  position: fixed;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
+  width: 150px;
   text-align: center;
+  font-size: 1rem;
+  padding: 12px 26px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.choix-btn-confirmer:hover {
+  transform: translateX(-50%) translateY(-4px);
 }
 
 .choix-btn-continuer {
   font-size: 1rem;
   padding: 15px 25px;
-  position: absolute;
-  bottom: -200;
+  position: fixed;
+  bottom: 150px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* HOVER ANIM PAR DÉFAUT */
-.choix-btn:hover,
-.choix-btn-confirmer:hover,
 .choix-btn-continuer:hover {
   transform: translateX(-50%) translateY(-4px);
+}
+
+/* Hover par défaut pour tous les boutons */
+.choix-btn:hover {
+  transform: translateY(-4px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
   background: rgba(0, 0, 0, 0.9);
 }
 
-.choix-btn:hover {
-  transform: translateY(-4px);
-}
+/* ==========================================================
+   THEMES SPECIFIQUES BOUTONS (HORREUR / FANTASTIQUE / FUTURISTE)
+========================================================== */
 
-/* ---------- BTNS HORREUR ---------- */
+/* HORREUR */
 .wrapper--horreur .choix-btn.selected {
   background: linear-gradient(135deg, #5c1610, #8e2a1f);
   color: #ffe7e7;
@@ -220,7 +241,7 @@
   box-shadow: 0 0 18px rgba(192, 40, 40, 0.9);
 }
 
-/* ---------- BTNS FANTASTIQUE ---------- */
+/* FANTASTIQUE */
 .wrapper--fantastique .choix-btn.selected {
   background: linear-gradient(135deg, #bddd7e, #77c39b);
   color: #1f3020;
@@ -239,7 +260,7 @@
   box-shadow: 0 0 18px rgba(189, 221, 126, 0.9);
 }
 
-/* ---------- BTNS FUTURISTE ---------- */
+/* FUTURISTE */
 .wrapper--futuriste .choix-btn.selected {
   background: linear-gradient(135deg, #0599cf, #1e90ff);
   color: #e8fbff;
@@ -255,4 +276,131 @@
 .wrapper--futuriste .choix-btn-continuer:hover {
   background: linear-gradient(135deg, #0599cf, #1e90ff);
   box-shadow: 0 0 20px rgba(5, 153, 207, 0.95);
+}
+
+/* ==========================================================
+   COMMENTAIRE / FIN HISTOIRE
+========================================================== */
+.fin-histoire {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 100;
+}
+
+.commentaire-label {
+  font-family: "Creato-ExtraBold";
+  font-size: 1rem;
+  color: rgb(54, 54, 54);
+}
+
+.commentaire-textarea {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(54, 54, 54, 0.2);
+  font-family: "Creato";
+  font-size: 0.95rem;
+  resize: none;
+  min-height: 150px;
+  min-width: 95%;
+}
+
+/* ==========================================================
+   MODAL
+========================================================== */
+.modal-fond {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.808);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-contenu {
+  background: rgb(235, 235, 235);
+  border-radius: 12px;
+  padding: 40px 30px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  font-family: "Creato";
+}
+
+.modal-fermer {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-comment-title {
+  margin: 0;
+  color: black;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* ==========================================================
+   FORM CTA
+========================================================== */
+.form-cta-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border-radius: 100px;
+  padding: 8px 18px;
+  padding-left: 0;
+  overflow: hidden;
+  font-family: "Creato";
+  margin-top: 30px;
+}
+
+.form-cta-text {
+  font-size: 1rem;
+  padding: 0 16px;
+  transition: transform 0.45s;
+}
+
+.form-cta-arrow {
+  font-size: 1.6rem;
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.2s;
+}
+
+.form-cta-arrow.left {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.form-cta-btn:hover {
+  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+}
+
+.form-cta-btn:hover .form-cta-text {
+  transform: translateX(36px);
+}
+
+.form-cta-btn:hover .form-cta-arrow.left {
+  opacity: 1;
+  transform: translateX(30px);
+}
+
+.form-cta-btn:hover .form-cta-arrow.right {
+  opacity: 0;
+  transform: translateX(32px);
 }

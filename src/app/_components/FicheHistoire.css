@@ -1,3 +1,6 @@
+/* ===========================================
+   CONTAINER PRINCIPAL
+   =========================================== */
 .fiche-container {
   height: 65vh;
   width: 75%;
@@ -15,6 +18,9 @@
   gap: 200px;
 }
 
+/* ===========================================
+   IMAGE
+   =========================================== */
 .fiche-image {
   width: 600px;
   height: 600px;
@@ -22,6 +28,9 @@
   object-fit: cover;
 }
 
+/* ===========================================
+   CONTENU
+   =========================================== */
 .fiche-content {
   width: 500px;
   height: 500px;
@@ -39,19 +48,20 @@
   font-family: "Creato-Medium";
   font-size: 1.2rem;
   color: rgba(54, 54, 54, 0.589);
-  margin-top: 5;
-  margin-bottom: 20;
+  margin: 5px 0 20px 0;
 }
 
 .fiche-synopsis {
   font-family: "Creato";
   font-size: 1.2rem;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin: 3rem 0;
   line-height: 1.3;
   color: rgb(54, 54, 54);
 }
 
+/* ===========================================
+   BOUTON CTA
+   =========================================== */
 .fiche-cta-btn {
   position: relative;
   display: flex;
@@ -85,6 +95,7 @@
   transform: translateX(-20px);
 }
 
+/* Hover effects du bouton CTA */
 .fiche-cta-btn:hover {
   background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
 }
@@ -103,16 +114,19 @@
   transform: translateX(32px);
 }
 
-.genre-fiche {
-  color: white;
-  font-size: 0.9rem;
-  margin: 0;
-  font-family: "Creato";
-}
-
+/* ===========================================
+   GENRE (tag)
+   =========================================== */
 .genre-fiche-bg {
   display: inline-block;
   background: linear-gradient(90deg, #ec6e9e, #f7ab93, #ffa97b);
   padding: 4px 12px;
   border-radius: 20px;
+}
+
+.genre-fiche {
+  color: white;
+  font-size: 0.9rem;
+  margin: 0;
+  font-family: "Creato";
 }

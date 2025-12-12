@@ -1,99 +1,137 @@
+/* ===========================================
+   HEADER / PROFIL
+   =========================================== */
+
+.pfp-bg {
+  position: relative;
+  width: 80%;
+  height: 300px;
+  margin: 120px auto 100px auto;
+  border-radius: 50px;
+  background-image: url("/png/gradient1.png");
+  background-color: #ffe4d6;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .pfp-name-flex {
   display: flex;
-  flex-direction: column;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  justify-content: center;
+  gap: 20px;
   align-items: center;
-  top: 8rem;
-  font-family: "Creato-ExtraBold";
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  color: rgb(54, 54, 54);
+  position: absolute;
+  bottom: -4rem;
+  left: 16rem;
 }
 
 .pfp-createur {
   width: 10rem;
+  background-color: white;
+  border: 8px solid white;
+  border-radius: 500%;
+}
+
+.compte-nom {
+  font-family: "Creato-Bold";
+  font-size: 2.5rem;
+  color: black;
 }
 
 .titre-page {
   position: absolute;
-  left: 27rem;
-  top: 25rem;
-  font-family: "Creato-Medium";
+  left: 18rem;
+  top: 3rem;
+  font-size: 2.5rem;
+  font-family: Creato;
   color: rgb(54, 54, 54);
+  z-index: 100;
 }
 
+/* ===========================================
+   LISTE DES HISTOIRES
+   =========================================== */
+
 .histoires-container-flex {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15rem;
-  border-radius: 80px;
-  padding-top: 15rem;
+  width: 80%;
+  margin: 0 auto;
+  padding: 9rem 0 80px 0;
+  border-radius: 50px;
+  background-color: #e0e0e05b;
   min-height: 70vh;
   color: rgb(54, 54, 54);
-  background-color: #e0e0e05b;
-  margin-left: 100px;
-  margin-right: 100px;
-  border-radius: 5%;
-  padding-bottom: 80px;
 }
 
 .histoire-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   width: 60%;
   padding: 15px;
   margin-bottom: 3rem;
   border-radius: 20px;
-  font-family: "Creato";
   background-color: white;
+  font-family: "Creato";
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.histoire-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .histoire-image {
-  min-width: 345px;
-  height: 300px;
+  width: 450px;
+  min-height: 300px;
   background-color: #e0e0e05b;
   border-radius: 20px;
 }
 
 .text-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   padding-left: 25px;
-  padding-right: 25px;
 }
 
 .histoire-titre {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   font-size: 1.8rem;
   font-family: "Creato-ExtraBold";
 }
 
 .histoire-auteur {
-  margin-top: 5;
-  margin-bottom: 30;
+  margin: 5px 0 30px 0;
   font-size: 1em;
   color: rgba(54, 54, 54, 0.589);
   font-family: "Creato-ExtraBold";
 }
 
-.icons {
+/* ===========================================
+   BOUTONS
+   =========================================== */
+
+.btn-link button {
   display: flex;
-  flex-direction: column;
-  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: black;
+  color: white;
+  border-radius: 50px;
+  padding: 10px;
+  width: 100px;
 }
 
-.icons img {
-  height: 23px;
+.btn-left {
+  all: unset;
+  transition: transform 0.2s ease;
 }
 
-.icons-top {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
+.btn-left:hover {
+  background: linear-gradient(90deg, #ec6e9e 0%, #f7ab93 50%, #ffa97b 100%);
+  transform: scale(1.05);
 }

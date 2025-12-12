@@ -3,6 +3,10 @@ import NavBar from "../../_components/NavBar";
 import Utilisateur from "../../_components/Utilisateur";
 import { getSession } from "@/lib/auth";
 
+import { db } from "@/db";
+import { user } from "@/db/schemas/auth-schema";
+import { eq } from "drizzle-orm";
+
 //Titre de l’onglet
 export async function generateMetadata({ params }) {
   const { userId } = params;

@@ -6,6 +6,10 @@ const StoryStart = async ({ params }) => {
   const { storyId } = await params;
   const storyInfo = await getStoryInfoById(storyId);
 
+  if (!storyInfo || !storyInfo.startNodeId) {
+    redirect("/404");
+  }
+
   redirect(`/visualisationhistoire/${storyId}/${storyInfo.startNodeId}`);
 };
 

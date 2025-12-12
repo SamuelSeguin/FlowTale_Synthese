@@ -1,17 +1,19 @@
 "use client";
 import Link from "next/link";
 import "./Utilisateur.css";
+import Footer from "../_components/Footer";
 
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const Utilisateur = ({ histoire }) => {
-  console.log("HISTOIRE DANS UTILISATEUR COMPONENT :", histoire);
-
   const containerRef = useRef();
   const headerRef = useRef();
 
+  /* ------------------------------------
+      ANIMATIONS GSAP
+  ------------------------------------ */
   useGSAP(() => {
     gsap.from(headerRef.current, {
       opacity: 0,
@@ -33,26 +35,39 @@ const Utilisateur = ({ histoire }) => {
 
   return (
     <div>
-      <div className="pfp-name-flex">
-        <img className="pfp-createur" src="/png/pfp_placeholder.png" alt="" />
-        <h2>{histoire[0].auteurName}</h2>
+      {/* ------------------------------------
+          EN-TÊTE AVEC IMAGE ET NOM
+      ------------------------------------ */}
+      <div className="pfp-bg">
+        <div className="pfp-name-flex">
+          <img className="pfp-createur" src="/png/pfp_placeholder.png" alt="" />
+          <h2 className="compte-nom">{histoire[0].auteurName}</h2>
+        </div>
       </div>
-      <h1 className="titre-page" ref={headerRef}>
-        Créations
-      </h1>
+
+      {/* ------------------------------------
+          LISTE DES HISTOIRES CRÉÉES
+      ------------------------------------ */}
       <div className="histoires-container-flex" ref={containerRef}>
+        <h1 className="titre-page" ref={headerRef}>
+          Créations
+        </h1>
+
+        {/* Boucle d’affichage des histoires */}
         {histoire.map((histoireItem) => (
           <article className="histoire-container" key={histoireItem.id}>
-           <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
+            {/* Image placeholder */}
+            <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
 
             <div className="text-content">
               <h2 className="histoire-titre">{histoireItem.titre}</h2>
               <h2 className="histoire-auteur">{histoireItem.auteurName}</h2>
               <p className="histoire-synopsis">{histoireItem.synopsis}</p>
+
               <div className="icons">
                 <div className="icons-top">
-                  <Link href={`/histoires/${histoireItem.id}`}>
-                    <img src="/png/magnifier.png" alt="visualisation" />
+                  <Link href={`/histoires/${histoire.id}`} className="btn-link">
+                    <button className="btn-left">Visualiser</button>
                   </Link>
                 </div>
               </div>
@@ -60,6 +75,7 @@ const Utilisateur = ({ histoire }) => {
           </article>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };

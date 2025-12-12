@@ -1,3 +1,6 @@
+/* ===========================================
+   BACKGROUND ET STRUCTURE GLOBALE
+   =========================================== */
 .form-background {
   position: relative;
   width: 100%;
@@ -6,100 +9,88 @@
   background-repeat: no-repeat;
 }
 
+/* ===========================================
+   MESSAGE GAUCHE
+   =========================================== */
 .creation-left-message {
   position: absolute;
   max-width: 420px;
-  color: #444;
-  z-index: 999;
   left: 25%;
   top: 40%;
-}
-
-.creation-left-message {
   font-size: 2.5rem;
   text-transform: uppercase;
   font-family: "Creato-ExtraBold";
   color: rgb(54, 54, 54);
+  z-index: 999;
 }
 
 .creation-left-message p span {
-  color: #ec6e9e;
+  color: #ec6e9e; /* accent sur certains mots */
 }
 
-.form-flex {
-  display: flex;
-  flex-direction: row;
-}
-
+/* ===========================================
+   FORMULAIRE
+   =========================================== */
 .creation-form {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateY(-50%);
+  width: 450px;
   background-color: rgba(255, 255, 255, 0.616);
   padding: 100px 70px;
   border-radius: 5%;
   font-family: "Creato";
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  width: 450px;
 }
 
-#fld_title {
-  margin-left: 0;
+.form-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
-#fld_synopsis {
-  margin-left: 0;
-}
-
-.textarea-synopsis {
+/* ===========================================
+   CHAMPS INPUT ET TEXTAREA
+   =========================================== */
+.creation-form input,
+.creation-form textarea {
+  font-family: "Creato";
   width: 100%;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+  padding: 5px;
+}
+
+.creation-form textarea {
   height: 150px;
-  max-width: 100%;
   max-height: 200px;
   resize: vertical;
 }
 
-.creation-form input {
-  font-family: "Creato";
-  height: 25px;
-  width: 100%;
-  margin: 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.178);
-}
-.creation-form textarea {
-  font-family: "Creato";
-  margin: 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.178);
-}
-
-.creation-form textarea:focus {
-  border: 2px solid #ec6e9e;
-  outline: none;
-}
-.creation-form input:focus {
-  border: 2px solid #ec6e9e;
-  outline: none;
-}
-
-.select {
-  padding: 5px;
-  font-family: "Creato";
-  height: 30px;
-  width: 146px;
-  margin: 10px;
-  margin-left: 0;
-  border-radius: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.178);
-}
-
+.creation-form input:focus,
+.creation-form textarea:focus,
 .select:focus {
   border: 2px solid #ec6e9e;
   outline: none;
 }
 
+/* ===========================================
+   SELECT
+   =========================================== */
+.select {
+  padding: 5px;
+  font-family: "Creato";
+  height: 30px;
+  width: 146px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+}
+
+/* ===========================================
+   BOUTON PRINCIPAL
+   =========================================== */
 .form-cta-btn {
   position: relative;
   display: flex;
@@ -151,6 +142,9 @@
   transform: translateX(32px);
 }
 
+/* ===========================================
+   MODAL
+   =========================================== */
 .modal-fond {
   position: fixed;
   top: 0;
@@ -194,12 +188,14 @@
 .image-form-creation {
   width: 180px;
   height: 140px;
-  background: #fff;
   border-radius: 7px;
   border: 1px solid #e0e0e0;
   object-fit: cover;
 }
 
+/* ===========================================
+   BOUTON IMPORTER
+   =========================================== */
 .btn-import {
   background: #888;
   border-radius: 18px;
@@ -211,6 +207,6 @@
 }
 
 .btn-import:hover {
-  background: rgb(31, 31, 31) 000;
+  background: rgb(31, 31, 31);
   scale: 1.1;
 }

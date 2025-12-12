@@ -41,11 +41,11 @@
   border-radius: 50%;
 }
 
-.switch input:checked+.slider {
-  background-color: #4caf50;
+.switch input:checked + .slider {
+  background-color: #ed709e;
 }
 
-.switch input:checked+.slider:before {
+.switch input:checked + .slider:before {
   transform: translateX(24px);
 }
 

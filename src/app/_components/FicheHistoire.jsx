@@ -13,7 +13,9 @@ const FicheHistoire = ({ histoire, user }) => {
   const btnRef = useRef();
 
   useGSAP(() => {
-    // IMAGE ANIMATION
+    // -------------------------------
+    // Animation de l'image
+    // -------------------------------
     gsap.from(imageRef.current, {
       opacity: 0,
       x: -50,
@@ -21,7 +23,9 @@ const FicheHistoire = ({ histoire, user }) => {
       ease: "power2.out",
     });
 
-    // CONTENT ANIMATION
+    // -------------------------------
+    // Animation du texte / contenu
+    // -------------------------------
     gsap.from(contentRef.current, {
       opacity: 0,
       y: 40,
@@ -30,7 +34,9 @@ const FicheHistoire = ({ histoire, user }) => {
       ease: "power2.out",
     });
 
-    // BUTTON ANIMATION
+    // -------------------------------
+    // Animation du bouton CTA
+    // -------------------------------
     gsap.from(btnRef.current, {
       opacity: 0,
       scale: 0.6,
@@ -44,20 +50,26 @@ const FicheHistoire = ({ histoire, user }) => {
     <div ref={containerRef}>
       <div className="fiche-container">
         <div className="fiche-flex">
+          {/* Image de la fiche */}
           <img
             ref={imageRef}
             className="fiche-image"
             src="../../../jpg/horreur1.jpg"
             alt=""
           />
+
+          {/* Contenu principal */}
           <div className="fiche-content" ref={contentRef}>
             <h1 className="fiche-titre">{histoire?.titre}</h1>
+
             <Link href={`/compte/${histoire?.auteurId}`}>
               <h2 className="fiche-auteur">{histoire?.auteurName}</h2>
             </Link>
+
             <div className="genre-fiche-bg">
               <p className="genre-fiche">{histoire.ambiance}</p>
             </div>
+
             <p className="fiche-synopsis">{histoire?.synopsis}</p>
 
             <Link href={`/visualisationhistoire/${histoire.id}`}>
@@ -70,6 +82,7 @@ const FicheHistoire = ({ histoire, user }) => {
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );
