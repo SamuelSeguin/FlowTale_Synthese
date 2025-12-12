@@ -1,108 +1,107 @@
-/* ===========================================
-   PROFIL UTILISATEUR
-   =========================================== */
-.pfp-bg {
+.form-background {
   position: relative;
-  width: 80%;
-  height: 300px;
-  margin: 120px auto 100px;
-  border-radius: 50px;
-  background-image: url("/png/gradient1.png");
-  background-color: #ffe4d6;
-  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  background-image: url(/png/header_bg.png);
   background-repeat: no-repeat;
-  background-position: center;
 }
 
-.pfp-name-flex {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
+.auth-form {
   position: absolute;
-  bottom: -4rem;
-  left: 16rem;
-}
-
-.pfp-createur {
-  width: 10rem;
-  background-color: white;
-  border: 8px solid white;
-  border-radius: 500%;
-}
-
-.compte-nom {
-  font-family: "Creato-Bold";
-  font-size: 2.5rem;
-  color: rgb(0, 0, 0);
-  margin-bottom: 40px;
-}
-
-/* ===========================================
-   TITRE PAGE COMMENTAIRES
-   =========================================== */
-.titre-page-comment {
-  position: absolute;
-  left: 18.5rem;
-  top: 3rem;
-  font-size: 2.5rem;
-  font-family: Creato;
-  color: rgb(54, 54, 54);
-  z-index: 100;
-}
-
-/* ===========================================
-   CONTENEUR DES COMMENTAIRES
-   =========================================== */
-.comments-container-flex {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  margin: 0 auto;
-  border-radius: 50px;
-  padding-top: 9rem;
-  padding-bottom: 80px;
-  min-height: 70vh;
-  background-color: #e0e0e05b;
-  color: rgb(54, 54, 54);
-}
-
-.comments-container {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  padding: 15px;
+  top: 50%;
+  left: 55%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.616);
+  padding: 100px 70px;
+  border-radius: 5%;
   font-family: "Creato";
-}
-
-/* ===========================================
-   CARTE DE COMMENTAIRE
-   =========================================== */
-.comment-content {
-  position: relative;
-  padding: 20px;
-  padding-right: 80px;
-  margin-bottom: 1.5rem;
-  border-radius: 20px;
-  background-color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  width: 300px;
 }
 
-.histoire-titre-comment {
-  padding: 0;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  color: #ec6e9e;
+.auth-form input:focus {
+  border: 2px solid #ec6e9e;
+  outline: none;
 }
 
-/* ===========================================
-   ICÔNE DE COMMENTAIRE
-   =========================================== */
-.comment-icon {
-  width: 26px;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
+.auth-form input {
+  height: 25px;
+  width: 80%;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+}
+
+#fld_email {
+  margin-left: 0;
+}
+#fld_password {
+  margin-left: 0;
+}
+#fld_name {
+  margin-left: 0;
+}
+
+.form-cta-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border-radius: 100px;
+  padding: 8px 18px;
+  padding-left: 0;
+  overflow: hidden;
+  font-family: "Creato";
+  margin-top: 30px;
+}
+
+.form-cta-text {
+  font-size: 1rem;
+  padding: 0 16px;
+  transition: transform 0.45s;
+}
+
+.form-cta-arrow {
+  font-size: 1.6rem;
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.2s;
+}
+
+.form-cta-arrow.left {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.form-cta-btn:hover {
+  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+}
+
+.form-cta-btn:hover .form-cta-text {
+  transform: translateX(36px);
+}
+
+.form-cta-btn:hover .form-cta-arrow.left {
+  opacity: 1;
+  transform: translateX(30px);
+}
+
+.form-cta-btn:hover .form-cta-arrow.right {
+  opacity: 0;
+  transform: translateX(32px);
+}
+
+.form-cta-btn.github {
+  margin-top: 10px;
+}
+
+.form-cta-btn.github:hover {
+  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+}
+
+.form-cta-btn.github .form-cta-arrow img {
+  width: 20px;
+  height: 20px;
 }
