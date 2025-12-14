@@ -1,1 +1,0 @@
-ALTER TABLE `story` ADD `image` text NOT NULL;

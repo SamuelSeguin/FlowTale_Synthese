@@ -2,24 +2,10 @@
 import Link from "next/link";
 import "./NavBar.css";
 import { useAudio } from "../_contexts/AudioContext";
-import { useRouter } from "next/navigation";
-import { authClient } from "@/lib/auth-client";
- 
+
 const NavBar = ({ user, auth = false }) => {
-    const isLoggedIn = !!user;
-    const { stop } = useAudio(false);
-
-  const router = useRouter();
-
-  const localDisconnect = async () => {
-    await authClient.signOut({
-      fetchOptions: {
-    onSuccess: () => {
-      router.push("/"); // redirect to login page
-        },
-      },
-    });
-  }
+  const isLoggedIn = !!user;
+  const { stop } = useAudio(false);
 
   return (
     <div className="nav">
@@ -44,7 +30,7 @@ const NavBar = ({ user, auth = false }) => {
                 <span className="nav-cta-arrow right">→</span>
               </button>
             </Link>
-            <img onClick={localDisconnect} className="img-logout" src="/png/logout.png" alt="" />
+            <img className="img-logout" src="/png/logout.png" alt="" />
           </div>
         )
       ) : null}

@@ -13,17 +13,6 @@ export const CreationHistoire = async (histoireData) => {
   }
 };
 
-// export const GetAllStories = async () => {
-//   try {
-//     const result = await db.select().from(storyTables);
-//     return result;
-//   } catch (err) {
-//     console.log("[GET ALL STORIES ERROR]", err);
-//     throw err;
-//   }
-// };
-
-// -- NEW --
 export const getPublishedStories = async () => {
   try {
     const result = await db
@@ -185,12 +174,3 @@ export const getNodeInfoById = async (nodeId) => {
   // 3) Retourner node + branches
   return { node, branches: branchesMapped };
 };
-
-export const deleteStory = async (storyId) => {
-  try {
-    await db.delete(storyTables).where(eq(storyTables.id, storyId));
-  } catch (err) {
-    console.log("[DELETE STORY ERROR]", err);
-    throw err;
-  }
-}

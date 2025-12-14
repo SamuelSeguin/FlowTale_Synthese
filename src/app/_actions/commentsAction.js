@@ -1,15 +1,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { AddComment, GetAllCommentsByStoryId } from "../_data/comments";
-import { redirect } from "next/navigation";
+import { GetAllCommentsByStoryId } from "../_data/comments";
 
 export const GetAllCommentsByStoryIdAction = async (StoryId) => {
-    const result = await GetAllCommentsByStoryId(StoryId);
-    return result;
-}
-
-export const AddCommentAction = async (newComment) => {
-    await AddComment(newComment);
-    redirect(`/histoires/${newComment.storyId}`);
+    await GetAllCommentsByStoryId(StoryId);
+    revalidatePath(`/histoires/${StoryId}/stats`);
 }

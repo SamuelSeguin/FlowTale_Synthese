@@ -20,13 +20,6 @@ const SignInClient = () => {
     });
   });
 
-  const signInWithGithub = () => {
-  authClient.signIn.social({
-    provider: "github",
-    callbackURL: "/",
-  });
-};
-
   const ConnexionAction = async (formData) => {
     const email = formData.get("email");
     const password = formData.get("password");

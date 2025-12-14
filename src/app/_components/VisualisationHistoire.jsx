@@ -6,8 +6,6 @@ import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { useAudio } from "../_contexts/AudioContext";
-import { AddCommentAction } from "../_actions/commentsAction";
-import { v4 as uuidv4 } from "uuid";
 
 const VisualisationHistoire = ({
   story,
@@ -168,6 +166,10 @@ const VisualisationHistoire = ({
     await AddCommentAction(newComment);
   };
 
+
+  /* ------------------------------------
+      RENDU VISUEL
+  ------------------------------------ */
   return (
     <div className={wrapperClass} ref={backgroundRef}>
       {story.ambiance === "fantastique" && (

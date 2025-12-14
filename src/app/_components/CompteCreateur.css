@@ -57,17 +57,16 @@
 .histoires-container-flex {
   position: relative;
   display: flex;
-  width: 80%;
   flex-direction: column;
   align-items: center;
+  width: 80%;
   margin: 0 auto;
   padding-top: 9rem;
-  margin-top: 15rem;
-  border-radius: 50px;
-  min-height: 70vh;
-  color: rgb(54, 54, 54);
-  background-color: #e0e0e05b;
   padding-bottom: 80px;
+  min-height: 70vh;
+  border-radius: 50px;
+  background-color: #e0e0e05b;
+  color: rgb(54, 54, 54);
 }
 
 /* ===========================================
@@ -184,7 +183,6 @@
   background: linear-gradient(90deg, #ec6e9e 0%, #f7ab93 50%, #ffa97b 100%);
   margin-bottom: 75px;
   transition: transform 0.2s, box-shadow 0.2s;
-  margin-bottom: 75px;
 }
 
 .create-story:hover {
@@ -200,7 +198,7 @@
 }
 
 .create-text {
-  color: rgb(255, 255, 255);
+  color: white;
   font-family: "Creato";
   margin: 0;
 }

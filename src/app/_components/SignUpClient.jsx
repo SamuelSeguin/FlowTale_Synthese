@@ -9,11 +9,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRouter } from "next/navigation";
 
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { useRouter } from "next/navigation";
-
 const SignUpClient = () => {
   const containerRef = useRef();
   const messageRef = useRef();
