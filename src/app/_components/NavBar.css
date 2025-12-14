@@ -9,8 +9,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 24px;
-  background-color: rgba(238, 238, 238, 0.534);
-  border-radius: 50px;
+  background-color: #eeeeee88;
+  border-radius: var(--radius-lg);
   backdrop-filter: blur(4px);
   height: 20px;
 }
@@ -21,30 +21,31 @@
 }
 
 .createBtn {
-  background: black;
-  color: white;
-  border-radius: 50px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
   border: none;
   cursor: pointer;
   padding: 15px 25px;
-  font-family: "Creato";
+  font-family: var(--font-main);
 }
 
 .nav-btn {
   display: flex;
-  background: black;
-  color: white;
-  border-radius: 50px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
   border: none;
   cursor: pointer;
   padding: 13px 15px;
   padding-left: 0;
-  font-family: "Creato";
+  font-family: var(--font-main);
   overflow: hidden;
+  transition: 0.2s ease;
 }
 
 .nav-cta-text {
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   padding: 0 16px;
   transition: transform 0.45s;
 }
@@ -61,7 +62,12 @@
 }
 
 .nav-btn:hover {
-  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+  background-image: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  transform: scale(1.05);
 }
 
 .nav-btn:hover .nav-cta-text {

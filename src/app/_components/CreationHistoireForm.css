@@ -17,15 +17,15 @@
   max-width: 420px;
   left: 25%;
   top: 40%;
-  font-size: 2.5rem;
+  font-size: var(--text-title);
   text-transform: uppercase;
-  font-family: "Creato-ExtraBold";
-  color: rgb(54, 54, 54);
+  font-family: var(--font-xbold);
+  color: var(--color-gray-dark);
   z-index: 999;
 }
 
 .creation-left-message p span {
-  color: #ec6e9e; /* accent sur certains mots */
+  color: var(--color-primary);
 }
 
 /* ===========================================
@@ -40,8 +40,8 @@
   background-color: rgba(255, 255, 255, 0.616);
   padding: 100px 70px;
   border-radius: 5%;
-  font-family: "Creato";
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  font-family: var(--font-main);
+  box-shadow: var(--shadow-soft);
 }
 
 .form-flex {
@@ -55,7 +55,7 @@
    =========================================== */
 .creation-form input,
 .creation-form textarea {
-  font-family: "Creato";
+  font-family: var(--font-main);
   width: 100%;
   margin: 10px 0;
   border-radius: 10px;
@@ -72,7 +72,7 @@
 .creation-form input:focus,
 .creation-form textarea:focus,
 .select:focus {
-  border: 2px solid #ec6e9e;
+  border: 2px solid var(--color-primary);
   outline: none;
 }
 
@@ -81,11 +81,11 @@
    =========================================== */
 .select {
   padding: 5px;
-  font-family: "Creato";
+  font-family: var(--font-main);
   height: 30px;
   width: 146px;
-  border-radius: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.178);
+  border-radius: var(--radius-lg);
+  border: 1px solid #0000002d;
 }
 
 /* ===========================================
@@ -97,18 +97,18 @@
   align-items: center;
   border: none;
   cursor: pointer;
-  background: black;
-  color: white;
-  border-radius: 100px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius-pill);
   padding: 8px 18px;
   padding-left: 0;
   overflow: hidden;
-  font-family: "Creato";
+  font-family: var(--font-main);
   margin-top: 30px;
 }
 
 .form-cta-text {
-  font-size: 1rem;
+  font-size: var(--text-sm);
   padding: 0 16px;
   transition: transform 0.45s;
 }
@@ -125,7 +125,11 @@
 }
 
 .form-cta-btn:hover {
-  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+  background-image: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
 }
 
 .form-cta-btn:hover .form-cta-text {
@@ -151,7 +155,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.644);
+  background: #000000a4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,20 +163,20 @@
 }
 
 .modal-contenu {
-  background: rgb(235, 235, 235);
+  background: #ebebeb;
   border-radius: 12px;
   padding: 54px;
   max-width: 70vh;
   min-height: 410px;
   position: relative;
-  font-family: "Creato";
+  font-family: var(--font-main);
 }
 
 .modal-fermer {
   position: absolute;
   top: 18px;
   right: 22px;
-  font-size: 2.5rem;
+  font-size: var(--text-title);
   background: none;
   border: none;
   cursor: pointer;
@@ -199,7 +203,7 @@
 .btn-import {
   background: #888;
   border-radius: 18px;
-  color: white;
+  color: var(--color-white);
   padding: 7px 22px;
   border: none;
   cursor: pointer;
@@ -207,6 +211,6 @@
 }
 
 .btn-import:hover {
-  background: rgb(31, 31, 31);
-  scale: 1.1;
+  background: #1f1f1f;
+  scale: 1.05;
 }

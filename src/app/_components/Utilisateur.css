@@ -7,7 +7,7 @@
   width: 80%;
   height: 300px;
   margin: 120px auto 100px auto;
-  border-radius: 50px;
+  border-radius: var(--radius-lg);
   background-image: url("/png/gradient1.png");
   background-color: #ffe4d6;
   background-size: cover;
@@ -26,24 +26,24 @@
 
 .pfp-createur {
   width: 10rem;
-  background-color: white;
-  border: 8px solid white;
+  background-color: var(--color-white);
+  border: 8px solid var(--color-white);
   border-radius: 500%;
 }
 
 .compte-nom {
-  font-family: "Creato-Bold";
-  font-size: 2.5rem;
-  color: black;
+  font-family: var(--font-bold);
+  font-size: var(--text-title);
+  color: var(--color-black);
 }
 
 .titre-page {
   position: absolute;
   left: 18rem;
   top: 3rem;
-  font-size: 2.5rem;
-  font-family: Creato;
-  color: rgb(54, 54, 54);
+  font-size: var(--text-title);
+  font-family: var(--font-main);
+  color: var(--color-gray-dark);
   z-index: 100;
 }
 
@@ -59,10 +59,10 @@
   width: 80%;
   margin: 0 auto;
   padding: 9rem 0 80px 0;
-  border-radius: 50px;
-  background-color: #e0e0e05b;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-gray-transparent);
   min-height: 70vh;
-  color: rgb(54, 54, 54);
+  color: var(--color-gray-dark);
 }
 
 .histoire-container {
@@ -71,23 +71,23 @@
   width: 60%;
   padding: 15px;
   margin-bottom: 3rem;
-  border-radius: 20px;
-  background-color: white;
-  font-family: "Creato";
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  font-family: var(--font-main);
+  box-shadow: var(--shadow-soft);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .histoire-container:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-hover);
 }
 
 .histoire-image {
   width: 450px;
   min-height: 300px;
-  background-color: #e0e0e05b;
-  border-radius: 20px;
+  background-color: var(--color-gray-transparent);
+  border-radius: var(--radius-md);
 }
 
 .text-content {
@@ -99,15 +99,15 @@
 
 .histoire-titre {
   margin: 0;
-  font-size: 1.8rem;
-  font-family: "Creato-ExtraBold";
+  font-size: var(--text-lg);
+  font-family: var(--font-xbold);
 }
 
 .histoire-auteur {
   margin: 5px 0 30px 0;
-  font-size: 1em;
-  color: rgba(54, 54, 54, 0.589);
-  font-family: "Creato-ExtraBold";
+  font-size: var(--text-sm);
+  color: var(--color-gray-dark);
+  font-family: var(--font-xbold);
 }
 
 /* ===========================================
@@ -120,8 +120,8 @@
   align-items: center;
   gap: 5px;
   background-color: black;
-  color: white;
-  border-radius: 50px;
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
   padding: 10px;
   width: 100px;
 }
@@ -132,6 +132,11 @@
 }
 
 .btn-left:hover {
-  background: linear-gradient(90deg, #ec6e9e 0%, #f7ab93 50%, #ffa97b 100%);
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    #f7ab93 50%,
+    #ffa97b 100%
+  );
   transform: scale(1.05);
 }

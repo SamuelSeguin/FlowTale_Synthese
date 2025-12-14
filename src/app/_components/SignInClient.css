@@ -1,29 +1,29 @@
 .signin-left-message {
   position: absolute;
   max-width: 420px;
-  color: #444;
+  color: var(--color-gray-dark);
   z-index: 999;
   left: 20%;
   top: 40%;
 }
 
 .signin-left-message {
-  font-size: 2.5rem;
+  font-size: var(--text-title);
   text-transform: uppercase;
-  font-family: "Creato-ExtraBold";
-  color: rgb(54, 54, 54);
+  font-family: var(--font-xbold);
+  color: var(--color-gray-dark);
 }
 
 .signin-left-message p span {
-  color: #ec6e9e;
+  color: var(--color-primary);
 }
 
 .text-signup {
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   padding-top: 30px;
   margin: 0;
 }
 
 .text-signup a {
-  color: #ec6e9e;
+  color: var(--color-primary);
 }
