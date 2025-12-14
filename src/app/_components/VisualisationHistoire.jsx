@@ -9,13 +9,14 @@ import { useAudio } from "../_contexts/AudioContext";
 import { AddCommentAction } from "../_actions/commentsAction";
 import { v4 as uuidv4 } from "uuid";
 
-
-const VisualisationHistoire = ({ story,
+const VisualisationHistoire = ({
+  story,
   current,
   edges,
   storyId,
   isStoryEnd,
   startNodeId,
+  user
 }) => {
   const [selectedTarget, setSelectedTarget] = useState(null);
   const [modalOuvert, setModalOuvert] = useState(false);
@@ -23,15 +24,9 @@ const VisualisationHistoire = ({ story,
   const ouvrirModal = () => setModalOuvert(true);
   const fermerModal = () => setModalOuvert(false);
 
-  /* ------------------------------------
-      DÉTERMINATION DU TYPE DE NŒUD
-  ------------------------------------ */
-  const isChoice = (edges?.length ?? 0) > 1; // plusieurs branches = choix
-  const hasNext = (edges?.length ?? 0) > 0; // une seule branche = btn “continuer”
+  const isChoice = (edges?.length ?? 0) > 1;
+  const hasNext = (edges?.length ?? 0) > 0;
 
-  /* ------------------------------------
-      RÉFÉRENCES POUR ANIMATIONS GSAP
-  ------------------------------------ */
   const textRef = useRef();
   const imageRef = useRef();
   const backgroundRef = useRef();
@@ -47,27 +42,22 @@ const VisualisationHistoire = ({ story,
     const split = new SplitText(textRef.current, { type: "words" });
     const splitLines = new SplitText(textRef.current, { type: "lines" });
 
-    // Timelines séparées par ambiance
     const horreurTl = gsap.timeline();
     const horreurBgTl = gsap.timeline({ repeat: -1, yoyo: true });
     const fantTl = gsap.timeline();
     const fantBgTl = gsap.timeline({ repeat: -1, yoyo: true });
     const futTl = gsap.timeline();
 
-    /* ----- AMBIANCE HORREUR ----- */
     if (story.ambiance === "horreur") {
       gsap.set(backgroundRef.current, { "--bg-color": "#5e0c0c" });
       gsap.set(textRef.current, { color: "#f02525" });
-
       horreurBgTl.to(backgroundRef.current, {
         "--bg-color": "#100000",
         duration: 3,
         ease: "sine.inOut",
       });
     } else if (story.ambiance === "fantastique") {
-      /* ----- AMBIANCE FANTASTIQUE ----- */
       gsap.set(textRef.current, { color: "#31243e" });
-
       fantBgTl.to(backgroundRef.current, {
         backgroundPosition: "100% 0%",
         duration: 10,
@@ -75,7 +65,6 @@ const VisualisationHistoire = ({ story,
         yoyo: true,
         ease: "sine.inOut",
       });
-
       gsap.to(".sparkle", {
         y: -10,
         opacity: 0.3,
@@ -85,18 +74,10 @@ const VisualisationHistoire = ({ story,
         ease: "sine.inOut",
         stagger: { each: 0.5, from: "random" },
       });
-
-      // FUTURISTE
     } else if (story.ambiance === "futuriste") {
-      /* ----- AMBIANCE FUTURISTE ----- */
       gsap.set(textRef.current, { color: "#97f8ff" });
     }
 
-    /* ------------------------------------
-        ANIMATIONS du texte
-    ------------------------------------ */
-
-    // Entrée chaotique
     if (story.musique === "entreeChaotique") {
       horreurTl.from(split.words, {
         opacity: 0,
@@ -106,10 +87,7 @@ const VisualisationHistoire = ({ story,
         stagger: { each: 0.08, from: "random" },
         ease: "back.out(2)",
       });
-    }
-
-    // Glissement
-    else if (story.musique === "glissement") {
+    } else if (story.musique === "glissement") {
       fantTl.from(splitLines.lines, {
         opacity: 0,
         x: -90,
@@ -118,10 +96,7 @@ const VisualisationHistoire = ({ story,
         stagger: 0.7,
         ease: "power2.out",
       });
-    }
-
-    // Déchiffrage
-    else if (story.musique === "dechiffrage") {
+    } else if (story.musique === "dechiffrage") {
       futTl.to(textRef.current, {
         duration: 2,
         scrambleText: {
@@ -131,11 +106,8 @@ const VisualisationHistoire = ({ story,
         },
       });
     }
-  }, [current, story]);
 
-    /* ------------------------------------
-        ANIMATION DE L’IMAGE SI PRÉSENTE
-    ------------------------------------ */
+    // Animation de l'image si elle existe
     if (current.data?.image && imageRef.current) {
       gsap.fromTo(
         imageRef.current,
@@ -143,7 +115,7 @@ const VisualisationHistoire = ({ story,
         { opacity: 1, x: 0, duration: 1, ease: "power2.out" }
       );
     }
-  }, [current, story];
+  }, [current, story]);
 
   /* ------------------------------------
       AUDIO
@@ -152,12 +124,10 @@ const VisualisationHistoire = ({ story,
   const isNodeStart = useRef(false);
 
   useEffect(() => {
-    // On ne joue l’audio qu’au premier nœud
     if (current.id !== startNodeId) return;
     if (isNodeStart.current) return;
     isNodeStart.current = true;
 
-    // Sélection du fichier selon ambiance
     const fichierAudio =
       story.ambiance === "horreur"
         ? "/audio/horreur.mp3"
@@ -177,36 +147,24 @@ const VisualisationHistoire = ({ story,
     play();
   }, [isReady, current?.id, startNodeId, play]);
 
-  /* ------------------------------------
-      CLASSE DU BACKGROUND SELON AMBIANCE
-  ------------------------------------ */
   const wrapperClass =
     story?.ambiance === "horreur"
       ? "wrapper wrapper--horreur"
       : story?.ambiance === "fantastique"
-        ? "wrapper wrapper--fantastique"
-        : story?.ambiance === "futuriste"
-          ? "wrapper wrapper--futuriste"
-          : "wrapper";
-
-  /* ------------------------------------
-      RENDU VISUEL
-  ------------------------------------ */
+      ? "wrapper wrapper--fantastique"
+      : story?.ambiance === "futuriste"
+      ? "wrapper wrapper--futuriste"
+      : "wrapper";
 
   const localAddComment = async (formData) => {
     const comment = formData.get("comment");
-    console.log("Commentaire ajouté :", comment);
-    console.log("Utilisateur :", user.id);
-    console.log("Story ID :", storyId);
-    // Ici, vous pouvez ajouter la logique pour envoyer le commentaire au serveur ou le traiter comme nécessaire.
     const newComment = {
       id: uuidv4(),
       text: comment,
       auteur: user.id,
       auteurName: user.name,
       storyId,
-    }
-
+    };
     await AddCommentAction(newComment);
   };
 
@@ -227,7 +185,7 @@ const VisualisationHistoire = ({ story,
       >
         {current.data?.image && (
           <div className="node-image" ref={imageRef}>
-            <img src={current.data.image} />
+            <img src={current.data.image} alt="Image du node" />
           </div>
         )}
 
@@ -236,9 +194,7 @@ const VisualisationHistoire = ({ story,
         </div>
       </div>
 
-      {/* ------------------------------------
-          FIN D'HISTOIRE (boutons finaux)
-      ------------------------------------ */}
+      {/* FIN D'HISTOIRE */}
       {isStoryEnd || !hasNext ? (
         <div className="fin-histoire">
           <div className="btn-flex">
@@ -264,9 +220,7 @@ const VisualisationHistoire = ({ story,
         </div>
       ) : null}
 
-      {/* ------------------------------------
-          MODAL DE COMMENTAIRE
-      ------------------------------------ */}
+      {/* MODAL DE COMMENTAIRE */}
       {modalOuvert && (
         <div className="modal-fond">
           <div className="modal-contenu">
@@ -281,11 +235,7 @@ const VisualisationHistoire = ({ story,
               placeholder="Partagez votre avis sur cette histoire..."
             />
 
-            <button
-              className="form-cta-btn"
-              type="button"
-              onClick={fermerModal}
-            >
+            <button className="form-cta-btn" type="button" onClick={fermerModal}>
               <span className="form-cta-arrow left">→</span>
               <span className="form-cta-text">Envoyer</span>
               <span className="form-cta-arrow right">→</span>
@@ -294,9 +244,7 @@ const VisualisationHistoire = ({ story,
         </div>
       )}
 
-      {/* ------------------------------------
-          BOUTON "CONTINUER" SI 1 SEUL CHOIX
-      ------------------------------------ */}
+      {/* BOUTON "CONTINUER" SI 1 SEUL CHOIX */}
       {!isStoryEnd && edges?.length === 1 && (
         <div>
           <Link
@@ -308,9 +256,7 @@ const VisualisationHistoire = ({ story,
         </div>
       )}
 
-      {/* ------------------------------------
-          BOUTONS DE CHOIX (si plusieurs choix)
-      ------------------------------------ */}
+      {/* BOUTONS DE CHOIX */}
       {!isStoryEnd && isChoice && (
         <div className="choix-container">
           {edges.map((edge) => (
@@ -329,9 +275,7 @@ const VisualisationHistoire = ({ story,
         </div>
       )}
 
-      {/* ------------------------------------
-          BOUTON CONFIRMATION DU CHOIX
-      ------------------------------------ */}
+      {/* BOUTON CONFIRMATION DU CHOIX */}
       {selectedTarget && (
         <Link
           href={`/visualisationhistoire/${storyId}/${selectedTarget}`}
@@ -344,4 +288,4 @@ const VisualisationHistoire = ({ story,
   );
 };
 
-export default VisualisationHistoire; 
+export default VisualisationHistoire;
