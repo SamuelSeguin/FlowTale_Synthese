@@ -1,5 +1,5 @@
 {
-  "compilerComponents": {
+  "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*", "./src/*"]
