@@ -1,8 +1,23 @@
 "use client";
 import Link from "next/link";
 import "./NavBar.css";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
-const NavBar = ({ user, auth = false}) => {
+const NavBar = ({ user, auth = false }) => {
+  const isLoggedIn = !!user;
+
+  const router = useRouter();
+
+  const localDisconnect = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+    onSuccess: () => {
+      router.push("/"); // redirect to login page
+        },
+      },
+    });
+  }
 
   return (
     <div className="nav">
@@ -10,22 +25,25 @@ const NavBar = ({ user, auth = false}) => {
         <img className="logo" src="/svg/logo.png" alt="" />
       </Link>
       {auth === false ? (
-        !user || user.length === 0 ? (
+        !isLoggedIn ? (
           <Link href="/auth/signin">
             <button className="nav-btn">
               <span className="nav-cta-arrow left">→</span>
-              <span className="nav-cta-text">Authentification</span>
+              <span className="nav-cta-text">Se connecter</span>
               <span className="nav-cta-arrow right">→</span>
             </button>
           </Link>
         ) : (
-          <Link href={`/compte/${user.id}`}>
-            <button className="nav-btn">
-              <span className="nav-cta-arrow left">→</span>
-              <span className="nav-cta-text">Compte</span>
-              <span className="nav-cta-arrow right">→</span>
-            </button>
-          </Link>
+          <div className="nav-flex">
+            <Link href={`/compte/${user.id}`}>
+              <button className="nav-btn">
+                <span className="nav-cta-arrow left">→</span>
+                <span className="nav-cta-text">Compte</span>
+                <span className="nav-cta-arrow right">→</span>
+              </button>
+            </Link>
+            <img onClick={localDisconnect} className="img-logout" src="/png/logout.png" alt="" />
+          </div>
         )
       ) : null}
     </div>

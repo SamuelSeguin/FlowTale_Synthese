@@ -4,6 +4,17 @@ import NavBar from "../../_components/NavBar";
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
+//Titre dynamique de l’onglet
+export async function generateMetadata({ params }) {
+  const { histoireId } = params;
+  const histoires = await GetStoryById(histoireId); //Tableau
+  const storyTitle = histoires[0];
+
+  return {
+    title: storyTitle.titre, //Titre de l’onglet
+  };
+}
+
 const FicheHistoirePage = async ({ params }) => {
   const { histoireId } = await params;
   const histoire = await GetStoryById(histoireId);
@@ -18,15 +29,15 @@ const FicheHistoirePage = async ({ params }) => {
   try {
     const session = await getSession();
     user = session?.user;
-    console.log("Vous êtes connecter!")
+    console.log("Vous êtes connecter!");
   } catch (err) {
-    console.log("Vous n'êtes pas connecter!")
+    console.log("Vous n'êtes pas connecter!");
   }
 
   return (
     <div>
-      <NavBar user={user}/>
-      <FicheHistoire histoire={histoire[0]}  />
+      <NavBar user={user} />
+      <FicheHistoire histoire={histoire[0]} />
     </div>
   );
 };

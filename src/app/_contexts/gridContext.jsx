@@ -64,7 +64,7 @@ const GridProvider = ({
       id: uuidv4(),
       source, // le id du noeud de départ
       target, // le id du noeud de fin
-      data: { texte: ".", animation: "." },
+      data: { texte: "." },
       storyId: storyId,
     };
 

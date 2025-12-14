@@ -23,7 +23,6 @@
   top: 25rem;
   font-family: "Creato-Medium";
   color: rgb(54, 54, 54);
-  text-transform: uppercase;
 }
 
 .histoires-container-flex {
@@ -57,7 +56,7 @@
 }
 
 .histoire-image {
-  width: 100%;
+  min-width: 345px;
   height: 300px;
   background-color: #e0e0e05b;
   border-radius: 20px;
@@ -69,14 +68,18 @@
 }
 
 .histoire-titre {
+  margin-top: 0;
+  margin-bottom: 0;
   font-size: 1.8rem;
   font-family: "Creato-ExtraBold";
 }
 
 .histoire-auteur {
-  font-family: "Creato-Medium";
-  font-size: 1rem;
-  color: #ec6e9e;
+  margin-top: 5;
+  margin-bottom: 30;
+  font-size: 1em;
+  color: rgba(54, 54, 54, 0.589);
+  font-family: "Creato-ExtraBold";
 }
 
 .icons {

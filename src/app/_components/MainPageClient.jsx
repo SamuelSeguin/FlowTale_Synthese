@@ -8,6 +8,7 @@ import InspecteurNode from "./InspecteurNode";
 import InspecteurBranche from "./InspecteurBranche";
 import InspecteurBase from "./InspecteurBase";
 import "./ConstructionHistoire.css";
+import Footer from "../_components/Footer";
 
 const MainPageClient = ({ nodeData }) => {
   const {
@@ -33,30 +34,37 @@ const MainPageClient = ({ nodeData }) => {
   }, [selection]);
 
   return (
-    <div className="container-flex">
-      <div className="inspecteurs-flex">
-        <InspecteurBase addNode={addLocalNode} nodeData={nodeData} />
+    <div>
+      <div className="container-flex">
+        <div className="inspecteurs-flex">
+          <InspecteurBase addNode={addLocalNode} nodeData={nodeData} />
 
-        {showInspecteur()}
-      </div>
+          {showInspecteur()}
+        </div>
 
-      <div className="reactFlow-container">
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          onNodesChange={onNodesChange}
-          onEdgesChange={onEdgesChange}
-          onSelectionChange={onSelectionChange}
-          onConnect={onConnect}
-          // Multi-sélection désactivée pour simplifier votre travail
-          multiSelectionKeyCode={null}
-          // Suppression par le clavier désactivée pour simplifier votre travail
-          deleteKeyCode={null}
-          fitView
-        >
-          <Background variant={BackgroundVariant.Dots} />
-        </ReactFlow>
+        <div className="reactFlow-container">
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onSelectionChange={onSelectionChange}
+            onConnect={onConnect}
+            // Multi-sélection désactivée pour simplifier votre travail
+            multiSelectionKeyCode={null}
+            // Suppression par le clavier désactivée pour simplifier votre travail
+            deleteKeyCode={null}
+            fitView
+          >
+            <Background variant={BackgroundVariant.Dots} />
+          </ReactFlow>
+          <div className="btns-construction">
+            <button className="btn-save">Sauvegarder</button>
+            <button className="btn-publier">Publier</button>
+          </div>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };

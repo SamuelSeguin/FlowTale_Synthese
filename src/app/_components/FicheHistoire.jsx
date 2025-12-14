@@ -2,16 +2,57 @@
 import Link from "next/link";
 import Footer from "../_components/Footer";
 import "./FicheHistoire.css";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const FicheHistoire = ({ histoire, user }) => {
   console.log("HISTOIRE DANS FICHE HISTOIRE :", histoire);
 
+  const containerRef = useRef();
+  const imageRef = useRef();
+  const contentRef = useRef();
+  const btnRef = useRef();
+
+  useGSAP(() => {
+    // IMAGE ANIMATION
+    gsap.from(imageRef.current, {
+      opacity: 0,
+      x: -50,
+      duration: 1,
+      ease: "power2.out",
+    });
+
+    // CONTENT ANIMATION
+    gsap.from(contentRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      delay: 0.3,
+      ease: "power2.out",
+    });
+
+    // BUTTON ANIMATION
+    gsap.from(btnRef.current, {
+      opacity: 0,
+      scale: 0.6,
+      delay: 0.6,
+      duration: 0.8,
+      ease: "back.out(1.2)",
+    });
+  });
+
   return (
-    <div>
+    <div ref={containerRef}>
       <div className="fiche-container">
         <div className="fiche-flex">
-          <img className="fiche-image" src="../../../jpg/horreur1.jpg" alt="" />
-          <div className="fiche-content">
+          <img
+            ref={imageRef}
+            className="fiche-image"
+            src={histoire?.image}
+            alt=""
+          />
+          <div className="fiche-content" ref={contentRef}>
             <h1 className="fiche-titre">{histoire?.titre}</h1>
             <Link href={`/compte/${histoire?.auteurId}`}>
               <h2 className="fiche-auteur">{histoire?.auteurName}</h2>
@@ -21,8 +62,8 @@ const FicheHistoire = ({ histoire, user }) => {
             </div>
             <p className="fiche-synopsis">{histoire?.synopsis}</p>
 
-            <Link href={`/histoires/${histoire?.id}/jouer`}>
-              <button className="fiche-cta-btn">
+            <Link href={`/visualisationhistoire/${histoire.id}`}>
+              <button className="fiche-cta-btn" ref={btnRef}>
                 <span className="fiche-cta-arrow left">→</span>
                 <span className="fiche-cta-text">Visualiser</span>
                 <span className="fiche-cta-arrow right">→</span>

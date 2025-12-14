@@ -2,20 +2,20 @@
 import Link from "next/link";
 import "./RecentsUiCard.css";
 
-const RecentsUiCard = ({ story }) => {
-  console.log("STORY IN RECENTSUICARD COMPONENT", story);
+const RecentsUiCard = ({ stories }) => {
+  console.log("STORY IN RECENTSUICARD COMPONENT", stories);
   return (
     <section className="recents-section">
       <h1 className="recents-section-title">Créations du moment</h1>
       <div className="recents-grid">
-        {story.map((histoire) => histoire.public === 1 ? (
+        {stories.map((histoire) => histoire.public === 1 ? (
             console.log("HISTOIRE DANS RECENTSUICARD :", histoire),
             (
               <div className="card-container" key={histoire.id}>
                 <Link href={`/histoires/${histoire.id}`}>
                   <img
                     className="recents-img"
-                    src="../../../jpg/horreur1.jpg"
+                    src={histoire.image}
                     alt=""
                   />
                 </Link>

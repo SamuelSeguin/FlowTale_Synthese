@@ -15,11 +15,13 @@
 
 .pfp-createur {
   width: 10rem;
+  background-color: white;
+  border-radius: 500%;
 }
 
 .titre-page {
   position: absolute;
-  left: 27rem;
+  left: 29.5rem;
   top: 25rem;
   font-size: 2.5rem;
   font-family: Creato;
@@ -28,17 +30,16 @@
 
 .histoires-container-flex {
   display: flex;
+  width: 80%;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
   margin-top: 15rem;
-  border-radius: 80px;
+  border-radius: 50px;
   padding-top: 17rem;
   min-height: 70vh;
   color: rgb(54, 54, 54);
   background-color: #e0e0e05b;
-  margin-left: 100px;
-  margin-right: 100px;
-  border-radius: 5%;
   padding-bottom: 80px;
 }
 
@@ -129,6 +130,7 @@
   font-family: "Creato";
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 75px;
 }
 
 .create-story:hover {
@@ -144,8 +146,8 @@
 }
 
 .create-text {
-  color: rgba(32, 32, 32, 0.616);
-  font-family: "Creato-Bold";
+  color: rgb(255, 255, 255);
+  font-family: "Creato";
   margin: 0;
 }
 

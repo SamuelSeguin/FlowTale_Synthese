@@ -13,19 +13,6 @@ import { relations, sql } from "drizzle-orm";
 //     .$onUpdate(() => /* @__PURE__ */ new Date())
 //     .notNull(),
 // });
-
-export const commentsTables = sqliteTable("comments", {
-    id: text("id").primaryKey(),
-    text: text("description").notNull(),
-    auteur: text("auteur")
-    .references(() => user.id, { onDelete: "cascade" })
-    .notNull(),
-    storyId: text("storyId")
-    .references(() => storyTables.id, {onDelete: "cascade"})
-    .notNull(),
-    createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
-});
-
 export const storyTables = sqliteTable("story", {
     id: text("id").primaryKey(),
     titre: text("titre").notNull(),
@@ -37,8 +24,23 @@ export const storyTables = sqliteTable("story", {
     ambiance: text("ambiance").notNull(),
     musique: text("musique").notNull(),
     public: integer("public").notNull().default(0), // 0 = privé, 1 = public
+    image: text("image").notNull(),
     createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
 });
+
+export const commentsTables = sqliteTable("comments", {
+    id: text("id").primaryKey(),
+    text: text("description").notNull(),
+    auteur: text("auteur")
+    .references(() => user.id, { onDelete: "cascade" })
+    .notNull(),
+    auteurName: text("auteurName").notNull(),
+    storyId: text("storyId")
+    .references(() => storyTables.id, {onDelete: "cascade"})
+    .notNull(),
+    createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
+});
+
 
 export const nodesTables = sqliteTable("nodes", {
   id: text("id").primaryKey(),

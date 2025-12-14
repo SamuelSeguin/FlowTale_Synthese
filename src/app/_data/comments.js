@@ -13,3 +13,13 @@ export const GetAllCommentsByStoryId = async (storyId) => {
         throw err;
     }
 }
+
+export const AddComment = async (newComment) => {
+    try {
+        const result = await db.insert(commentsTables).values(newComment);
+        return result;
+    } catch (err) {
+        console.log("[CREATE COMMENT ERROR]", err);
+        throw err;
+    }
+}

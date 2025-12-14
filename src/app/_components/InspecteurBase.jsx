@@ -31,7 +31,7 @@ const InspecteurBase = ({ addNode, nodeData }) => {
           })
         }
       >
-        Ajouter un noeud Début
+        Ajouter un noeud Début (à supprimer)
       </button>
       <button
         className="btn-ajouter"
@@ -43,13 +43,13 @@ const InspecteurBase = ({ addNode, nodeData }) => {
               y: Math.floor(Math.random() * (100 - 0 + 1)) + 0,
             },
             data: {
-              label: "Noeux d'histoire", // TITRE
+              label: "Titre de l'événement", // TITRE
               type: "Histoire",
             },
           })
         }
       >
-        Ajouter un noeud d'histoire
+        Ajouter un événement
       </button>
       <button
         className="btn-ajouter-fin"
@@ -61,14 +61,19 @@ const InspecteurBase = ({ addNode, nodeData }) => {
               y: Math.floor(Math.random() * (100 - 0 + 1)) + 0,
             },
             data: {
-              label: "Fin de l'histoire", // TITRE
+              label: "Fin", // TITRE
               type: "Fin",
             },
           })
         }
       >
-        Ajouter un noeud Fin
+        Ajouter une fin
       </button>
+
+      <div className="btn-personnalisation">
+        <button className="btn-ambiance">Animation</button>
+        <button className="btn-image">Image</button>
+      </div>
     </div>
   );
 };

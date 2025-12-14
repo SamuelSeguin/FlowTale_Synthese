@@ -4,6 +4,11 @@ import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { GetStoryByUserIdAction } from "@/app/_actions/storyAction";
 
+//Titre dynamique de l’onglet
+export const metadata = {
+  title: "Mon compte",
+};
+
 const ComptePage = async () => {
   let user;
 
@@ -18,12 +23,12 @@ const ComptePage = async () => {
   }
 
   const story = await GetStoryByUserIdAction(user.id);
-  console.log("STORY IN COMPTE PAGE", story); 
+  console.log("STORY IN COMPTE PAGE", story);
 
   return (
     <div>
-      <NavBar userID={user.id}/>
-      <CompteCreateur user={user} story={story} />
+      <NavBar user={user} />
+      <CompteCreateur user={user} story={story}/>
     </div>
   );
 };

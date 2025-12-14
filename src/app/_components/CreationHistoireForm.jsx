@@ -1,14 +1,52 @@
 "use client";
-import React, { startTransition, useState } from "react";
+import React, { useState, useRef, startTransition } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./CreationHistoireForm.css";
 import { CreationHistoireAction } from "../_actions/storyAction";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+
 const CreationForm = ({ user }) => {
+
+  const [imageSelected, setImageSelected] = useState("/jpg/horreur1.jpg");
+
+  const formRef = useRef();
+  const leftMessageRef = useRef();
+
+  useGSAP(() => {
+    gsap.from(leftMessageRef.current, {
+      opacity: 0,
+      x: -40,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    gsap.from(formRef.current, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      delay: 0.3,
+      ease: "power3.out",
+    });
+
+    const fields = formRef.current.querySelectorAll(
+      "input, textarea, select, button[type='submit']"
+    );
+    gsap.from(fields, {
+      opacity: 0,
+      y: 25,
+      stagger: 0.12,
+      delay: 0.5,
+      duration: 0.7,
+      ease: "power2.out",
+    });
+  });
+
   const CreationAction = async (formData) => {
-    // Récupérer les trois valeurs, titre / synopsis / ambiance / animation / musique
+    // Récupérer les valeurs titre / synopsis / ambiance / animation
     const titre = formData.get("titre");
     const auteur = user.id;
     const synopsis = formData.get("synopsis");
@@ -23,6 +61,7 @@ const CreationForm = ({ user }) => {
       synopsis,
       ambiance,
       musique,
+      image: imageSelected, // Valeur par défaut pour l'instant
     };
 
     console.log(newHistoireData);
@@ -30,8 +69,8 @@ const CreationForm = ({ user }) => {
     await CreationHistoireAction(newHistoireData);
 
     startTransition(() => {
-      redirect(`constructionHistoire/${newHistoireData.id}`)
-    })
+      redirect(`construction_histoire/${newHistoireData.id}`);
+    });
   };
 
   const [modalOuvert, setModalOuvert] = useState(false);
@@ -41,13 +80,13 @@ const CreationForm = ({ user }) => {
 
   return (
     <div className="form-background">
-      <div className="creation-left-message">
+      <div className="creation-left-message" ref={leftMessageRef}>
         <p>
           Imagine. <br /> Anime. <br /> Partage.
         </p>
       </div>
 
-      <form className="creation-form" action={CreationAction}>
+      <form className="creation-form" action={CreationAction} ref={formRef}>
         <h2 className="titre-form-creation">Nouvelle histoire</h2>
 
         <label>
@@ -86,13 +125,12 @@ const CreationForm = ({ user }) => {
           <label>
             <select className="select" name="musique" required defaultValue="">
               <option value="" disabled>
-                Musique
+                Animation
               </option>
-              <option value="classique">Classique</option>
-              <option value="magique">Magique</option>
-              <option value="suspense">Suspense</option>
-              <option value="cyberpunk">Cyberpunk</option>
-              <option value="calme">Calme</option>
+              {/* <option value="fadein">Fade in</option> */}
+              <option value="entreeChaotique">Entrée chaotique</option>
+              <option value="glissement">Glissement</option>
+              <option value="dechiffrage">Déchiffrage</option>
             </select>
           </label>
         </div>
@@ -118,26 +156,50 @@ const CreationForm = ({ user }) => {
               <img
                 className="image-form-creation"
                 src="../../../jpg/horreur1.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/horreur1.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/horreur2.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/horreur2.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/fantastique1.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/fantastique1.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/fantastique2.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/fantastique2.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/futuriste1.png"
+                onClick={() => {
+                  setImageSelected("/jpg/futuriste1.png");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/futuriste2.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/futuriste2.jpg");
+                  fermerModal();
+                }}
               />
             </div>
             <h3>Mes images</h3>
