@@ -28,16 +28,49 @@
     #000 40%
   );
 
+/* COULEURS */
   --color-todo-text: #999;
   --color-todo-border: #e4e4e4;
+  
+  /* Couleurs principales */
+  --color-primary: #ec6e9e;
+  --color-secondary: #f2a191;
+  --color-accent: #ffa97b;
+
+  /* Neutres */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray-dark: rgb(54, 54, 54);
+  --color-gray-light: #e0e0e05b;
+
+  /* TEXTE */
+    --font-main: "Creato";
+  --font-bold: "Creato-Bold";
+  --font-xbold: "Creato-ExtraBold";
+
+  --text-xl: 2.5rem;
+  --text-lg: 1.8rem;
+  --text-md: 1.2rem;
+  --text-sm: 0.9rem;
+
+  /* BORDER RADIUS */
+  --radius-lg: 50px;
+  --radius-md: 20px;
+  --radius-pill: 100px;
+
+  /* BOX SHADOW */
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  /* BOUTONS */
 }
 
-@theme inline {
+/* @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+} */
 
 body {
   background: var(--background);
