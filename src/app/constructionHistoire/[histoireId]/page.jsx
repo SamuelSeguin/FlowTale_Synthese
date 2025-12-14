@@ -23,10 +23,8 @@ export async function generateMetadata({ params }) {
 
 const ConstructionHistoirePage = async ({ params }) => {
   const { histoireId } = await params;
-  console.log("[HISTOIRE ID]", histoireId);
 
   const storyData = await GetFullStoryByIdAction(histoireId);
-  console.log("[STORY DATA COMPLETE]", storyData);
 
   let user;
 
@@ -37,12 +35,10 @@ const ConstructionHistoirePage = async ({ params }) => {
       redirect("/auth/signin");
     }
   } catch (err) {
-    console.log("[ERROR SESSION USER]", err);
     redirect("/auth/signin");
   }
 
   const nodeData = storyData.nodes;
-  console.log("[NODES RECUPERES]", nodeData);
 
   const initialNodes = nodeData.map((node) => ({
     id: node.id,
@@ -51,7 +47,6 @@ const ConstructionHistoirePage = async ({ params }) => {
   }));
 
   const edgeData = storyData.edges;
-  console.log("[EDGES RECUPERES]", edgeData);
 
   const initialEdges = edgeData.map((edge) => ({
     id: edge.id,
@@ -71,9 +66,7 @@ const ConstructionHistoirePage = async ({ params }) => {
         >
           <main>
             <h1 className="construction-page-titre">{storyData.titre}</h1>
-            <MainPageClient nodeData={initialNodes} 
-            
-            />
+            <MainPageClient nodeData={initialNodes} />
           </main>
         </GridProvider>
       </div>

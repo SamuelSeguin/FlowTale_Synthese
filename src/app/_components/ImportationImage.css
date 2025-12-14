@@ -11,10 +11,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px dashed rgba(0, 0, 0, 0.438);
+  border: 2px dashed #00000070;
   width: 90%;
   height: 240px;
-  color: rgb(54, 54, 54);
+  color: var(--color-gray-dark);
   padding: 50px;
   padding-bottom: 100px;
   border-radius: 10px;
@@ -27,8 +27,8 @@
   height: 60vh;
   width: 55%;
   margin: 4rem 20rem 0 20rem;
-  background-color: rgba(255, 255, 255, 0.616);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  background-color: #ffffff9d;
+  box-shadow: var(--shadow-soft);
   padding: 20px;
   border-radius: 10px;
 }
@@ -41,7 +41,7 @@
 }
 
 .txt-import {
-  font-size: 1.2rem;
+  font-size: var(--text-md);
 }
 
 .import-cta-btn {
@@ -50,18 +50,18 @@
   align-items: center;
   border: none;
   cursor: pointer;
-  background: black;
-  color: white;
-  border-radius: 100px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius-pill);
   padding: 8px 18px;
   padding-left: 0;
   overflow: hidden;
-  font-family: "Creato";
+  font-family: var(--font-main);
   margin-top: 70px;
 }
 
 .import-cta-text {
-  font-size: 1rem;
+  font-size: var(--text-sm);
   padding: 0 16px;
   transition: transform 0.45s;
 }
@@ -78,7 +78,11 @@
 }
 
 .import-cta-btn:hover {
-  background-image: linear-gradient(90deg, #ec6e9e 0%, #f2a191 100%);
+  background-image: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
 }
 
 .import-cta-btn:hover .import-cta-text {
