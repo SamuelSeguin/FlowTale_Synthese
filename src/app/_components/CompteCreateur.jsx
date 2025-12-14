@@ -7,19 +7,21 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import PublicDisplay from "./PublicDisplay";
 import { useAudio } from "../_contexts/AudioContext";
+import { deleteStoryAction } from "../_actions/storyAction";
 
 const CompteCreateur = ({ user, story = [] }) => {
   const containerRef = useRef();
   const titreRef = useRef();
-
   const { stop } = useAudio(false);
 
-  // Stop l'audio au chargement du composant
   useEffect(() => {
     stop();
   }, []);
 
-  // Animation GSAP
+  const deleteStoryLocal = async (storyId) => {
+    await deleteStoryAction(storyId, user.id);
+  };
+
   useGSAP(() => {
     gsap.from(titreRef.current, {
       opacity: 0,
@@ -45,31 +47,22 @@ const CompteCreateur = ({ user, story = [] }) => {
     <div>
       <div className="pfp-bg">
         <div className="pfp-name-flex">
-          {/* Affichage de l'image utilisateur ou placeholder */}
-          {user?.image === null ? (
-            <img
-              className="pfp-createur"
-              src="/png/pfp_placeholder.png"
-              alt=""
-            />
-          ) : (
-            <img className="pfp-createur" src={user?.image} alt="" />
-          )}
+          <img
+            className="pfp-createur"
+            src={user?.image || "/png/pfp_placeholder.png"}
+            alt=""
+          />
           <h2 className="compte-nom">{user?.name}</h2>
         </div>
       </div>
 
-      {/* LISTE DES HISTOIRES */}
-      <div className="histoires-container-flex" ref={containerRef}>
-        <h1 className="titre-page" ref={titreRef}>
-          Vos créations
-        </h1>
+      <h1 className="titre-page" ref={titreRef}>
+        Vos créations
+      </h1>
 
-        {/* Carte pour créer une nouvelle histoire */}
-        <Link
-          href="/creationHistoire"
-          className="histoire-container create-story"
-        >
+      <div className="histoires-container-flex" ref={containerRef}>
+        {/* Bouton pour créer une nouvelle histoire */}
+        <Link href="/creation_histoire" className="histoire-container create-story">
           <article>
             <div>
               <h2 className="create-title">Créer une histoire</h2>
@@ -79,59 +72,39 @@ const CompteCreateur = ({ user, story = [] }) => {
           </article>
         </Link>
 
-        {/* Boucle sur toutes les histoires de l'utilisateur */}
+        {/* Si l'utilisateur n'a pas encore créé d'histoires */}
+        {story.length === 0 && (
+          <p>Vous n'avez pas encore créé d'histoires. Commencez dès maintenant !</p>
+        )}
+
+        {/* Boucle sur toutes les histoires */}
         {story.map((histoire) => (
           <article className="histoire-container" key={histoire.id}>
-            <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
-
+            <img className="histoire-image" src={histoire.image} alt="" />
             <div className="text-content">
-              {/* Composant pour gérer l'affichage public/privé */}
-              <PublicDisplay
+              <img
                 className="bin"
-                isPublic={histoire.public}
-                storyId={histoire.id}
-                userId={user.id}
+                src="/png/bin.png"
+                alt="supprimer"
+                onClick={() => deleteStoryLocal(histoire.id)}
               />
-
               <h2 className="histoire-titre">{histoire.titre}</h2>
               <h2 className="histoire-auteur">{histoire.auteurName}</h2>
-
               <p className="histoire-synopsis">{histoire.synopsis}</p>
 
-              {/* BOUTONS D'ACTIONS */}
               <div className="icons">
-                <div className="icons-left">
-                  {/* Bouton pour modifier l'histoire */}
-                  <Link
-                    href={`/constructionHistoire/${histoire.id}`}
-                    className="btn-link reset"
-                  >
-                    <button className="btn-left">Modifier</button>
+                <div className="icons-top">
+                  <Link href={`/construction_histoire/${histoire.id}`}>
+                    <img src="/png/pencil-square-o.png" alt="modifier" />
                   </Link>
-
-                  {/* Bouton pour visualiser l'histoire */}
-                  <Link
-                    href={`/histoires/${histoire.id}`}
-                    className="btn-link reset"
-                  >
-                    <button className="btn-left">Visualiser</button>
+                  <Link href={`/histoires/${histoire.id}`}>
+                    <img src="/png/magnifier.png" alt="visualisation" />
                   </Link>
-                </div>
-
-                <div className="icons-right">
-                  {/* Bouton commentaires */}
-                  <Link href={`/histoires/${histoire.id}/stats`} className="">
-                    <button className="btn-small">
-                      <img src="/png/comment.png" alt="commentaires" />
-                    </button>
-                  </Link>
-
-                  {/* Bouton pour supprimer l'histoire */}
-                  <Link href="" className="">
-                    <button className="btn-small">
-                      <img className="" src="/png/bin.png" alt="" />
-                    </button>
-                  </Link>
+                  <PublicDisplay
+                    isPublic={histoire.public}
+                    storyId={histoire.id}
+                    userId={user.id}
+                  />
                 </div>
               </div>
             </div>

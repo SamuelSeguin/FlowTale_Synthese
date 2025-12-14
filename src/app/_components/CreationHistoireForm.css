@@ -193,9 +193,10 @@
   object-fit: cover;
 }
 
-/* ===========================================
-   BOUTON IMPORTER
-   =========================================== */
+.image-form-creation:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); /* Ombre douce en dessous */
+}
+
 .btn-import {
   background: #888;
   border-radius: 18px;

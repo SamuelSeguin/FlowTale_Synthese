@@ -9,6 +9,17 @@ import {
     GetStoryById,
     GetStoryByUserId,
     UpdatePublicStoryById,
+    deleteStory,
+} from "../_data/story"
+import {
+    CreationHistoire,
+    getPublishedStories,
+    getStoryInfoById,
+    getNodeInfoById,
+    GetFullStoryById,
+    GetStoryById,
+    GetStoryByUserId,
+    UpdatePublicStoryById,
 } from "../_data/story"
 import { revalidatePath } from "next/cache";
 
@@ -52,4 +63,9 @@ export const GetFullStoryByIdAction = async (storyId) => {
 export const UpdatePublicStoryByIdAction = async (storyId, userId, publicValue) => {
     await UpdatePublicStoryById(storyId, publicValue);
     revalidatePath(`/compte/${userId}`)
+}
+
+export const deleteStoryAction = async (storyId, userId) => {
+    await deleteStory(storyId);
+    revalidatePath(`/compte/${userId}`);
 }

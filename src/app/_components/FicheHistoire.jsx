@@ -45,20 +45,17 @@ const FicheHistoire = ({ histoire, user }) => {
       ease: "back.out(1.2)",
     });
   });
-
+  
   return (
     <div ref={containerRef}>
       <div className="fiche-container">
         <div className="fiche-flex">
-          {/* Image de la fiche */}
           <img
             ref={imageRef}
             className="fiche-image"
-            src="../../../jpg/horreur1.jpg"
+            src={histoire?.image}
             alt=""
           />
-
-          {/* Contenu principal */}
           <div className="fiche-content" ref={contentRef}>
             <h1 className="fiche-titre">{histoire?.titre}</h1>
 

@@ -6,9 +6,11 @@ import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { useAudio } from "../_contexts/AudioContext";
+import { AddCommentAction } from "../_actions/commentsAction";
+import { v4 as uuidv4 } from "uuid";
 
-const VisualisationHistoire = ({
-  story,
+
+const VisualisationHistoire = ({ story,
   current,
   edges,
   storyId,
@@ -83,6 +85,8 @@ const VisualisationHistoire = ({
         ease: "sine.inOut",
         stagger: { each: 0.5, from: "random" },
       });
+
+      // FUTURISTE
     } else if (story.ambiance === "futuriste") {
       /* ----- AMBIANCE FUTURISTE ----- */
       gsap.set(textRef.current, { color: "#97f8ff" });
@@ -127,6 +131,7 @@ const VisualisationHistoire = ({
         },
       });
     }
+  }, [current, story]);
 
     /* ------------------------------------
         ANIMATION DE L’IMAGE SI PRÉSENTE
@@ -138,7 +143,7 @@ const VisualisationHistoire = ({
         { opacity: 1, x: 0, duration: 1, ease: "power2.out" }
       );
     }
-  }, [current, story]);
+  }, [current, story];
 
   /* ------------------------------------
       AUDIO
@@ -179,14 +184,32 @@ const VisualisationHistoire = ({
     story?.ambiance === "horreur"
       ? "wrapper wrapper--horreur"
       : story?.ambiance === "fantastique"
-      ? "wrapper wrapper--fantastique"
-      : story?.ambiance === "futuriste"
-      ? "wrapper wrapper--futuriste"
-      : "wrapper";
+        ? "wrapper wrapper--fantastique"
+        : story?.ambiance === "futuriste"
+          ? "wrapper wrapper--futuriste"
+          : "wrapper";
 
   /* ------------------------------------
       RENDU VISUEL
   ------------------------------------ */
+
+  const localAddComment = async (formData) => {
+    const comment = formData.get("comment");
+    console.log("Commentaire ajouté :", comment);
+    console.log("Utilisateur :", user.id);
+    console.log("Story ID :", storyId);
+    // Ici, vous pouvez ajouter la logique pour envoyer le commentaire au serveur ou le traiter comme nécessaire.
+    const newComment = {
+      id: uuidv4(),
+      text: comment,
+      auteur: user.id,
+      auteurName: user.name,
+      storyId,
+    }
+
+    await AddCommentAction(newComment);
+  };
+
   return (
     <div className={wrapperClass} ref={backgroundRef}>
       {story.ambiance === "fantastique" && (
@@ -321,4 +344,4 @@ const VisualisationHistoire = ({
   );
 };
 
-export default VisualisationHistoire;
+export default VisualisationHistoire; 

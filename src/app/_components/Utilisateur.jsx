@@ -7,13 +7,16 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 const Utilisateur = ({ histoire }) => {
+  console.log("HISTOIRE DANS UTILISATEUR COMPONENT :", histoire);
+
   const containerRef = useRef();
   const headerRef = useRef();
 
-  /* ------------------------------------
-      ANIMATIONS GSAP
-  ------------------------------------ */
   useGSAP(() => {
     gsap.from(headerRef.current, {
       opacity: 0,
@@ -66,7 +69,7 @@ const Utilisateur = ({ histoire }) => {
 
               <div className="icons">
                 <div className="icons-top">
-                  <Link href={`/histoires/${histoire.id}`} className="btn-link">
+                  <Link href={`/histoires/${histoireItem.id}`} className="btn-link">
                     <button className="btn-left">Visualiser</button>
                   </Link>
                 </div>

@@ -1,7 +1,7 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { AddEdges, GetAllEdges, RemoveEdges } from "../_data/edges";
+import { AddEdges, GetAllEdges, RemoveEdges, UpdateEdges } from "../_data/edges";
 
 export const GetAllEdgesAction = async () => {
     const result = await GetAllEdges();
@@ -24,8 +24,7 @@ export const RemoveEdgesAction = async (EdgeId) => {
     revalidatePath("/");
 }
 
-export const UpdateEdgesAction = async () => {
-    const result = console.log("Mise à jour des edges");
+export const UpdateEdgesAction = async (updatedEdges) => {
+    await UpdateEdges(updatedEdges);
     revalidatePath("/");
-    return result;
 }

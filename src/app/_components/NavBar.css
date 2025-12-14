@@ -29,6 +29,26 @@
   padding: 15px 25px;
   font-family: "Creato";
 }
+.nav {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  background-color: rgba(238, 238, 238, 0.534);
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+  height: 20px;
+}
+
+.logo {
+  padding: 5px 18px;
+  width: 100px;
+}
 
 .nav-btn {
   display: flex;

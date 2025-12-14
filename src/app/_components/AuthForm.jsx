@@ -1,3 +1,4 @@
+"use client"
 import "./AuthForm.css";
 
 import { useRef } from "react";

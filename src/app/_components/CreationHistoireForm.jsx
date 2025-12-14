@@ -10,10 +10,12 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const CreationForm = ({ user }) => {
+
+  const [imageSelected, setImageSelected] = useState("/jpg/horreur1.jpg");
+
   const formRef = useRef();
   const leftMessageRef = useRef();
 
-  // Animation GSAP
   useGSAP(() => {
     gsap.from(leftMessageRef.current, {
       opacity: 0,
@@ -43,9 +45,8 @@ const CreationForm = ({ user }) => {
     });
   });
 
-  // Fonction pour gérer la création d'une nouvelle histoire
   const CreationAction = async (formData) => {
-    // Récupération des valeurs du formulaire
+    // Récupérer les valeurs titre / synopsis / ambiance / animation
     const titre = formData.get("titre");
     const auteur = user.id;
     const synopsis = formData.get("synopsis");
@@ -61,6 +62,7 @@ const CreationForm = ({ user }) => {
       synopsis,
       ambiance,
       musique,
+      image: imageSelected, // Valeur par défaut pour l'instant
     };
 
     console.log(newHistoireData);
@@ -69,7 +71,7 @@ const CreationForm = ({ user }) => {
 
     // Redirection vers la page de construction de l'histoire
     startTransition(() => {
-      redirect(`constructionHistoire/${newHistoireData.id}`);
+      redirect(`construction_histoire/${newHistoireData.id}`);
     });
   };
 
@@ -134,6 +136,7 @@ const CreationForm = ({ user }) => {
               <option value="" disabled>
                 Animation
               </option>
+              {/* <option value="fadein">Fade in</option> */}
               <option value="entreeChaotique">Entrée chaotique</option>
               <option value="glissement">Glissement</option>
               <option value="dechiffrage">Déchiffrage</option>
@@ -170,26 +173,50 @@ const CreationForm = ({ user }) => {
               <img
                 className="image-form-creation"
                 src="../../../jpg/horreur1.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/horreur1.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/horreur2.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/horreur2.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/fantastique1.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/fantastique1.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/fantastique2.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/fantastique2.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/futuriste1.png"
+                onClick={() => {
+                  setImageSelected("/jpg/futuriste1.png");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/futuriste2.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/futuriste2.jpg");
+                  fermerModal();
+                }}
               />
             </div>
 

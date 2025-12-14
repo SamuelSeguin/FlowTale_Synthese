@@ -32,6 +32,7 @@ const Accueil = ({ stories }) => {
       ease: "power3.out",
     });
 
+    // HERO BUTTON ANIMATION
     const btn = heroRef.current.querySelector(".heroCta");
     gsap.from(btn, {
       opacity: 0,
@@ -41,6 +42,7 @@ const Accueil = ({ stories }) => {
       ease: "back.out(1.7)",
     });
 
+    // INFO TEXT SCROLL ANIMATION
     gsap.from(infoTextRef.current, {
       scrollTrigger: {
         trigger: infoTextRef.current,
@@ -52,7 +54,9 @@ const Accueil = ({ stories }) => {
       ease: "power2.out",
     });
 
+    // CARDS ANIMATION
     const cards = cardsRef.current?.querySelectorAll(".card-container");
+
     if (cards?.length) {
       gsap.from(cards, {
         scrollTrigger: {
@@ -83,7 +87,7 @@ const Accueil = ({ stories }) => {
 
           {/* BOUTON HERO */}
           <div className="btn-hero">
-            <Link href="/creationHistoire">
+            <Link href="/creation_histoire">
               <button className="heroCta">
                 <span className="cta-arrow left">→</span>
                 <span className="cta-text">Créer</span>

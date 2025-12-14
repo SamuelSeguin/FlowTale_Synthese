@@ -38,6 +38,19 @@ export const RemoveEdges = async (EdgeId) => {
     }
 }
 
-export const UpdateEdges = async () => {
-    return;
-}
+export const UpdateEdges = async (updatedEdges) => {
+  try {
+
+    const result = await db
+      .update(edgesTables)
+      .set({
+        data: updatedEdges.data, // ✅ NE PAS stringifier
+      })
+      .where(eq(edgesTables.id, updatedEdges.id));
+
+    return result;
+  } catch (err) {
+    console.log("[UPDATE EDGES ERROR]", err);
+    throw err;
+  }
+};
