@@ -69,7 +69,7 @@ const CreationForm = ({ user }) => {
 
     // Redirection vers la page de construction de l'histoire
     startTransition(() => {
-      redirect(`constructionHistoire/${newHistoireData.id}`);
+      redirect(`constructionhistoire/${newHistoireData.id}`);
     });
   };
 
@@ -137,6 +137,8 @@ const CreationForm = ({ user }) => {
               <option value="entreeChaotique">Entrée chaotique</option>
               <option value="glissement">Glissement</option>
               <option value="dechiffrage">Déchiffrage</option>
+              <option value="chute">Chute</option>
+              <option value="fadein">Fade in</option>
             </select>
           </label>
         </div>
@@ -144,7 +146,7 @@ const CreationForm = ({ user }) => {
 
         {/* Bouton pour ouvrir le modal d'image */}
         <button className="btn-import" type="button" onClick={ouvrirModal}>
-          Choisir une image
+          Choisir une image de couverture
         </button>
 
         {/* Bouton de soumission du formulaire */}

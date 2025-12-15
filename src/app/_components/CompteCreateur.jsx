@@ -67,7 +67,7 @@ const CompteCreateur = ({ user, story = [] }) => {
 
         {/* Carte pour créer une nouvelle histoire */}
         <Link
-          href="/creationHistoire"
+          href="/creationhistoire"
           className="histoire-container create-story"
         >
           <article>
@@ -107,7 +107,7 @@ const CompteCreateur = ({ user, story = [] }) => {
                 <div className="icons-left">
                   {/* Bouton pour modifier l'histoire */}
                   <Link
-                    href={`/constructionHistoire/${histoire.id}`}
+                    href={`/constructionhistoire/${histoire.id}`}
                     className="btn-link reset"
                   >
                     <button className="btn-left">Modifier</button>
