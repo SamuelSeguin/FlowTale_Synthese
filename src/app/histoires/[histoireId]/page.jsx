@@ -5,30 +5,34 @@ import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 //Titre dynamique de l’onglet
-export function generateMetadata() {
+export async function generateMetadata({ params }) {
+  const { histoireId } = params;
+  const histoires = await GetStoryById(histoireId); //Tableau
+  const storyTitle = histoires[0];
+
   return {
-    title: "Histoire | FlowTale",
+    title: storyTitle.titre, //Titre de l’onglet
   };
 }
 
 const FicheHistoirePage = async ({ params }) => {
-  const storyID = params.histoireId;
+  const { histoireId } = await params;
+  const histoire = await GetStoryById(histoireId);
+  console.log("HISTOIRE DANS FICHE HISTOIRE PAGE :", histoire);
 
-  if (!storyID) {
+  if (histoire === null || histoire.length === 0) {
     redirect("/404");
   }
 
-  const histoire = await GetStoryById(storyID);
+  let user;
 
-  if (!histoire || histoire.length === 0) {
-    redirect("/404");
-  }
-
-  let user = null;
   try {
     const session = await getSession();
     user = session?.user;
-  } catch {}
+    console.log("Vous êtes connecter!");
+  } catch (err) {
+    console.log("Vous n'êtes pas connecter!");
+  }
 
   return (
     <div>
