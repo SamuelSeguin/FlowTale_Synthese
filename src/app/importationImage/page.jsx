@@ -1,6 +1,7 @@
 import NavBar from "../_components/NavBar";
 import ImportationImage from "../_components/ImportationImage";
 import { getSession } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 const ImportationImagePage = async () => {
 
