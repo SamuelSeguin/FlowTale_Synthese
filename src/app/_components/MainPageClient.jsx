@@ -9,8 +9,9 @@ import InspecteurBranche from "./InspecteurBranche";
 import InspecteurBase from "./InspecteurBase";
 import "./ConstructionHistoire.css";
 import Footer from "../_components/Footer";
+import { v4 as uuidv4 } from "uuid";
 
-const MainPageClient = ({ nodeData }) => {
+const MainPageClient = ({ nodeData, storyId }) => {
   const {
     nodes,
     edges,
@@ -21,6 +22,7 @@ const MainPageClient = ({ nodeData }) => {
     internals: { onNodesChange, onEdgesChange, onConnect, onSelectionChange },
   } = useGrid();
 
+  
   const showInspecteur = () => {
     if (selection.type === "node") {
       return <InspecteurNode selection={selection} setHandler={setNodes} />;
@@ -28,24 +30,24 @@ const MainPageClient = ({ nodeData }) => {
       return <InspecteurBranche selection={selection} setHandler={setEdges} />;
     } else <></>;
   };
-
+  
   useEffect(() => {
     console.log("MA SELECTION", selection);
   }, [selection]);
-
+  
   const edgesWithTypeLabel = edges.map((edge) => {
     let label = "";
-
+    
     if (edge.data?.typeBranche === "regulier") label = "R";
     if (edge.data?.typeBranche === "historique") label = "H";
     if (edge.data?.typeBranche === "conditionnel") label = "C";
-
+    
     return {
       ...edge,
       label,
     };
   });
-
+  
   return (
     <div>
       <div className="container-flex">

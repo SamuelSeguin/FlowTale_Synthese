@@ -57,7 +57,7 @@ const Utilisateur = ({ histoire }) => {
         {histoire.map((histoireItem) => (
           <article className="histoire-container" key={histoireItem.id}>
             {/* Image placeholder */}
-            <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
+            <img className="histoire-image" src={histoireItem.image} alt="" />
 
             <div className="text-content">
               <h2 className="histoire-titre">{histoireItem.titre}</h2>

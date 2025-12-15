@@ -11,31 +11,11 @@ const InspecteurBase = ({ addNode, nodeData }) => {
     }
   });
 
-  const alreadyHasStartNode = nodeTypes?.includes("Début");
-
   return (
     <div className="inspecteur-base">
       <h1 className="inspecteur-title">
         Construction de l’histoire
       </h1>
-      <button
-        className={`btn-primary ${
-          alreadyHasStartNode ? "btn-ajouter-debut--disabled" : ""
-        }`}
-        disabled={alreadyHasStartNode}
-        onClick={() =>
-          addNode({
-            id: uuidv4(),
-            position: {
-              x: Math.floor(Math.random() * 101),
-              y: Math.floor(Math.random() * 101),
-            },
-            data: { label: "Début", type: "Début" },
-          })
-        }
-      >
-        Ajouter un noeud Début (à supprimer)
-      </button>
       <button
         className="btn-secondary"
         onClick={() =>

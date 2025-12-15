@@ -69,12 +69,14 @@ const InspecteurNode = ({ selection, setHandler }) => {
             Mettre à jour l'événement
           </button>
         </form>
-        <button
-          className="btn-danger"
-          onClick={() => deleteLocalNode(selection.node.id)}
-        >
-          Supprimer un événement
-        </button>
+        {selection.node.data.type === "Début" ? null : (
+          <button
+            className="btn-danger"
+            onClick={() => deleteLocalNode(selection.node.id)}
+          >
+            Supprimer un événement
+          </button>
+        )}
       </div>
     </>
   );

@@ -93,6 +93,7 @@ const GridProvider = ({
   // ex:
   const addLocalNode = async (newNode) => {
     // ajouter le noeud au state puis ensuite à bd via une action serveur
+    console.log("[AJOUT NOEUD LOCAL]", newNode);
     try {
       const MaNewNode = {
         id: newNode.id,

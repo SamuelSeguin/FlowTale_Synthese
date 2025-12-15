@@ -8,8 +8,12 @@ import { redirect } from "next/navigation";
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { AddNodesAction } from "../_actions/nodesAction";
+import { useGrid } from "../_contexts/gridContext";
 
 const CreationForm = ({ user }) => {
+
+  const { addLocalNode } = useGrid();
 
   const [imageSelected, setImageSelected] = useState("/jpg/horreur1.jpg");
 
@@ -67,10 +71,21 @@ const CreationForm = ({ user }) => {
       image: imageSelected,
     };
 
+    const newNodeData = {
+      id: uuidv4(),
+      position: { x:0, y:0 },
+      data: {
+        type: "Début",
+        title: "Début de l'histoire",
+      },
+      storyId: newHistoireData.id,
+    };
+    
     console.log(newHistoireData);
-
+    
     await CreationHistoireAction(newHistoireData);
-
+    await addLocalNode(newNodeData);
+    
     // Redirection vers la page de construction de l'histoire
     startTransition(() => {
       redirect(`constructionHistoire/${newHistoireData.id}`);

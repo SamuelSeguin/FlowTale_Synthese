@@ -87,7 +87,7 @@ const CompteCreateur = ({ user, story = [] }) => {
         {/* Boucle sur toutes les histoires de l'utilisateur */}
         {story.map((histoire) => (
           <article className="histoire-container" key={histoire.id}>
-            <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
+            <img className="histoire-image" src={histoire.image} alt="" />
 
             <div className="text-content">
               {/* Composant pour gérer l'affichage public/privé */}

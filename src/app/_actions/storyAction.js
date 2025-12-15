@@ -1,4 +1,5 @@
 "use server"
+import { v4 as uuidv4 } from "uuid";
 
 import {
     CreationHistoire,
@@ -12,10 +13,26 @@ import {
     DeleteStoryById,
 } from "../_data/story"
 import { revalidatePath } from "next/cache";
+import { AddNodes } from "../_data/nodes";
 
 export const CreationHistoireAction = async (histoireData) => {
     await CreationHistoire(histoireData);
-    revalidatePath(`/constructionHistoire/${histoireData.id}`);
+
+    const startNode = {
+    id: uuidv4(),
+    positionX: 0,
+    positionY: 0,
+    data: JSON.stringify({
+      type: "Début",
+      label: "Début de l'histoire",
+      description: "Ceci est le noeud de départ de votre histoire.",
+    }),
+    storyId: histoireData.id,
+  };
+
+  await AddNodes(startNode);
+
+revalidatePath(`/constructionHistoire/${histoireData.id}`);
 }
 
 export const GetAllStoriesAction = async () => {
