@@ -4,6 +4,6 @@ import * as schema from './schemas';
 
 export const db = drizzle({
     // logger: true,
-    connection: {url: process.env.DATABASE_URL},   
+    connection: {url: process.env.DATABASE_URL, authToken: process.env.TURSO_AUTH_TOKEN},   
     schema
 });
