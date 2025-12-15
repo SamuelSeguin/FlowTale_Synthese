@@ -16,23 +16,25 @@ export async function generateMetadata({ params }) {
 }
 
 const FicheHistoirePage = async ({ params }) => {
-  const { histoireId } = await params;
-  const histoire = await GetStoryById(histoireId);
-  console.log("HISTOIRE DANS FICHE HISTOIRE PAGE :", histoire);
+  const rawId = params.histoireId;
 
-  if (histoire === null || histoire.length === 0) {
+  const histoireId = Array.isArray(rawId) ? rawId[0] : rawId;
+
+  if (!histoireId || typeof histoireId !== "string") {
     redirect("/404");
   }
 
-  let user;
+  const histoire = await GetStoryById(histoireId);
 
+  if (!histoire || histoire.length === 0) {
+    redirect("/404");
+  }
+
+  let user = null;
   try {
     const session = await getSession();
     user = session?.user;
-    console.log("Vous êtes connecter!");
-  } catch (err) {
-    console.log("Vous n'êtes pas connecter!");
-  }
+  } catch {}
 
   return (
     <div>
