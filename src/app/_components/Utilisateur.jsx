@@ -40,7 +40,11 @@ const Utilisateur = ({ histoire }) => {
       ------------------------------------ */}
       <div className="pfp-bg">
         <div className="pfp-name-flex">
-          <img className="pfp-createur" src="/png/pfp_placeholder.png" alt="" />
+          <img
+            className="pfp-createur"
+            src="/png/pfp_placeholder.png"
+            alt={`Image de profil de: ${histoire[0].auteurName}`}
+          />
           <h2 className="compte-nom">{histoire[0].auteurName}</h2>
         </div>
       </div>

@@ -89,6 +89,9 @@
 }
 
 .btn-reprendre {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
   border: none;
   cursor: pointer;
   opacity: 0;
@@ -98,7 +101,7 @@
   font-size: var(--text-sm);
   padding: 11px 18px;
   font-family: var(--font-main);
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-reprendre:hover {
@@ -107,7 +110,17 @@
     var(--color-primary) 0%,
     var(--color-secondary) 100%
   );
-  transform: scale(1.05);
+}
+
+.img-reprendre {
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.btn-reprendre:hover .img-reprendre {
+  transform: rotate(-180deg);
 }
 
 .fiche-cta-text {

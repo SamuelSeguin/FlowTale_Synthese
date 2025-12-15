@@ -52,13 +52,13 @@ const CompteCreateur = ({ user, story = [] }) => {
         <div className="pfp-name-flex">
           {/* Affichage de l'image utilisateur ou placeholder */}
           {user?.image === null ? (
+            <img className="pfp-createur" src="/png/pfp_placeholder.png" />
+          ) : (
             <img
               className="pfp-createur"
-              src="/png/pfp_placeholder.png"
-              alt=""
+              src={user?.image}
+              alt={`Image de profil de: ${user?.name}`}
             />
-          ) : (
-            <img className="pfp-createur" src={user?.image} alt="" />
           )}
           <h2 className="compte-nom">{user?.name}</h2>
         </div>
@@ -72,7 +72,7 @@ const CompteCreateur = ({ user, story = [] }) => {
 
         {/* Carte pour créer une nouvelle histoire */}
         <Link
-          href="/creationHistoire"
+          href="/creationhistoire"
           className="histoire-container create-story"
         >
           <article>
@@ -80,7 +80,11 @@ const CompteCreateur = ({ user, story = [] }) => {
               <h2 className="create-title">Créer une histoire</h2>
               <p className="create-text">Commencez votre aventure ici</p>
             </div>
-            <img className="create-plus" src="/png/plus.png" alt="" />
+            <img
+              className="create-plus"
+              src="/png/plus.png"
+              alt="Icône bouton créer"
+            />
           </article>
         </Link>
 
@@ -108,7 +112,7 @@ const CompteCreateur = ({ user, story = [] }) => {
                 <div className="icons-left">
                   {/* Bouton pour modifier l'histoire */}
                   <Link
-                    href={`/constructionHistoire/${histoire.id}`}
+                    href={`/constructionhistoire/${histoire.id}`}
                     className="btn-link reset"
                   >
                     <button className="btn-left">Modifier</button>
@@ -127,7 +131,7 @@ const CompteCreateur = ({ user, story = [] }) => {
                   {/* Bouton commentaires */}
                   <Link href={`/histoires/${histoire.id}/stats`} className="">
                     <button className="btn-small">
-                      <img src="/png/comment.png" alt="commentaires" />
+                      <img src="/png/comment.png" alt="Icône commentaire" />
                     </button>
                   </Link>
 

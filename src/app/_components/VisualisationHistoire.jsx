@@ -16,7 +16,7 @@ const VisualisationHistoire = ({
   storyId,
   isStoryEnd,
   startNodeId,
-  user
+  user,
 }) => {
   const [selectedTarget, setSelectedTarget] = useState(null);
   const [modalOuvert, setModalOuvert] = useState(false);
@@ -105,6 +105,23 @@ const VisualisationHistoire = ({
           speed: 0.2,
         },
       });
+    } else if (story.musique === "chute") {
+      gsap.from(split.words, {
+        opacity: 0,
+        y: -150,
+        rotationX: -90,
+        transformOrigin: "50% 50%",
+        duration: 1.2,
+        stagger: { each: 0.15, from: "random" },
+        ease: "power2.out",
+      });
+    } else if (story.musique === "fadein") {
+      gsap.from(split.words, {
+        opacity: 0,
+        duration: 1.5,
+        stagger: 0.1,
+        ease: "power2.out",
+      });
     }
 
     // Animation de l'image si elle existe
@@ -170,7 +187,6 @@ const VisualisationHistoire = ({
     await AddCommentAction(newComment);
     fermerModal();
   };
-
 
   /* ------------------------------------
       RENDU VISUEL
@@ -247,7 +263,7 @@ const VisualisationHistoire = ({
               placeholder="Partagez votre avis sur cette histoire..."
               />
 
-            <button className="form-cta-btn" type="submit">
+            <button className="form-cta-btn" type="submit" onClick={fermerModal}>
               <span className="form-cta-arrow left">→</span>
               <span className="form-cta-text">Envoyer</span>
               <span className="form-cta-arrow right">→</span>

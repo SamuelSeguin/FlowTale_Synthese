@@ -94,11 +94,11 @@ const AuthForm = ({
         {showGithub && (
           <button type="button" className="form-cta-btn github" onClick={signInWithGithub}>
             <span className="form-cta-arrow left">
-              <img src="/png/github.png" alt="GitHub" />
+              <img src="/png/github.png" alt="GitHub logo" />
             </span>
             <span className="form-cta-text">Se connecter avec GitHub</span>
             <span className="form-cta-arrow right">
-              <img src="/png/github.png" alt="GitHub" />
+              <img src="/png/github.png" alt="GitHub logo" />
             </span>
           </button>
         )}

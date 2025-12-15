@@ -5,6 +5,7 @@ import "./FicheHistoire.css";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useAudio } from "../_contexts/AudioContext";
 
 const FicheHistoire = ({ histoire, user }) => {
   const containerRef = useRef();
@@ -12,6 +13,13 @@ const FicheHistoire = ({ histoire, user }) => {
   const contentRef = useRef();
   const btnVisualiserRef = useRef();
   const btnReprendreRef = useRef();
+
+  const { stop } = useAudio(false);
+
+  // Stop l'audio
+  useEffect(() => {
+    stop();
+  }, []);
 
   useGSAP(
     () => {
@@ -84,6 +92,11 @@ const FicheHistoire = ({ histoire, user }) => {
               <Link href="">
                 <button className="btn-reprendre" ref={btnReprendreRef}>
                   Reprendre visualisation
+                  <img
+                    className="img-reprendre"
+                    src="/png/reprendre.png"
+                    alt="Icône bouton reprendre"
+                  />
                 </button>
               </Link>
             </div>

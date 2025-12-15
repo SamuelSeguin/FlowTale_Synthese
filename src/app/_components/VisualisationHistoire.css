@@ -260,8 +260,7 @@
 .wrapper--fantastique .choix-btn-confirmer:hover,
 .wrapper--fantastique .choix-btn-continuer:hover {
   background-color: linear-gradient(135deg, #bddd7e, #77c39b);
-  color: #1f3020;
-  box-shadow: 0 0 18px #bddd7ee6;
+  box-shadow: 0 0 18px #f2ffd9e6;
 }
 
 /* FUTURISTE */
@@ -279,7 +278,7 @@
 .wrapper--futuriste .choix-btn-confirmer:hover,
 .wrapper--futuriste .choix-btn-continuer:hover {
   background-color: linear-gradient(135deg, #0599cf, #1e90ff);
-  box-shadow: 0 0 20px #0599cff2;
+  box-shadow: 0 0 20px #cbf1fff2;
 }
 
 /* ==========================================================

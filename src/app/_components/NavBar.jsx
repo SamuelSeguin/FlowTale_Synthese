@@ -24,7 +24,7 @@ const NavBar = ({ user, auth = false }) => {
   return (
     <div className="nav">
       <Link href="/">
-        <img className="logo" src="/png/logo.png" alt=""/>
+        <img className="logo" src="/png/logo.png" alt="Logo Flowtale" />
       </Link>
       {auth === false ? (
         !isLoggedIn ? (

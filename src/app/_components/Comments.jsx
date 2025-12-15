@@ -8,7 +8,7 @@ const Comments = ({ comments, storyTitle, user}) => {
     <div>
       <div className="pfp-bg">
         <div className="pfp-name-flex">
-          <img className="pfp-createur" src="/png/pfp_placeholder.png" alt="" />
+          <img className="pfp-createur" src="/png/pfp_placeholder.png" />
           <h2 className="compte-nom">Émilie Paquin</h2>
         </div>
       </div>
@@ -31,7 +31,7 @@ const Comments = ({ comments, storyTitle, user}) => {
               doit percer le secret des brumes pour sauver Éloria du danger qui
               grandit dans l’ombre.
             </p>
-            <img className="comment-icon" src="/png/comment.png" alt="" />
+            <img className="comment-icon" src="/png/comment.png" alt="Icône commentaire" />
           </div>
           <div className="comment-content">
             <h2 className="nom-utilisateur">Camille Lenoir</h2>
@@ -44,7 +44,7 @@ const Comments = ({ comments, storyTitle, user}) => {
               doit percer le secret des brumes pour sauver Éloria du danger qui
               grandit dans l’ombre.
             </p>
-            <img className="comment-icon" src="/png/comment.png" alt="" />
+            <img className="comment-icon" src="/png/comment.png" alt="Icône commentaire" />
           </div>{" "}
           <div className="comment-content">
             <h2 className="nom-utilisateur">Camille Lenoir</h2>
@@ -57,7 +57,7 @@ const Comments = ({ comments, storyTitle, user}) => {
               doit percer le secret des brumes pour sauver Éloria du danger qui
               grandit dans l’ombre.
             </p>
-            <img className="comment-icon" src="/png/comment.png" alt="" />
+            <img className="comment-icon" src="/png/comment.png" alt="Icône commentaire" />
           </div>
         </article>
       </div>
