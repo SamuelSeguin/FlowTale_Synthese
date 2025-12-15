@@ -40,7 +40,11 @@ const Utilisateur = ({ histoire }) => {
       ------------------------------------ */}
       <div className="pfp-bg">
         <div className="pfp-name-flex">
-          <img className="pfp-createur" src="/png/pfp_placeholder.png" alt="" />
+          <img
+            className="pfp-createur"
+            src="/png/pfp_placeholder.png"
+            alt={`Image de profil de: ${histoire[0].auteurName}`}
+          />
           <h2 className="compte-nom">{histoire[0].auteurName}</h2>
         </div>
       </div>
@@ -57,7 +61,7 @@ const Utilisateur = ({ histoire }) => {
         {histoire.map((histoireItem) => (
           <article className="histoire-container" key={histoireItem.id}>
             {/* Image placeholder */}
-            <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
+            <img className="histoire-image" src="/jpg/horreur1.jpg" />
 
             <div className="text-content">
               <h2 className="histoire-titre">{histoireItem.titre}</h2>

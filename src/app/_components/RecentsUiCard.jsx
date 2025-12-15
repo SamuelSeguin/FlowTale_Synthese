@@ -15,7 +15,7 @@ const RecentsUiCard = ({ stories }) => {
         {stories.map((histoire) => (
           <div className="card-container" key={histoire.id}>
             <Link href={`/histoires/${histoire.id}`}>
-              <img className="recents-img" src="/jpg/horreur1.jpg" alt="" />
+              <img className="recents-img" src="/jpg/horreur1.jpg" />
             </Link>
 
             <h1 className="recents-title">{histoire.titre}</h1>

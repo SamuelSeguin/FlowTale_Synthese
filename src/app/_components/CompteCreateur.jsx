@@ -47,13 +47,13 @@ const CompteCreateur = ({ user, story = [] }) => {
         <div className="pfp-name-flex">
           {/* Affichage de l'image utilisateur ou placeholder */}
           {user?.image === null ? (
+            <img className="pfp-createur" src="/png/pfp_placeholder.png" />
+          ) : (
             <img
               className="pfp-createur"
-              src="/png/pfp_placeholder.png"
-              alt=""
+              src={user?.image}
+              alt={`Image de profil de: ${user?.name}`}
             />
-          ) : (
-            <img className="pfp-createur" src={user?.image} alt="" />
           )}
           <h2 className="compte-nom">{user?.name}</h2>
         </div>
@@ -75,14 +75,18 @@ const CompteCreateur = ({ user, story = [] }) => {
               <h2 className="create-title">Créer une histoire</h2>
               <p className="create-text">Commencez votre aventure ici</p>
             </div>
-            <img className="create-plus" src="/png/plus.png" alt="" />
+            <img
+              className="create-plus"
+              src="/png/plus.png"
+              alt="Icône bouton créer"
+            />
           </article>
         </Link>
 
         {/* Boucle sur toutes les histoires de l'utilisateur */}
         {story.map((histoire) => (
           <article className="histoire-container" key={histoire.id}>
-            <img className="histoire-image" src="/jpg/horreur1.jpg" alt="" />
+            <img className="histoire-image" src="/jpg/horreur1.jpg" />
 
             <div className="text-content">
               {/* Composant pour gérer l'affichage public/privé */}
@@ -122,14 +126,14 @@ const CompteCreateur = ({ user, story = [] }) => {
                   {/* Bouton commentaires */}
                   <Link href={`/histoires/${histoire.id}/stats`} className="">
                     <button className="btn-small">
-                      <img src="/png/comment.png" alt="commentaires" />
+                      <img src="/png/comment.png" alt="Icône commentaire" />
                     </button>
                   </Link>
 
                   {/* Bouton pour supprimer l'histoire */}
                   <Link href="" className="">
                     <button className="btn-small">
-                      <img className="" src="/png/bin.png" alt="" />
+                      <img className="" src="/png/bin.png" alt="Icône supprimer" />
                     </button>
                   </Link>
                 </div>

@@ -8,7 +8,11 @@ const ImportationImage = () => {
         <div className="content-flex">
           <div>
             <div>
-              <img className="img-import" src="/png/import.png" alt="" />
+              <img
+                className="img-import"
+                src="/png/import.png"
+                alt="Icône import"
+              />
               <p className="txt-import">Téléverser vos images.</p>
             </div>
           </div>
