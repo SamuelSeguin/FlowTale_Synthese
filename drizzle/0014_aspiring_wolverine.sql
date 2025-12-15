@@ -1,0 +1,1 @@
+ALTER TABLE `story` RENAME COLUMN "musique" TO "animation";

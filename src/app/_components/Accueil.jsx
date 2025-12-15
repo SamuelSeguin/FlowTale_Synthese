@@ -106,7 +106,7 @@ const Accueil = ({ stories }) => {
       <div ref={cardsRef}>
         <RecentsUiCard stories={stories} />
       </div>
-
+    
       <Footer />
     </div>
   );

@@ -6,6 +6,8 @@ import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { useAudio } from "../_contexts/AudioContext";
+import { v4 as uuidv4 } from "uuid";
+import { AddCommentAction } from "../_actions/commentsAction";
 
 const VisualisationHistoire = ({
   story,
@@ -156,6 +158,7 @@ const VisualisationHistoire = ({
 
   const localAddComment = async (formData) => {
     const comment = formData.get("comment");
+
     const newComment = {
       id: uuidv4(),
       text: comment,
@@ -163,7 +166,9 @@ const VisualisationHistoire = ({
       auteurName: user.name,
       storyId,
     };
+
     await AddCommentAction(newComment);
+    fermerModal();
   };
 
 
@@ -204,13 +209,15 @@ const VisualisationHistoire = ({
               <button className="btn-visualisation">Retour à l'accueil</button>
             </Link>
 
-            <button
-              type="button"
-              className="btn-visualisation btn-commentaire"
-              onClick={ouvrirModal}
-            >
-              Laisser un commentaire
-            </button>
+            {user && (
+              <button
+                type="button"
+                className="btn-visualisation btn-commentaire"
+                onClick={ouvrirModal}
+              >
+                Laisser un commentaire
+              </button>
+            )}
 
             <Link
               href={`/visualisationhistoire/${storyId}/${startNodeId}`}
@@ -231,17 +238,21 @@ const VisualisationHistoire = ({
             </button>
 
             <h2 className="modal-comment-title">Laisser un commentaire</h2>
+            <form action={localAddComment}>
 
-            <textarea
+            <input
+              type="text"
+              name="comment"
               className="commentaire-textarea"
               placeholder="Partagez votre avis sur cette histoire..."
-            />
+              />
 
-            <button className="form-cta-btn" type="button" onClick={fermerModal}>
+            <button className="form-cta-btn" type="submit">
               <span className="form-cta-arrow left">→</span>
               <span className="form-cta-text">Envoyer</span>
               <span className="form-cta-arrow right">→</span>
             </button>
+            </form>
           </div>
         </div>
       )}

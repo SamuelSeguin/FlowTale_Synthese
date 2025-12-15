@@ -3,6 +3,7 @@ import "./AuthForm.css";
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { authClient } from "@/src/lib/auth-client";
 
 const AuthForm = ({
   titre,
@@ -37,6 +38,13 @@ const AuthForm = ({
       ease: "power2.out",
     });
   });
+
+  const signInWithGithub = () => {
+  authClient.signIn.social({
+    provider: "github",
+    callbackURL: "/",
+  });
+};
 
   return (
     <div className="form-background">
@@ -84,7 +92,7 @@ const AuthForm = ({
         </button>
 
         {showGithub && (
-          <button type="button" className="form-cta-btn github">
+          <button type="button" className="form-cta-btn github" onClick={signInWithGithub}>
             <span className="form-cta-arrow left">
               <img src="/png/github.png" alt="GitHub" />
             </span>

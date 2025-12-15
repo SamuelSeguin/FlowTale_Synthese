@@ -3,7 +3,7 @@ import "./Comments.css";
 import "./CompteCreateur.css";
 import Footer from "../_components/Footer";
 
-const Comments = () => {
+const Comments = ({ comments, storyTitle, user}) => {
   return (
     <div>
       <div className="pfp-bg">

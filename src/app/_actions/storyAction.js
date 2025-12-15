@@ -9,6 +9,7 @@ import {
     GetStoryById,
     GetStoryByUserId,
     UpdatePublicStoryById,
+    DeleteStoryById,
 } from "../_data/story"
 import { revalidatePath } from "next/cache";
 
@@ -52,4 +53,9 @@ export const GetFullStoryByIdAction = async (storyId) => {
 export const UpdatePublicStoryByIdAction = async (storyId, userId, publicValue) => {
     await UpdatePublicStoryById(storyId, publicValue);
     revalidatePath(`/compte/${userId}`)
+}
+
+export const DeleteStoryByIdAction = async (storyId, userId) => {
+    await DeleteStoryById(storyId);
+    revalidatePath(`/compte/${userId}`);
 }

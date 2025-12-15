@@ -2,30 +2,6 @@ import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { user } from "./auth-schema";
 import { relations, sql } from "drizzle-orm";
 
-// export const user = sqliteTable("post", {
-//   id: text("id").primaryKey(),
-//   title: text("title").notNull(),
-//   createdAt: integer("created_at", { mode: "timestamp_ms" })
-//     .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
-//     .notNull(),
-//   updatedAt: integer("updated_at", { mode: "timestamp_ms" })
-//     .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
-//     .$onUpdate(() => /* @__PURE__ */ new Date())
-//     .notNull(),
-// });
-
-export const commentsTables = sqliteTable("comments", {
-    id: text("id").primaryKey(),
-    text: text("description").notNull(),
-    auteur: text("auteur")
-    .references(() => user.id, { onDelete: "cascade" })
-    .notNull(),
-    storyId: text("storyId")
-    .references(() => storyTables.id, {onDelete: "cascade"})
-    .notNull(),
-    createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
-});
-
 export const storyTables = sqliteTable("story", {
     id: text("id").primaryKey(),
     titre: text("titre").notNull(),
@@ -35,8 +11,22 @@ export const storyTables = sqliteTable("story", {
     auteurName: text("auteurName").notNull(),
     synopsis: text("synopsis").notNull(),
     ambiance: text("ambiance").notNull(),
-    musique: text("musique").notNull(),
-    // public: integer("public").notNull().default(0), // 0 = privé, 1 = public
+    animation: text("animation").notNull(),
+    public: integer("public").notNull().default(0), // 0 = privé, 1 = public
+    image: text("image").notNull(),
+    createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
+});
+
+export const commentsTables = sqliteTable("comments", {
+    id: text("id").primaryKey(),
+    text: text("description").notNull(),
+    auteur: text("auteur")
+    .references(() => user.id, { onDelete: "cascade" })
+    .notNull(),
+    auteurName: text("auteurName").notNull(),
+    storyId: text("storyId")
+    .references(() => storyTables.id, {onDelete: "cascade"})
+    .notNull(),
     createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
 });
 

@@ -55,7 +55,7 @@ const FicheHistoire = ({ histoire, user }) => {
           <img
             ref={imageRef}
             className="fiche-image"
-            src="../../../jpg/horreur1.jpg"
+            src={histoire?.image}
             alt=""
           />
 

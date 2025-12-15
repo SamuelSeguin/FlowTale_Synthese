@@ -43,6 +43,7 @@ const NodeView = async ({ params }) => {
         storyId={storyId}
         isStoryEnd={isStoryEnd}
         startNodeId={storyInfo.startNodeId}
+        user={user}
       />
     </div>
   );

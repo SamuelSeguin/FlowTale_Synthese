@@ -1,7 +1,7 @@
 "server-only";
 
 import { db } from "@/db";
-import { storyTables, nodesTables, edgesTables } from "@/db/schemas";
+import { storyTables, nodesTables, edgesTables, commentsTables } from "@/db/schemas";
 import { eq, desc } from "drizzle-orm";
 
 export const CreationHistoire = async (histoireData) => {
@@ -173,4 +173,10 @@ export const getNodeInfoById = async (nodeId) => {
   });
   // 3) Retourner node + branches
   return { node, branches: branchesMapped };
+};
+export const DeleteStoryById = async (storyId) => {
+  await db.delete(commentsTables).where(eq(commentsTables.storyId, storyId));
+  await db.delete(nodesTables).where(eq(nodesTables.storyId, storyId));
+  await db.delete(edgesTables).where(eq(edgesTables.storyId, storyId));
+  await db.delete(storyTables).where(eq(storyTables.id, storyId));
 };

@@ -28,8 +28,10 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/react": "19.2.7",
     "cross-env": "^10.1.0",
     "drizzle-kit": "^0.31.6",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "5.9.3"
   }
 }

@@ -10,6 +10,9 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const CreationForm = ({ user }) => {
+
+  const [imageSelected, setImageSelected] = useState("/jpg/horreur1.jpg");
+
   const formRef = useRef();
   const leftMessageRef = useRef();
 
@@ -50,7 +53,7 @@ const CreationForm = ({ user }) => {
     const auteur = user.id;
     const synopsis = formData.get("synopsis");
     const ambiance = formData.get("ambiance");
-    const musique = formData.get("musique");
+    const animation = formData.get("animation");
 
     // Construction de l'objet histoire
     const newHistoireData = {
@@ -60,7 +63,8 @@ const CreationForm = ({ user }) => {
       auteurName: user.name,
       synopsis,
       ambiance,
-      musique,
+      animation,
+      image: imageSelected,
     };
 
     console.log(newHistoireData);
@@ -130,7 +134,7 @@ const CreationForm = ({ user }) => {
           <br />
 
           <label>
-            <select className="select" name="musique" required defaultValue="">
+            <select className="select" name="animation" required defaultValue="">
               <option value="" disabled>
                 Animation
               </option>
@@ -170,26 +174,50 @@ const CreationForm = ({ user }) => {
               <img
                 className="image-form-creation"
                 src="../../../jpg/horreur1.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/horreur1.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/horreur2.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/horreur2.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/fantastique1.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/fantastique1.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/fantastique2.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/fantastique2.jpg");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/futuriste1.png"
+                onClick={() => {
+                  setImageSelected("/jpg/futuriste1.png");
+                  fermerModal();
+                }}
               />
               <img
                 className="image-form-creation"
                 src="../../../jpg/futuriste2.jpg"
+                onClick={() => {
+                  setImageSelected("/jpg/futuriste2.jpg");
+                  fermerModal();
+                }}
               />
             </div>
 

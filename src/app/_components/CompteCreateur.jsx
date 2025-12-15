@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import PublicDisplay from "./PublicDisplay";
 import { useAudio } from "../_contexts/AudioContext";
+import { DeleteStoryByIdAction } from "../_actions/storyAction";
 
 const CompteCreateur = ({ user, story = [] }) => {
   const containerRef = useRef();
@@ -40,6 +41,10 @@ const CompteCreateur = ({ user, story = [] }) => {
       delay: 0.3,
     });
   });
+
+  const deleteLocalStory = async (storyId) => {
+    await DeleteStoryByIdAction(storyId, user.id);
+  }
 
   return (
     <div>
@@ -128,8 +133,12 @@ const CompteCreateur = ({ user, story = [] }) => {
 
                   {/* Bouton pour supprimer l'histoire */}
                   <Link href="" className="">
-                    <button className="btn-small">
-                      <img className="" src="/png/bin.png" alt="" />
+                    <button
+                      type="button"
+                      onClick={() => deleteLocalStory(histoire.id)}
+                      className="btn-small"
+                    >
+                      <img src="/png/bin.png" alt="" />
                     </button>
                   </Link>
                 </div>
