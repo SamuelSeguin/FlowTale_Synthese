@@ -5,26 +5,20 @@ import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 //Titre dynamique de l’onglet
-export async function generateMetadata({ params }) {
-  const { histoireId } = params;
-  const histoires = await GetStoryById(histoireId); //Tableau
-  const storyTitle = histoires[0];
-
+export function generateMetadata() {
   return {
-    title: storyTitle.titre, //Titre de l’onglet
+    title: "Histoire | FlowTale",
   };
 }
 
 const FicheHistoirePage = async ({ params }) => {
-  const rawId = params.histoireId;
+  const storyID = params.histoireId;
 
-  const histoireId = Array.isArray(rawId) ? rawId[0] : rawId;
-
-  if (!histoireId || typeof histoireId !== "string") {
+  if (!storyID) {
     redirect("/404");
   }
 
-  const histoire = await GetStoryById(histoireId);
+  const histoire = await GetStoryById(storyID);
 
   if (!histoire || histoire.length === 0) {
     redirect("/404");
