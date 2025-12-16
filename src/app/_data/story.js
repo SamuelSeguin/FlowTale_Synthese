@@ -120,7 +120,7 @@ export const getStoryInfoById = async (storyId) => {
     title: story.titre,
     synopsis: story.synopsis,
     ambiance: story.ambiance,
-    musique: story.musique,
+    animation: story.animation,
     authorId: story.auteur,
     authorName: story.auteurName,
     startNodeId,
