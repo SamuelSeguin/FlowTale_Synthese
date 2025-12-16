@@ -40,7 +40,6 @@ export const RemoveEdges = async (EdgeId) => {
 
 export const UpdateEdges = async (updatedEdges) => {
   try {
-
     const result = await db
       .update(edgesTables)
       .set({
