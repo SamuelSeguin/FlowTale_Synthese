@@ -19,6 +19,8 @@ const NodeView = async ({ params }) => {
   const storyInfo = await getStoryInfoById(storyId);
   const nodeData = await getNodeInfoById(nodeId);
 
+  console.log("INFO STORY", storyInfo);
+
   const story = {
     id: storyInfo.id,
     titre: storyInfo.title,
