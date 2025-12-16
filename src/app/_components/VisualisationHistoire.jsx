@@ -68,6 +68,8 @@ const VisualisationHistoire = ({
     const fantBgTl = gsap.timeline({ repeat: -1, yoyo: true });
     const futTl = gsap.timeline();
 
+    console.log("STORY", story, "ANIMATION", story.animation);
+
     if (story.ambiance === "horreur") {
       gsap.set(backgroundRef.current, { "--bg-color": "#5e0c0c" });
       gsap.set(textRef.current, { color: "#f02525" });
