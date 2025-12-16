@@ -98,7 +98,7 @@ const VisualisationHistoire = ({
       gsap.set(textRef.current, { color: "#97f8ff" });
     }
 
-    if (story.musique === "entreeChaotique") {
+    if (animation === "entreeChaotique") {
       horreurTl.from(split.words, {
         opacity: 0,
         y: 30,
@@ -107,7 +107,7 @@ const VisualisationHistoire = ({
         stagger: { each: 0.08, from: "random" },
         ease: "back.out(2)",
       });
-    } else if (story.musique === "glissement") {
+    } else if (story.animation === "glissement") {
       fantTl.from(splitLines.lines, {
         opacity: 0,
         x: -90,
@@ -116,7 +116,7 @@ const VisualisationHistoire = ({
         stagger: 0.7,
         ease: "power2.out",
       });
-    } else if (story.musique === "dechiffrage") {
+    } else if (story.animation === "dechiffrage") {
       futTl.to(textRef.current, {
         duration: 2,
         scrambleText: {
@@ -125,7 +125,7 @@ const VisualisationHistoire = ({
           speed: 0.2,
         },
       });
-    } else if (story.musique === "chute") {
+    } else if (story.animation === "chute") {
       gsap.from(split.words, {
         opacity: 0,
         y: -150,
@@ -135,7 +135,7 @@ const VisualisationHistoire = ({
         stagger: { each: 0.15, from: "random" },
         ease: "power2.out",
       });
-    } else if (story.musique === "fadein") {
+    } else if (story.animation === "fadein") {
       gsap.from(split.words, {
         opacity: 0,
         duration: 1.5,
