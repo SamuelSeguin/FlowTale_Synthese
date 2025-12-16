@@ -83,7 +83,7 @@ const Accueil = ({ stories }) => {
 
           {/* BOUTON HERO */}
           <div className="btn-hero">
-            <Link href="/creationhistoire">
+            <Link href="/creation_histoire">
               <button className="heroCta">
                 <span className="cta-arrow left">→</span>
                 <span className="cta-text">Créer</span>

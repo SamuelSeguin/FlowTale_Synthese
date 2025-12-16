@@ -87,8 +87,13 @@
 .img-logout {
   width: 43px;
   height: 43px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
+.img-logout:hover {
+  transform: scale(1.1);
+} 
 .nav-flex {
   display: flex;
   flex-direction: row;

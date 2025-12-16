@@ -72,7 +72,7 @@ const CompteCreateur = ({ user, story = [] }) => {
 
         {/* Carte pour créer une nouvelle histoire */}
         <Link
-          href="/creationhistoire"
+          href="/creation_histoire"
           className="histoire-container create-story"
         >
           <article>
