@@ -23,7 +23,7 @@ const NodeView = async ({ params }) => {
     id: storyInfo.id,
     titre: storyInfo.title,
     ambiance: storyInfo.ambiance,
-    musique: storyInfo.musique,
+    animation: storyInfo.animation,
   };
 
   const current = nodeData.node;
