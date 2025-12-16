@@ -27,7 +27,7 @@ const MainPageClient = ({ nodeData, storyId }) => {
     if (selection.type === "node") {
       return <InspecteurNode selection={selection} setHandler={setNodes} />;
     } else if (selection.type === "edge") {
-      return <InspecteurBranche selection={selection} setHandler={setEdges} />;
+      return <InspecteurBranche selection={selection} setHandler={setEdges} storyId={storyId} />;
     } else <></>;
   };
   

@@ -3,7 +3,7 @@ import { RemoveEdgesAction } from "../_actions/edgesAction";
 import { useGrid } from "../_contexts/gridContext";
 import { UpdateNodesInfoAction } from "../_actions/nodesAction";
 import "./ConstructionHistoire.css";
-const InspecteurBranche = ({ selection, setHandler }) => {
+const InspecteurBranche = ({ selection, setHandler, storyId }) => {
   const { edges, nodes } = useGrid();
   const [type, setType] = useState(
     selection.edge.data.typeBranche || "regulier"
@@ -41,7 +41,7 @@ const InspecteurBranche = ({ selection, setHandler }) => {
     setHandler(edges.map((e) => (e.id === updatedEdges.id ? updatedEdges : e)));
 
     startTransition(async () => {
-      await UpdateNodesInfoAction(updatedEdges);
+      await UpdateEdgesAction(updatedEdges, storyId);
     });
   };
 
