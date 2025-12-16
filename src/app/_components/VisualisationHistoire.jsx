@@ -100,7 +100,7 @@ const VisualisationHistoire = ({
       gsap.set(textRef.current, { color: "#97f8ff" });
     }
 
-    if (animation === "entreeChaotique") {
+    if (story.animation === "entreeChaotique") {
       horreurTl.from(split.words, {
         opacity: 0,
         y: 30,
