@@ -32,6 +32,26 @@ const VisualisationHistoire = ({
   const backgroundRef = useRef();
 
   /* ------------------------------------
+      SAUVEGARDE DU PROGRES
+  ------------------------------------ */
+
+  useEffect(() => {
+    if (!current?.id || !storyId) return;
+
+    if (typeof window === "undefined") return;
+
+    const savedProgress = {
+      currentNodeId: current.id, // id du noeud sauvegardé
+    };
+
+    // enregistre la progression dans le localStorage
+    window.localStorage.setItem(
+      `progress-${storyId}`,
+      JSON.stringify(savedProgress)
+    );
+  }, [current?.id, storyId]);
+
+  /* ------------------------------------
       ANIMATIONS GSAP
   ------------------------------------ */
   useEffect(() => {
@@ -255,19 +275,18 @@ const VisualisationHistoire = ({
 
             <h2 className="modal-comment-title">Laisser un commentaire</h2>
             <form action={localAddComment}>
-
-            <input
-              type="text"
-              name="comment"
-              className="commentaire-textarea"
-              placeholder="Partagez votre avis sur cette histoire..."
+              <input
+                type="text"
+                name="comment"
+                className="commentaire-textarea"
+                placeholder="Partagez votre avis sur cette histoire..."
               />
 
-            <button className="form-cta-btn" type="submit">
-              <span className="form-cta-arrow left">→</span>
-              <span className="form-cta-text">Envoyer</span>
-              <span className="form-cta-arrow right">→</span>
-            </button>
+              <button className="form-cta-btn" type="submit">
+                <span className="form-cta-arrow left">→</span>
+                <span className="form-cta-text">Envoyer</span>
+                <span className="form-cta-arrow right">→</span>
+              </button>
             </form>
           </div>
         </div>
