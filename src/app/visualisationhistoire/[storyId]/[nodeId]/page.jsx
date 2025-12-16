@@ -5,7 +5,7 @@ import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 export async function generateMetadata({ params }) {
-  const { storyId } = params;
+  const { storyId } = await params;
   const storyInfo = await getStoryInfoById(storyId);
 
   return {

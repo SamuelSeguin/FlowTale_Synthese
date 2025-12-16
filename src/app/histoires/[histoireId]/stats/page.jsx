@@ -7,7 +7,7 @@ import { GetAllCommentsByStoryIdAction } from "@/src/app/_actions/commentsAction
 
 ///Titre dynamique de l’onglet
 export async function generateMetadata({ params }) {
-  const { histoireId } = params;
+  const { histoireId } = await params;
   const storyData = await GetFullStoryByIdAction(histoireId);
 
   return {

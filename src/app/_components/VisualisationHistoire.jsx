@@ -263,7 +263,7 @@ const VisualisationHistoire = ({
               placeholder="Partagez votre avis sur cette histoire..."
               />
 
-            <button className="form-cta-btn" type="submit" onClick={fermerModal}>
+            <button className="form-cta-btn" type="submit">
               <span className="form-cta-arrow left">→</span>
               <span className="form-cta-text">Envoyer</span>
               <span className="form-cta-arrow right">→</span>

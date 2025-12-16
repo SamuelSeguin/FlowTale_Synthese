@@ -6,17 +6,11 @@ import { redirect } from "next/navigation";
 
 //Titre dynamique de l’onglet
 export async function generateMetadata({ params }) {
-  const { histoireId } = params;
-  const histoires = await GetStoryById(histoireId); //Tableau
-  const storyTitle = histoires[0];
-
-export async function generateMetadata({ params }) {
-  const { histoireId } = params;
+  const { histoireId } = await params;
   const histoires = await GetStoryById(histoireId); //Tableau
   const storyTitle = histoires[0];
 
   return {
-    title: storyTitle.titre, //Titre de l’onglet
     title: storyTitle.titre, //Titre de l’onglet
   };
 }

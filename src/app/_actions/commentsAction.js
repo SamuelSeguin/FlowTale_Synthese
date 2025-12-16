@@ -10,5 +10,6 @@ export const GetAllCommentsByStoryIdAction = async (StoryId) => {
 
 export const AddCommentAction = async (commentData) => {
     await AddComment(commentData);
+    console.log("REDIRECTION");
     redirect(`/histoires/${commentData.storyId}`);
 }

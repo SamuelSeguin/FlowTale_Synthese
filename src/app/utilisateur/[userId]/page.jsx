@@ -9,7 +9,7 @@ import { eq } from "drizzle-orm";
 
 //Titre de l’onglet
 export async function generateMetadata({ params }) {
-  const { userId } = params;
+  const { userId } = await params;
 
   const users = await db.select().from(user).where(eq(user.id, userId));
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
 }
 
 const UtilisateurPage = async ({ params }) => {
-  const { userId } = params;
+  const { userId } = await params;
   const histoire = await GetStoryByUserIdAction(userId);
 
   let user;
