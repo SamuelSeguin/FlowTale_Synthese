@@ -38,14 +38,19 @@ export const RemoveEdges = async (EdgeId) => {
     }
 }
 
-export const UpdateEdges = async (newEdgeInfo) => {
-    try {
-        const result = await db.update(edgesTables).set({
-            data: JSON.stringify(newEdgeInfo.data),
-        }).where(eq(edgesTables.id, newEdgeInfo.id));
-        return result;
-    } catch (err) {
-        console.log("[UPDATE EDGE ERROR]", err);
-        throw err;
-    }
-}
+export const UpdateEdges = async (updatedEdges) => {
+  try {
+
+    const result = await db
+      .update(edgesTables)
+      .set({
+        data: updatedEdges.data,
+      })
+      .where(eq(edgesTables.id, updatedEdges.id));
+
+    return result;
+  } catch (err) {
+    console.log("[UPDATE EDGES ERROR]", err);
+    throw err;
+  }
+};

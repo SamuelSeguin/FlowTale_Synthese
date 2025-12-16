@@ -1,5 +1,5 @@
 import { startTransition, useState } from "react";
-import { RemoveEdgesAction } from "../_actions/edgesAction";
+import { RemoveEdgesAction, UpdateEdgesAction } from "../_actions/edgesAction";
 import { useGrid } from "../_contexts/gridContext";
 import { UpdateNodesInfoAction } from "../_actions/nodesAction";
 import "./ConstructionHistoire.css";
@@ -33,11 +33,12 @@ const InspecteurBranche = ({ selection, setHandler, storyId }) => {
 
   const updateLocalBranch = async (formData) => {
     console.log("FORM DATA BRANCH", formData);
-    const texte = formData.get("texte");
+    const description = formData.get("description");
     const updatedEdges = {
       ...selection.edge,
-      data: { ...selection.edge.data, texte: texte },
+      data: { ...selection.edge.data, texte: description },
     };
+    console.log("EDGES MISE A JOUR", updatedEdges);
     setHandler(edges.map((e) => (e.id === updatedEdges.id ? updatedEdges : e)));
 
     startTransition(async () => {
@@ -97,7 +98,7 @@ const InspecteurBranche = ({ selection, setHandler, storyId }) => {
           <div className="floating-label">
             <label>Description </label>
             <textarea
-              name="texte"
+              name="description"
               className=""
               defaultValue={selection.edge.data.texte || ""}
             />

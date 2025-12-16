@@ -24,7 +24,7 @@ export const RemoveEdgesAction = async (EdgeId) => {
     revalidatePath("/");
 }
 
-export const UpdateEdgesAction = async (newEdgeInfo, storyId) => {
-    await UpdateEdges(newEdgeInfo);
+export const UpdateEdgesAction = async (updatedEdges, storyId) => {
+    await UpdateEdges(updatedEdges);
     revalidatePath(`/constructionhistoire/${storyId}`);
 }
